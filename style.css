@@ -367,8 +367,7 @@ form#searchform input {
 }
 
 #main-part .art, #sidebar .art, .comment-part {
-	overflow: -webkit-paged-x;
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 	-webkit-transform: translate3d(0, -2px, 0);
 	transform: translate3d(0, -2px, 0);
 	box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
