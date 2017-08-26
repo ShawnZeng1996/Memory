@@ -18,8 +18,7 @@
 
 @font-face {
     font-family: rst;
-    src: url('https://pictures.shawnzeng.com/rst.ttf');
-	/*url(fonts/rst.ttf);*/
+    src: url(fonts/rst.ttf);
 }
 
 html, body, * {
