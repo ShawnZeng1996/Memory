@@ -112,7 +112,7 @@ $(document).ready(function($) {
         }
     )
 
-    // ------------------变幻背景------------------
+    /* ------------------变幻背景------------------
     // if (!isMobile) {
     var c = document.getElementById('evanyou'),
         x = c.getContext('2d'),
@@ -168,7 +168,7 @@ $(document).ready(function($) {
     document.onclick = evanyou
     document.ontouchstart = evanyou
     evanyou()
-    // }
+    // }*/
 
     //------------------回到顶部------------------
     $(".go-top").hide()

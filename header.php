@@ -100,7 +100,7 @@ Author URI: https://shawnzeng.com
 </head>
 
 <body>
-    <canvas id="evanyou"></canvas>
+    <!--canvas id="evanyou"></canvas-->
     <div class="cover"></div>
     <header id="header">
         <div id="menu">
