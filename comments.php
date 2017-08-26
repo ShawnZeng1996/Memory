@@ -53,7 +53,7 @@
             	api: '/wp-content/themes/Memory/OwO/OwO.min.json',
             	position: 'down',
             	width: '100%',
-            	maxHeight: '250px'
+            	maxHeight: '200px'
         	});
     	</script>
 		<?php endif; ?>
