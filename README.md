@@ -11,7 +11,7 @@
 
 ### View
 
-![screenshot](screenshot.png)
+![screenshot](https://github.com/ZengShuai1996/Wordpress-theme-Memory/blob/master/screenshot.png)
 
 ---
 
