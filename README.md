@@ -1,11 +1,16 @@
 ## Wordpress Theme Memory
 
+[![Version](https://img.shields.io/badge/version-1.0.6-green.svg?style=flat-square)]()
+[![Author](https://img.shields.io/badge/author-Shawn-blue.svg?style=flat-square)](https://shawnzeng.com)
+
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
 - Description: Theme Memory by Shawn
 - Version: 1.0.6
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
+
+欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的 Pull Request。
 
 ---
 
