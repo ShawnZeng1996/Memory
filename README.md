@@ -9,6 +9,12 @@
 
 ---
 
+### View
+
+![screenshot](screenshot.png)
+
+---
+
 ### Version
 
 #### v1.0.6(2017/8/27)
