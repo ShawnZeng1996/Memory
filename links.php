@@ -35,9 +35,21 @@ setPostViews(get_the_ID());
                     	<span class="art-info-view">
                          	<i class="fa fa-eye"></i>&nbsp;<?php echo getPostViews(get_the_ID()); ?>
                       	</span>&nbsp;•&nbsp;
-                       	<span class="art-info-comment">
-                           	<i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?><?php edit_post_link('编辑', ' • ', ''); ?>
-                      	</span>
+						<span class="art-info-comment">
+                           	<i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
+                      	</span>&nbsp;•&nbsp;
+						<span class="post-like">
+         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['bigfa_ding_'.$post->ID])) echo ' done';?>"><span class="count">
+           					<?php if( get_post_meta($post->ID,'bigfa_ding',true) ){
+                    			echo get_post_meta($post->ID,'bigfa_ding',true);
+                 			} else {
+                    			echo '0';
+                 			}?></span>
+        					</a>
+ 						</span>
+						<span class="art-info-edit">
+						<?php edit_post_link('编辑', '&nbsp;•&nbsp;&nbsp;', ''); ?>
+						</span>
 						<?php 
 							if( current_user_can( 'manage_options') )
 								if(d4v(get_permalink()) == 1) 

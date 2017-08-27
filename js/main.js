@@ -112,9 +112,9 @@ $(document).ready(function($) {
         }
     )
 
-    /* ------------------变幻背景------------------
+    // ------------------变幻背景------------------
     // if (!isMobile) {
-    var c = document.getElementById('evanyou'),
+    /*var c = document.getElementById('evanyou'),
         x = c.getContext('2d'),
         pr = window.devicePixelRatio || 1,
         w = window.innerWidth,
@@ -251,6 +251,66 @@ $(document).ready(function($) {
               	al_expand_collapse_click--;
             }
         });
-    })();
+    })(); 
   
+	// do you like me?
+  	$.getJSON("/wp-content/themes/Memory/like.php?action=get", function (data) {
+    	$('.like-vote span').html(data.like);
+	});
+    $('.like-vote').click(function () {
+        if ($('.like-title').html() === 'Do you like me?') {
+            $.getJSON("/wp-content/themes/Memory/like.php?action=add", function (data) {
+                if (data.success) {
+                    $('.like-vote span').html(data.like);
+                    $('.like-title').html('我也喜欢你 (*≧▽≦)');
+                }
+                else {
+                    $('.like-title').html('你的爱我已经感受到了~');
+                }
+            });
+        }
+    });
 });
+
+// title切换
+var OriginTitile = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        document.title = '(つェ⊂)我藏好了哦~ ' + OriginTitile;
+        clearTimeout(titleTime);
+    }
+    else {
+        document.title = '(*´∇｀*) 被你发现啦~ ' + OriginTitile;
+        titleTime = setTimeout(function() {
+            document.title = OriginTitile;
+        }, 2000);
+    }
+});
+
+// 点赞
+$.fn.postLike = function() {
+    if ($(this).hasClass('done')) {
+        return false;
+    } else {
+        $(this).addClass('done');
+        var id = $(this).data("id"),
+        action = $(this).data('action'),
+        rateHolder = $(this).children('.count');
+        var ajax_data = {
+            action: "bigfa_like",
+            um_id: id,
+            um_action: action
+        };
+        $.post("/wp-admin/admin-ajax.php", ajax_data,
+        function(data) {
+            $(rateHolder).html(data);
+        });
+        return false;
+    }
+};
+$(document).on("click", ".favorite",
+function() {
+    $(this).postLike();
+});
+

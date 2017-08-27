@@ -39,6 +39,9 @@ function memory_menu() { ?>
       	memory_up_or_del('memory_setuptime_year');
       	memory_up_or_del('memory_setuptime_month');
       	memory_up_or_del('memory_setuptime_day');	
+		memory_up_or_del('memory_sql_dbn');
+		memory_up_or_del('memory_sql_dbu');
+		memory_up_or_del('memory_sql_dbp');
 		echo '<div><p>保存成功!</p></div>';//保存完毕显示文字提示
 	}
     ?>
@@ -119,6 +122,24 @@ function memory_menu() { ?>
 					<input type="text" name="memory_setuptime_day" id="memory_setuptime_day" value="<?php echo get_option('memory_setuptime_day'); ?>" />日
     			</td>
     		</tr> 
+            <tr>
+              	<th scope="row"><label for="memory_sql_dbn">数据库名:</label></th>
+    			<td>
+                	<input type="text" class="regular-text" name="memory_sql_dbn" id="memory_sql_dbn" value="<?php echo get_option('memory_sql_dbn'); ?>" />
+    			</td>
+    		</tr>
+            <tr>
+              	<th scope="row"><label for="memory_sql_dbu">数据库用户名:</label></th>
+    			<td>
+                	<input type="text" class="regular-text" name="memory_sql_dbu" id="memory_sql_dbu" value="<?php echo get_option('memory_sql_dbu'); ?>" />
+    			</td>
+    		</tr>  
+            <tr>
+              	<th scope="row"><label for="memory_sql_dbp">数据库密码:</label></th>
+    			<td>
+                	<input type="text" class="regular-text" name="memory_sql_dbp" id="memory_sql_dbp" value="<?php echo get_option('memory_sql_dbp'); ?>" />
+    			</td>
+    		</tr>    
         </table>
     	<p><input type="submit" class="button-primary" name="admin_options" value="保存"/></p>
     </form>

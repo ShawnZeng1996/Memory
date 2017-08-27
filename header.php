@@ -10,7 +10,8 @@ Author URI: https://shawnzeng.com
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-	  <?php
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<?php
 	$description = '';
 	$keywords = '';
 	if (is_home()) {
@@ -87,7 +88,7 @@ Author URI: https://shawnzeng.com
 	} ?></title>
     <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-2.1.3.min.js"></script>
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
-	<link id="favicon" href="<?php bloginfo('template_url'); ?>/img/icon.ico" rel="icon" type="image/x-icon" />
+	<link id="favicon" href="<?php bloginfo('template_url'); ?>/img/xiaotubiao.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/balloon-css/0.4.0/balloon.min.css" />
@@ -101,6 +102,7 @@ Author URI: https://shawnzeng.com
 
 <body>
     <!--canvas id="evanyou"></canvas-->
+	<!--script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/canvas.js"></script-->
     <div class="cover"></div>
     <header id="header">
         <div id="menu">

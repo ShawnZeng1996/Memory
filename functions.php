@@ -14,6 +14,7 @@
 // 后台信息配置
 get_template_part( 'memory-config' );
 
+
 // 添加自定义的Description和Keywords字段面板
 $new_meta_boxes = array(
 	"description" => array(
@@ -38,7 +39,7 @@ function new_meta_boxes() {
 		// 自定义字段输入框
     	echo '<textarea cols="60" rows="3" style="width:100%" name="'.$meta_box['name'].'_value">'.$meta_box_value.'</textarea><br />';
 	}
-	echo '<input type="hidden" name="ludou_metaboxes_nonce" id="ludou_metaboxes_nonce" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
+	echo '<input type="hidden" name="memory_metaboxes_nonce" id="memory_metaboxes_nonce" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
 }
 function create_meta_box() {
 	if ( function_exists('add_meta_box') ) {
@@ -48,7 +49,7 @@ function create_meta_box() {
 }
 function save_postdata( $post_id ) {
 	global $new_meta_boxes;
-	if ( !wp_verify_nonce( $_POST['ludou_metaboxes_nonce'], plugin_basename(__FILE__) ))
+	if ( !wp_verify_nonce( $_POST['memory_metaboxes_nonce'], plugin_basename(__FILE__) ))
     	return;
 	if ( !current_user_can( 'edit_posts', $post_id ))
     	return;
@@ -95,6 +96,11 @@ function Memory_widgets_init(){
 		unregister_widget( 'WP_Widget_' . $widget );
 }
 add_action( 'widgets_init', 'Memory_widgets_init' );
+if( function_exists( 'register_sidebar_widget' ) ) {   
+    register_sidebar_widget('Do you like me?','Memory_like');   
+}  
+function Memory_like() { include(TEMPLATEPATH . '/widgets/doyoulikeme.php'); } 
+
 if ( !function_exists( 'Memory_sidebar_posts_list' ) ) :
 	/**
 	 * 边栏文章列表
@@ -143,6 +149,7 @@ function memory_comment($comment, $args, $depth)
                	<a href="<?php echo get_comment_author_url(); ?>" target="_blank">
 					<?php if (function_exists('get_avatar') && get_option('show_avatars')) { echo get_avatar($comment, 50); } ?>
 				</a>
+				<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
         </div>
         <div class="commentator-comment" id="comment-<?php comment_ID(); ?>">
             <div class="comment-chat">
@@ -151,7 +158,7 @@ function memory_comment($comment, $args, $depth)
 				</div>
                 <p>
                     <span class="commentator-name"><?php printf(__('<strong class="author_name">%s</strong>'), get_comment_author_link()); ?></span>
-					<?php if ($comment->user_id == '1') {
+					<?php if ($comment->user_id == '1' or $comment->comment_author_email == get_the_author_meta('user_email',1) ) {
 							echo '<span class="vip commentator-level">萌萌哒博主</span>';
 						}else{
 							echo get_author_class($comment->comment_author_email,$comment->user_id);
@@ -164,7 +171,6 @@ function memory_comment($comment, $args, $depth)
               	<div class="comment-comment">
                 <?php if ($comment->comment_approved == '0') : ?><p>你的评论正在审核，稍后会显示出来！</p><?php endif; ?>
 				<?php comment_text(); ?>
-				<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
                	</div>
             </div>
       	</div>
@@ -444,26 +450,6 @@ href="' . home_url() . '">' . $blogname . '</a>。祝您天天开心，欢迎下
 }
 add_action('comment_post', 'comment_mail_notify');
 
-// 摘要优化
-if (! function_exists('character_limiter')) {
-    function character_limiter($str, $n = 500, $end_char = '&#8230;') {
-        if (strlen($str) < $n) {
-        return $str;
-    }
-	$str = preg_replace("/\s+/", ' ', preg_replace("/(\r\n|\r|\n)/", " ", $str));
-	if (strlen($str) <= $n) {
-        return $str;
-    }
-	$out = "";
-        foreach (explode(' ', trim($str)) as $val) {
-            $out .= $val.' ';
-            if (strlen($out) >= $n) {
-                return trim($out).$end_char;
-            }
-        }
-    }
-}
-
 // 阻止站内文章互相Pingback
 function memory_noself_ping( &$links ) { 
 	$home = get_option( 'home' );
@@ -535,17 +521,6 @@ function memory_remove_menus() {
 if ( is_admin() ) {
   	add_action('admin_menu', 'memory_remove_menus');
 }
-
-// 设置摘要字数，默认为55字，改为200
-function wpdocs_custom_excerpt_length( $length ) {
-    return 200;
-}
-add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
-// 设置摘要样式，默认为[...]，改为......
-function wpdocs_excerpt_more( $more ) {
-    return '......';
-}
-add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
 // 评论者样式
 function get_author_class($comment_author_email, $user_id){
@@ -702,7 +677,7 @@ if (!function_exists('mb_substr')) {
         return substr($str, $s, $e - $s);
     }
 }
-define ('HOME_EXCERPT_LENGTH', 300);
+define ('HOME_EXCERPT_LENGTH', 100);
 define ('ARCHIVE_EXCERPT_LENGTH', 150);
 define ('ALLOWD_TAG', '<a><b><blockquote><br><cite><code><dd><del><div><dl><dt><em><h1><h2><h3><h4><h5><h6><i><img><li><ol><p><pre><span><strong><ul>');
 define ('READ_MORE_LINK', __( 'Read more', 'wp-utf8-excerpt') );
@@ -955,3 +930,118 @@ function comment_add_owo($comment_text, $comment = '') {
   return strtr($comment_text,$data_OwO);
 }
 add_filter( 'comment_text' , 'comment_add_owo', 20, 2);
+     
+// ssl头像
+//function get_ssl_avatar($avatar) {
+//   $avatar = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&.*/','<img src="https://secure.gravatar.com/avatar/$1?s=$2" class="avatar avatar-$2" height="$2" width="$2">',$avatar);
+//   return $avatar;
+//}
+//add_filter('get_avatar', 'get_ssl_avatar');
+
+// 默认头像
+add_filter( 'avatar_defaults', 'newgravatar' );  
+function newgravatar ($avatar_defaults) {  
+	$myavatar = get_bloginfo('template_directory') . '/img/default.png';
+    $avatar_defaults[$myavatar] = "Memory默认头像";  
+    return $avatar_defaults;  
+}
+
+// 修复仪表盘头像错位
+function fixed_activity_widget_avatar_style(){
+  echo '<style type="text/css">
+            #activity-widget #the-comment-list .avatar {
+            position: absolute;
+            top: 13px;
+            width: 50px;
+            height: 50px;
+          }
+          </style>';
+}
+add_action('admin_head', 'fixed_activity_widget_avatar_style' );
+
+// 禁用emoji表情
+function disable_emojis() {
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );    
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );  
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+}
+add_action( 'init', 'disable_emojis' );
+function disable_emojis_tinymce( $plugins ) {
+	return array_diff( $plugins, array( 'wpemoji' ) );
+}
+
+// 验证码功能
+function Memory_protection_math(){
+	//获取两个随机数, 范围0~9
+	$num1=rand(0,9);
+	$num2=rand(0,9);
+	//最终网页中的具体内容
+	echo "<input type='text' name='sum' class='text-input sum' value='' placeholder='$num1 + $num2 = ?'>"
+."<input type='hidden' name='num1' value='$num1'>"
+."<input type='hidden' name='num2' value='$num2'>";
+}
+function Memory_protection_pre($commentdata){
+	$sum=$_POST['sum'];//用户提交的计算结果
+	switch($sum){
+		//得到正确的计算结果则直接跳出
+		case $_POST['num1']+$_POST['num2']:break;
+		//未填写结果时的错误讯息
+		case null:wp_die('错误: 请输入验证码.');break;
+		//计算错误时的错误讯息
+		default:wp_die('错误: 验证码错误,请重试.');
+	}
+	return $commentdata;
+}
+if($comment_data['comment_type']==''){
+	add_filter('preprocess_comment','Memory_protection_pre');
+}
+
+// 喜欢功能
+add_action('wp_ajax_nopriv_bigfa_like', 'bigfa_like');
+add_action('wp_ajax_bigfa_like', 'bigfa_like');
+function bigfa_like(){
+    global $wpdb,$post;
+    $id = $_POST["um_id"];
+    $action = $_POST["um_action"];
+    if ( $action == 'ding'){
+    $bigfa_raters = get_post_meta($id,'bigfa_ding',true);
+    $expire = time() + 99999999;
+    $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false; // make cookies work with localhost
+    setcookie('bigfa_ding_'.$id,$id,$expire,'/',$domain,false);
+    if (!$bigfa_raters || !is_numeric($bigfa_raters)) {
+        update_post_meta($id, 'bigfa_ding', 1);
+    }
+    else {
+            update_post_meta($id, 'bigfa_ding', ($bigfa_raters + 1));
+        }
+    echo get_post_meta($id,'bigfa_ding',true);
+    }
+    die;
+}
+
+// Do you like me?
+function Memory_doyoulikeme() {
+$sql_1="CREATE TABLE IF NOT EXISTS `votes` (
+    `id` int(10) NOT NULL AUTO_INCREMENT,
+    `likes` int(10) NOT NULL DEFAULT '0',
+    PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
+
+$sql_3="CREATE TABLE IF NOT EXISTS `votes_ip` (
+    `id` int(10) NOT NULL AUTO_INCREMENT,
+    `vid` int(10) NOT NULL,
+    `ip` varchar(40) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
+
+require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+dbDelta($sql_1);
+$rows_affected = $wpdb->insert( 'votes', array( 'id' => 1, 'likes' => 0 ));
+dbDelta($sql_3);
+}
+add_action( 'init', 'Memory_doyoulikeme' );

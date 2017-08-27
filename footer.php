@@ -44,7 +44,7 @@
 		<script>hljs.initHighlightingOnLoad();</script>  
         <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
 		<script src="<?php bloginfo('template_url'); ?>/js/jquery.share.min.js" charset="utf-8"></script>
-        <script>
+      	<script>
             //------------------本博客已萌萌哒运行了……------------------
             function show_date_time() {
                 window.setTimeout(function() {

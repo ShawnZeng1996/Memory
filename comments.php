@@ -33,7 +33,9 @@
 				<?php if ( !is_user_logged_in() ) : ?>
 	               	<input type="text" name="author" value="" class="text-input" id="comment-author" placeholder="昵称 *">
 	               	<input type="text" name="email" value="" class="text-input" id="comment-email" placeholder="邮箱 *">
+					<br/>
 	              	<input type="text" name="url" value="" class="text-input" id="comment-url" placeholder="网址">
+					<?php Memory_protection_math();?>
 	          	<?php else : ?>
 					<p>您已登录:<a class="have-login-name" href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a class="log-out-now" href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录"><i class="fa fa-sign-out"></i> 退出</a></p>
 				<?php endif; ?>
@@ -45,6 +47,7 @@
 	    	<?php do_action('comment_form', $post->ID); ?>
 	  	</form>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/OwO.min.js"></script>
+		<script src="<?php bloginfo('template_url'); ?>/js/activate-power-mode.js" charset="utf-8"></script>
 		<script>
         	var OwO_demo = new OwO({
             	logo: 'OωO表情',
@@ -55,6 +58,9 @@
             	width: '100%',
             	maxHeight: '200px'
         	});
+			POWERMODE.colorful = true; // make power mode colorful  
+			POWERMODE.shake = false; // turn off shake  
+			document.body.addEventListener('input', POWERMODE);
     	</script>
 		<?php endif; ?>
 	</div>    
