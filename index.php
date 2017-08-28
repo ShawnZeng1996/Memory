@@ -77,17 +77,27 @@ get_header(); ?>
 						<?php } ?>
 						<?php if( $post_format == 'status' ) { ?>
 			                <li>
-			                    <article class="art">
+			                    <article class="art-shuoshuo">
 			                        <div class="shuoshuo">
 			                            <?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 			                            <h4><?php the_author(); ?></h4>
 			                            <p><?php the_content(); ?></p>
 			                            <span class="shuoshuo-info">
-			                                <i class="fa fa-clock-o"></i>
+			                                <i class="fa fa-calendar"></i>
 			                                <?php the_time('Y-n-j H:i'); ?>
 			                                &nbsp;•&nbsp;
 			                                <i class="fa fa-commenting-o"></i>
 			                                <?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
+											&nbsp;•&nbsp;
+											<span class="post-like">
+         										<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['bigfa_ding_'.$post->ID])) echo ' done';?>"><span class="count">
+           										<?php if( get_post_meta($post->ID,'bigfa_ding',true) ){
+                    								echo get_post_meta($post->ID,'bigfa_ding',true);
+                 								} else {
+                    								echo '0';
+                 								}?></span>
+        										</a>
+ 											</span>
 			                            </span>
 			                            <div class="text-right">
 			                                <span class="art-info-readmore">

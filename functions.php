@@ -106,11 +106,26 @@ if ( !function_exists( 'Memory_sidebar_posts_list' ) ) :
 	 * 边栏文章列表
 	 */
 	function Memory_sidebar_posts_list( $query_args ){
+		$query_first = new WP_Query( $query_args );
+		if( $query_first->have_posts() ):
+				while( $query_first->have_posts() ):
+				$query_first->the_post();
+				$post_format_first = memory_get_post_format();
+				if( $post_format_first == 'status' ) {
+					$query_args['posts_per_page']++;
+					continue;
+				}
+      			endwhile;
+      	endif;
 		$query = new WP_Query( $query_args );
 		if( $query->have_posts() ):
 			echo '<ul class="sidebar-posts-list">';
 				while( $query->have_posts() ):
 					$query->the_post();
+					$post_format = memory_get_post_format();
+					if( $post_format == 'status' ) {
+						continue;
+					}
 					Memory_sidebar_posts_list_loop();
 				endwhile;
 				wp_reset_postdata();
@@ -152,23 +167,18 @@ function memory_comment($comment, $args, $depth)
 				<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
         </div>
         <div class="commentator-comment" id="comment-<?php comment_ID(); ?>">
+			<p>
+            	<span class="commentator-name"><?php printf(__('<strong class="author_name">%s</strong>'), get_comment_author_link()); ?></span>
+				<?php if ($comment->user_id == '1' or $comment->comment_author_email == get_the_author_meta('user_email',1) ) {
+					echo '<span class="vip commentator-level">萌萌哒博主</span>';
+				}else{
+					echo get_author_class($comment->comment_author_email,$comment->user_id);
+				}
+				?>
+				<span class="comment-time"><?php echo get_comment_time('Y-m-d H:i'); ?></span>
+            </p>
             <div class="comment-chat">
-                <div class="comment-arrow">
-					<img src="/wp-content/themes/Memory/img/talk.png" alt="">
-				</div>
-                <p>
-                    <span class="commentator-name"><?php printf(__('<strong class="author_name">%s</strong>'), get_comment_author_link()); ?></span>
-					<?php if ($comment->user_id == '1' or $comment->comment_author_email == get_the_author_meta('user_email',1) ) {
-							echo '<span class="vip commentator-level">萌萌哒博主</span>';
-						}else{
-							echo get_author_class($comment->comment_author_email,$comment->user_id);
-						}
-					?>
-                </p>
-               	<p class="comment-time-p">
-                   	<span class="comment-time"><?php echo get_comment_time('Y-m-d H:i'); ?></span>
-               	</p>
-              	<div class="comment-comment">
+                <div class="comment-comment">
                 <?php if ($comment->comment_approved == '0') : ?><p>你的评论正在审核，稍后会显示出来！</p><?php endif; ?>
 				<?php comment_text(); ?>
                	</div>
