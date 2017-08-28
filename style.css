@@ -45,7 +45,7 @@ body {
     font: 14px/25px PingFang TC, Avenir Next, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
     background: #F0F0F5;
     overflow-x: hidden;
-	background-image: url(https://shawnzeng.com/wp-content/uploads/2017/08/47305056_p0.jpg);
+    background-image: url(https://shawnzeng.com/wp-content/uploads/2017/08/47305056_p0.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -85,8 +85,7 @@ body {
     transform: translate3d(0, -2px, 0);
 }
 
-.art .text-right,
-.art-shuoshuo .text-right {
+.art .text-right, .art-shuoshuo .text-right {
     text-align: right;
     padding-top: 5px;
 }
@@ -148,7 +147,6 @@ form#searchform input {
 
 #menu li {
     position: relative;
-
 }
 
 #menu nav>ul>li>ul>li {
@@ -161,12 +159,11 @@ form#searchform input {
     float: left;
 }
 
-#menu nav>ul>li>ul>li>a{
+#menu nav>ul>li>ul>li>a {
     font-size: smaller;
 }
 
-#menu nav>ul>li:hover ul,
-#menu .menu>ul>li:hover ul {
+#menu nav>ul>li:hover ul, #menu .menu>ul>li:hover ul {
     visibility: visible;
 }
 
@@ -286,7 +283,7 @@ form#searchform input {
 }
 
 #sidebar .art .art-widget-header>h3:before {
-    font-family: FontAwesome;   
+    font-family: FontAwesome;
 }
 
 #sidebar .art .art-widget-header .sidebar-default-icon:before {
@@ -305,7 +302,7 @@ form#searchform input {
     content: "\f02c\ ";
 }
 
-#sidebar .art .art-widget-header .wp-statistics:before { 
+#sidebar .art .art-widget-header .wp-statistics:before {
     content: "\f080\ ";
 }
 
@@ -327,11 +324,11 @@ form#searchform input {
 }
 
 #sidebar ul.recentcomments {
-    list-style:none;
-    padding-left:0;
+    list-style: none;
+    padding-left: 0;
 }
 
-#sidebar ul.recentcomments a { 
+#sidebar ul.recentcomments a {
     display: block;
     width: 100%;
 }
@@ -360,8 +357,7 @@ form#searchform input {
     border-bottom: 2px dashed #ea9595;
 }
 
-#sidebar ul.recentcomments li:last-child,
-#sidebar ul.sidebar-posts-list li:last-child  {
+#sidebar ul.recentcomments li:last-child, #sidebar ul.sidebar-posts-list li:last-child {
     border-bottom: none;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -378,7 +374,7 @@ form#searchform input {
 }
 
 #sidebar .comment_author {
-    color:#999;
+    color: #999;
 }
 
 #main-part .art .art-pic img {
@@ -388,18 +384,16 @@ form#searchform input {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
 
-#main-part .art .art-pic{
-    overflow:hidden;
+#main-part .art .art-pic {
+    overflow: hidden;
 }
 
 #main-part .art .art-pic img:hover {
-    -webkit-transform:scale(1.1);
-    -moz-transform:scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
 }
 
 #main-part .posts-list>li {
@@ -424,7 +418,7 @@ form#searchform input {
 }
 
 .art, .comment-part {
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     position: relative;
     border-radius: 15px;
 }
@@ -454,7 +448,6 @@ form#searchform input {
     color: #fff;
     z-index: 1;
 }
-
 
 .art .round-category .round-category-n {
     font-size: 16px;
@@ -518,7 +511,7 @@ form#searchform input {
     padding-left: 2em;
 }
 
-.art .art-content .al_mon_list ul { 
+.art .art-content .al_mon_list ul {
     padding-left: 0;
 }
 
@@ -535,12 +528,10 @@ form#searchform input {
 }
 
 .art .art-content h5 {
-font-size: 14px;
+    font-size: 14px;
 }
 
-.art .art-content h2,
-.art .art-content h3, 
-.art .art-content h4 {
+.art .art-content h2, .art .art-content h3, .art .art-content h4 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -563,7 +554,7 @@ font-size: 14px;
     margin: 0px auto 10px;
     -webkit-box-shadow: 1px 1px 1px #bbb;
     box-shadow: 1px 1px 1px #bbb;
-    border-collapse:collapse;
+    border-collapse: collapse;
     border-radius: 15px;
     overflow: hidden;
     text-align: center;
@@ -616,13 +607,11 @@ font-size: 14px;
     font: inherit;
 }
 
-.comment-part #comment-author,
-.comment-part #comment-url {
+.comment-part #comment-author, .comment-part #comment-url {
     float: left;
 }
 
-.comment-part #comment-email,
-.comment-part .sum {
+.comment-part #comment-email, .comment-part .sum {
     float: right;
 }
 
@@ -669,8 +658,7 @@ font-size: 14px;
     color: #0bf;
 }
 
-.comment-part .commentnavi a,
-.comment-part .commentnavi span {
+.comment-part .commentnavi a, .comment-part .commentnavi span {
     padding: 5px;
 }
 
@@ -688,7 +676,7 @@ font-size: 14px;
     border-radius: 6px;
     -webkit-box-shadow: 0 1px 1px #bbb;
     box-shadow: 0 1px 1px #bbb;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .comment-part .art-comments .art-comment .comment-respond #cancel-comment-reply-link {
@@ -710,7 +698,7 @@ font-size: 14px;
 }
 
 .vip, .vip3, vip6 {
-    background: #0bf;       
+    background: #0bf;
 }
 
 .vip1, .vip4, .vip7 {
@@ -735,20 +723,15 @@ font-size: 14px;
     margin-bottom: 3px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li,
-.comment-part .art-comments>.art-comment>.children>li>.children>li.children>li,
-.comment-part .art-comments>.art-comment>.children>li>.children>li.children>li.children>li.children>li {
+.comment-part .art-comments>.art-comment>.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li.children>li.children>li.children>li {
     margin-left: 15px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.children>li,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li  {
+.comment-part .art-comments>.art-comment>.children>li>.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li {
     margin-right: 15px;
 }
 
-.art-comment:hover .commentator-avatar>a>.avatar,
-.art-shuoshuo:hover .shuoshuo .avatar{
+.art-comment:hover .commentator-avatar>a>.avatar, .art-shuoshuo:hover .shuoshuo .avatar {
     transition: .9s!important;
     -webkit-transition: .9s!important;
     -moz-transition: .9s!important;
@@ -761,9 +744,7 @@ font-size: 14px;
     -ms-transform: rotate(360deg)!important;
 }
 
-.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:before,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:before,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
+.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
     position: absolute;
     top: 10px;
     left: -7px;
@@ -773,12 +754,10 @@ font-size: 14px;
     border-style: solid;
     border-width: 7px 7px 7px 0;
     z-index: 1;
-    border-color: transparent rgba(250, 250, 250,.86);
+    border-color: transparent rgba(250, 250, 250, .86);
 }
 
-.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:after,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:after,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after {
+.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after {
     position: absolute;
     top: 9px;
     left: -8px;
@@ -791,9 +770,7 @@ font-size: 14px;
     border-color: transparent rgba(197, 184, 184, .8);
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:before,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
     position: absolute;
     top: 10px;
     right: -7px;
@@ -803,12 +780,10 @@ font-size: 14px;
     border-style: solid;
     border-width: 7px 0 7px 7px;
     z-index: 1;
-    border-color: transparent rgba(250, 250, 250,.86);
+    border-color: transparent rgba(250, 250, 250, .86);
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:after,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after {
     position: absolute;
     top: 9px;
     right: -8px;
@@ -827,38 +802,28 @@ font-size: 14px;
     text-align: center;
 }
 
-.comment-part .art-comments>.art-comment>.commentator-avatar,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-avatar,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
+.comment-part .art-comments>.art-comment>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
     float: left;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-avatar,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-avatar,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
     float: right;
     margin-right: 3px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>p,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>p,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>p {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>p, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>p, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>p {
     text-align: right;
     margin-left: 0;
     margin-right: 10px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
     margin-left: 0px;
     margin-right: 15px;
     float: right;
 }
 
-.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat,
-.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
+.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
     margin-left: 10px;
     float: left;
 }
@@ -872,7 +837,8 @@ font-size: 14px;
     border-radius: 25px;
     border: 1px solid #ddd;
     padding: 2px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
 }
 
 .comment-part .art-comments .art-comment .commentator-comment {
@@ -921,15 +887,12 @@ font-size: 14px;
     margin: 1em 0;
 }
 
-.art .art-main .art-info span a, 
-.art .shuoshuo-info a,
-.art-shuoshuo .shuoshuo-info a {
+.art .art-main .art-info span a, .art .shuoshuo-info a, .art-shuoshuo .shuoshuo-info a {
     text-decoration: none;
     color: #000;
 }
 
-.art .art-main .art-info-readmore,
-.art-shuoshuo .art-main .art-info-readmore {
+.art .art-main .art-info-readmore, .art-shuoshuo .art-main .art-info-readmore {
     text-align: right;
 }
 
@@ -939,10 +902,7 @@ font-size: 14px;
     margin-top: 18px;
 }
 
-.art .art-main .art-info-readmore a, 
-.art .text-right a, 
-.art-shuoshuo .text-right a,
-.shuoshuo-edit .post-edit-link {
+.art .art-main .art-info-readmore a, .art .text-right a, .art-shuoshuo .text-right a, .shuoshuo-edit .post-edit-link {
     border-radius: 6px;
     -webkit-box-shadow: 1px 1px 1px #bbb;
     box-shadow: 1px 1px 1px #bbb;
@@ -954,17 +914,17 @@ font-size: 14px;
 }
 
 .post-edit-link:before {
-    font-family: FontAwesome; 
+    font-family: FontAwesome;
     content: "\f044\ ";
 }
 
-.favorite:before{
-    font-family: FontAwesome; 
+.favorite:before {
+    font-family: FontAwesome;
     content: "\f08a\ ";
 }
 
-.post-like .done:before{
-    font-family: FontAwesome; 
+.post-like .done:before {
+    font-family: FontAwesome;
     content: "\f004\ ";
 }
 
@@ -977,7 +937,7 @@ font-size: 14px;
     overflow: auto;
 }
 
-.art .art-content a, .art .art-intro a, .commentator-comment .comment-chat .comment-comment a, .art .shuoshuo p a,.art-shuoshuo .shuoshuo p a {
+.art .art-content a, .art .art-intro a, .commentator-comment .comment-chat .comment-comment a, .art .shuoshuo p a, .art-shuoshuo .shuoshuo p a {
     text-decoration: none;
     color: #fff;
     padding: 1px 3px;
@@ -987,8 +947,7 @@ font-size: 14px;
     word-break: break-all;
 }
 
-.art .art-content .no-bg,
-.art .art-intro .no-bg {
+.art .art-content .no-bg, .art .art-intro .no-bg {
     background: none;
     color: #000;
 }
@@ -998,15 +957,11 @@ font-size: 14px;
     color: #000;
 }
 
-.art .art-content .no-des:before,
-.art .art-intro .no-des:before {
+.art .art-content .no-des:before, .art .art-intro .no-des:before {
     content: "";
 }
 
-.art .art-content .at:before,
-.art .art-intro .at:before,
-.art .shuoshuo p .at:before,
-.commentator-comment .comment-chat .comment-comment .at-no-des:before {
+.art .art-content .at:before, .art .art-intro .at:before, .art .shuoshuo p .at:before, .commentator-comment .comment-chat .comment-comment .at-no-des:before {
     content: "\f1fa\ ";
 }
 
@@ -1092,7 +1047,7 @@ font-size: 14px;
 .art-shuoshuo .shuoshuo {
     padding: 15px 15px 10px 15px;
     margin-left: 80px;
-    background: rgba(255,255,255,.85);
+    background: rgba(255, 255, 255, .85);
     position: relative;
     border-radius: 15px;
 }
@@ -1107,7 +1062,7 @@ font-size: 14px;
     border-style: solid;
     border-width: 7px 7px 7px 0;
     z-index: 1;
-    border-color: transparent rgba(255,255,255,.85);
+    border-color: transparent rgba(255, 255, 255, .85);
 }
 
 .art-shuoshuo .shuoshuo img {
@@ -1122,8 +1077,9 @@ font-size: 14px;
     border-radius: 25px;
     border: 1px solid #ddd;
     padding: 2px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
-    background: rgba(255,255,255,.85);
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+    background: rgba(255, 255, 255, .85);
 }
 
 .art-shuoshuo .shuoshuo .shuoshuo-info {
@@ -1265,9 +1221,7 @@ font-size: 14px;
     opacity: 0.6;
 }
 
-#page-nav .page,
-#page-nav .page-number,
-#page-nav .next-page {
+#page-nav .page, #page-nav .page-number, #page-nav .next-page {
     box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
     -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
 }
@@ -1362,7 +1316,7 @@ font-size: 14px;
 
 .toolbar .fa {
     margin-top: 12px;
-    margin-left: 10px;  
+    margin-left: 10px;
 }
 
 .toolbar .fa-moon-o, .toolbar .fa-font {
@@ -1514,7 +1468,7 @@ input[type=submit], button {
     float: left;
 }
 
-.art .art-content .friendurl { 
+.art .art-content .friendurl {
     background: none;
 }
 
@@ -1528,7 +1482,8 @@ input[type=submit], button {
     border-radius: 50%;
     border: 1px solid #ddd;
     padding: 2px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
     margin-top: 14px !important;
     margin-left: 14px !important;
 }
@@ -1592,10 +1547,7 @@ input[type=submit], button {
 @font-face {
     font-family: 'fontello';
     src: url('fonts/fontello.eot?18737310');
-    src: url('fonts/fontello.eot?18737310#iefix') format('embedded-opentype'),
-    url('fonts/fontello.woff?18737310') format('woff'),
-    url('fonts/fontello.ttf?18737310') format('truetype'),
-    url('fonts/fontello.svg?18737310#fontello') format('svg');
+    src: url('fonts/fontello.eot?18737310#iefix') format('embedded-opentype'), url('fonts/fontello.woff?18737310') format('woff'), url('fonts/fontello.ttf?18737310') format('truetype'), url('fonts/fontello.svg?18737310#fontello') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -1636,9 +1588,7 @@ input[type=submit], button {
     background: #e51c23;
 }
 
-.like-vote:hover .like-count,
-.like-vote:hover .like-title,
-.like-vote:hover .like-message {
+.like-vote:hover .like-count, .like-vote:hover .like-title, .like-vote:hover .like-message {
     color: #fff;
 }
 
@@ -1663,7 +1613,7 @@ input[type=submit], button {
 }
 
 @media screen and (min-width: 780px) {
-    #main, #foot  {
+    #main, #foot {
         left: 0 !important;
     }
 }
