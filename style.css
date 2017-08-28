@@ -45,10 +45,10 @@ body {
     font: 14px/25px PingFang TC, Avenir Next, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
     background: #F0F0F5;
     overflow-x: hidden;
-    /*background-image: url();
+	background-image: url(https://shawnzeng.com/wp-content/uploads/2017/08/47305056_p0.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;*/
+    background-size: cover;
 }
 
 .other-font {
@@ -150,12 +150,12 @@ form#searchform input {
     position: relative;
 }
 
-#menu #menu-main>ul>li,
+#menu nav>ul>li,
 #menu .menu>ul>li {
     float: left;
 }
 
-#menu #menu-main>ul>li:hover ul,
+#menu nav>ul>li:hover ul,
 #menu .menu>ul>li:hover ul {
     visibility: visible;
 }
@@ -188,7 +188,7 @@ form#searchform input {
     padding-top: 8px;
 }
 
-#menu .sub-menu {
+#menu nav>ul>li>ul {
     position: absolute;
     top: 42px;
     visibility: hidden;
@@ -1663,7 +1663,7 @@ input[type=submit], button {
     #menu {
         text-align: center;
     }
-    #menu #menu-main, #menu .menu, #menu-logo #logo .getin-admin {
+    #menu nav, #menu .menu, #menu-logo #logo .getin-admin {
         display: none;
     }
     #menu #menu-logo #logo {
