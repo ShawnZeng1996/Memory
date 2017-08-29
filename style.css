@@ -45,10 +45,10 @@ body {
     font: 14px/25px PingFang TC, Avenir Next, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
     background: #F0F0F5;
     overflow-x: hidden;
-    background-image: url(https://shawnzeng.com/wp-content/uploads/2017/08/47305056_p0.jpg);
+    /*background-image: url();
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover;*/
 }
 
 .other-font {
