@@ -30,16 +30,6 @@
 			            &nbsp;•&nbsp;
 			            <i class="fa fa-commenting-o"></i>
 			            <?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
-						&nbsp;•&nbsp;
-						<span class="post-like">
-         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['bigfa_ding_'.$post->ID])) echo ' done';?>"><span class="count">
-           					<?php if( get_post_meta($post->ID,'bigfa_ding',true) ){
-                    			echo get_post_meta($post->ID,'bigfa_ding',true);
-                 			} else {
-                    			echo '0';
-                 			}?></span>
-        					</a>
- 						</span>	
 					</span>	
 					<div class="shuoshuo-edit">
 						<span>分享至：</span>
