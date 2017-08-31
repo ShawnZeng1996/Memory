@@ -90,7 +90,7 @@ Author URI: https://shawnzeng.com
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	<link id="favicon" href="<?php bloginfo('template_url'); ?>/img/xiaotubiao.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/balloon-css/0.4.0/balloon.min.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/share.min.css">
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/OwO.min.css">
