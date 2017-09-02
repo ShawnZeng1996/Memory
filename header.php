@@ -162,7 +162,6 @@ Author URI: https://shawnzeng.com
 		<div class="mobile-shade"></div>
     </header>
 <?php 
-	if(get_option( 'memory_have_header_picture' ) and get_option( 'memory_header_picture' )!=null ) { ?>
-		<img class="header-picture" src="<?php echo get_option( 'memory_header_picture' ); ?>" />	
+    <div class="header-picture-box"><div class="header-picture" style="background:url(<?php echo get_option( 'memory_header_picture' ); ?>) center/cover no-repeat;" ></div></div>
 <?php 	} ?>
     
