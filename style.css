@@ -1228,8 +1228,10 @@ form#searchform input {
     border-radius: 25px;
     border: 1px solid #ddd;
     padding: 2px;
-    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+    -webkit-transform: translate3d(0, -2px, 0);
+	transform: translate3d(0, -2px, 0);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
     background: rgba(255, 255, 255, .85);
 }
 
