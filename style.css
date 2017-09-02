@@ -442,7 +442,7 @@ form#searchform input {
 }
 
 .art, .comment-part {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     position: relative;
     border-radius: 15px;
 }
@@ -1056,8 +1056,13 @@ form#searchform input {
 
 #main-part .art .art-category-time {
     display: inline-block;
-    float: right;
-    text-align: right;
+	float: right;
+	text-align: right;
+	padding: 0;
+	background: none;
+	color: #000;
+	margin: 0;
+	font-weight: normal;
 }
 
 .art .art-content .at:before, .art .art-intro .at:before, .art .shuoshuo p .at:before, .commentator-comment .comment-chat .comment-comment .at-no-des:before {
@@ -1176,7 +1181,7 @@ form#searchform input {
 .art-shuoshuo .shuoshuo {
     padding: 15px 15px 10px 15px;
     margin-left: 65px;
-    background: rgba(255, 255, 255, .85);
+    background: rgba(255, 255, 255, .9);
     position: relative;
     border-radius: 15px;
 }
@@ -1191,7 +1196,7 @@ form#searchform input {
     border-style: solid;
     border-width: 7px 7px 7px 0;
     z-index: 1;
-    border-color: transparent rgba(255, 255, 255, .85);
+    border-color: transparent rgba(255, 255, 255, .9);
 }
 
 .art-shuoshuo .shuoshuo img {
@@ -1333,7 +1338,7 @@ form#searchform input {
     line-height: 25px;
     font-size: 16px;
     margin: 0 3px 30px;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 #page-nav .page {
@@ -1347,7 +1352,7 @@ form#searchform input {
     font-size: 16px;
     margin: 0 3px 30px;
     padding: 0 3px;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 #page-nav .page, #page-nav .page-number, #page-nav .next-page {
