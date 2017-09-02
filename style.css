@@ -1836,18 +1836,18 @@ input[type=submit], button {
  */
 
 @media screen and (max-width: 780px) {
-	#header {
+    #header {
         position: fixed;
         top: 0;
         left: 0;
         z-index: 1
     }
-	.header-picture {
-		height: 50vh;
-	}
-	#menu-logo #logo a {
-		font-size: 20px;
-	}
+    .header-picture {
+        height: 40vh;
+    }
+    #menu-logo #logo a {
+        font-size: 20px;
+    }
     #menu {
         text-align: center;
     }
@@ -1940,19 +1940,13 @@ input[type=submit], button {
     }
     #mobile-menu .mobile-menu-img .mobile-menu-title {
         color: #fff;
-        /*font-weight: lighter;*/
         font-size: 18px;
         text-align: center;
     }
     #mobile-menu .mobile-menu-img .mobile-menu-description {
         color: #fff;
         font-size: 14px;
-        /*font-weight: lighter;*/
     }
-    /*#mobile-menu .mobile-menu-main li, #mobile-menu .mobile-menu-main li:hover, #mobile-menu .mobile-menu-main .mobile-menu-social, #mobile-menu .mobile-menu-main .mobile-menu-social:hover {
-        -webkit-transition: all ease .1s;
-        transition: all ease .1s;
-    }*/
     #mobile-menu .mobile-menu-main .mobile-menu-list {
         list-style: none;
     }
