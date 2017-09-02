@@ -1,12 +1,12 @@
 ## Wordpress Theme Memory
 
-[![Version](https://img.shields.io/badge/version-1.0.6-green.svg?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-1.0.7-green.svg?style=flat-square)]()
 [![Author](https://img.shields.io/badge/author-Shawn-blue.svg?style=flat-square)](https://shawnzeng.com)
 
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
 - Description: Theme Memory by Shawn
-- Version: 1.0.6
+- Version: 1.0.7
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
 
@@ -21,6 +21,15 @@
 ---
 
 ### Version
+
+#### v1.0.7(2017/9/2)
+>1. 主题设置可选择条带状背景还是图片背景
+>2. 分类页面显示各个分类文章，添加分类描述
+>3. 搜索样式优化
+>4. 前端评论编辑、删除、标记为垃圾评论
+>5. 文章内显示上一篇，下一篇文章
+>6. 去除head中wordpress版本号
+>7. 隐藏面板登陆错误信息
 
 #### v1.0.6(2017/8/27)
 >1. 评论改为交互对话式，部分样式调整
