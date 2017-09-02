@@ -1084,7 +1084,7 @@ form#searchform input {
     content: "\f0c1\ ";
 }
 
-.commentator-comment .comment-chat .comment-comment a,
+.commentator-comment .comment-chat .comment-operation a,
 .commentator-avatar .comment-reply-link {
 	font-size: 12px;
 	display: inline-block;
