@@ -787,11 +787,20 @@ form#searchform input {
     margin-bottom: 3px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li.children>li.children>li.children>li {
+.comment-part .art-comments>.art-comment>.children>li, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>li>.children>li>.children>li>.children>li>.children>li,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li {
     margin-left: 15px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li {
+.comment-part .art-comments>.art-comment>.children>li>.children>li, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li,  
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li 
+{
     margin-right: 15px;
 }
 
@@ -808,7 +817,10 @@ form#searchform input {
     -ms-transform: rotate(360deg)!important;
 }
 
-.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
+.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:before, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
     position: absolute;
     top: 10px;
     left: -7px;
@@ -817,11 +829,15 @@ form#searchform input {
     content: '';
     border-style: solid;
     border-width: 7px 7px 7px 0;
-    z-index: 1;
     border-color: transparent rgb(250, 250, 250);
 }
 
-.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after {
+.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat:after,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat:after,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after 
+{
     position: absolute;
     top: 9px;
     left: -8px;
@@ -834,7 +850,11 @@ form#searchform input {
     border-color: transparent rgba(197, 184, 184, .8);
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:before, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:before {
     position: absolute;
     top: 10px;
     right: -7px;
@@ -843,11 +863,15 @@ form#searchform input {
     content: '';
     border-style: solid;
     border-width: 7px 0 7px 7px;
-    z-index: 1;
     border-color: transparent rgb(250, 250, 250);
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat:after, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat:after 
+{
     position: absolute;
     top: 9px;
     right: -8px;
@@ -866,28 +890,47 @@ form#searchform input {
     text-align: center;
 }
 
-.comment-part .art-comments>.art-comment>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
+.comment-part .art-comments>.art-comment>.commentator-avatar, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-avatar, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-avatar,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
     float: left;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-avatar, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-avatar, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-avatar, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-avatar {
     float: right;
     margin-right: 3px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>p, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>p, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>p {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>p, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>p, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>p,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>p,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>p {
     text-align: right;
     margin-left: 0;
     margin-right: 10px;
 }
 
-.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
+.comment-part .art-comments>.art-comment>.children>li>.commentator-comment>.comment-chat, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
     margin-left: 0px;
     margin-right: 15px;
     float: right;
 }
 
-.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat, .comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
+.comment-part .art-comments>.art-comment>.commentator-comment>.comment-chat, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.commentator-comment>.comment-chat, 
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat,
+.comment-part .art-comments>.art-comment>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.children>li>.commentator-comment>.comment-chat {
     margin-left: 10px;
     float: left;
 }
@@ -1014,6 +1057,7 @@ form#searchform input {
 
 .art .art-content a:hover, .art .art-intro a:hover, .commentator-comment .comment-chat .comment-comment a:hover, .art .shuoshuo p a:hover, .art-shuoshuo .shuoshuo p a:hover {
     background: #0bf;
+    color: #fff;
 }
 
 .art .art-content .no-bg, .art .art-intro .no-bg, .art-shuoshuo .shuoshuo .no-bg {
