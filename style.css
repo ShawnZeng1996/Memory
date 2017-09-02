@@ -45,6 +45,10 @@ body {
     font: 14px/25px PingFang TC, Avenir Next, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
     background: #F0F0F5;
     overflow-x: hidden;
+    /*background-image: url();
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;*/
 }
 
 .other-font {
@@ -70,9 +74,10 @@ body {
 }
 
 .header-picture {
-    width: 100%;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
-    -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+	width: 100%;
+	height: 100vh;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
 }
 
 .header-picture:hover, #main .art:hover, #main .art-shuoshuo .shuoshuo:hover, .comment-part:hover {
@@ -109,6 +114,8 @@ body {
 
 #header {
     width: 100%;
+	position: absolute;
+	top: 0;
 }
 
 #menu {
@@ -128,11 +135,11 @@ form#searchform {
     top: 48px;
     padding: 0;
     border-radius: 5px;
-    display: none;
+	display: none;
 }
 
 form#searchform:before {
-    position: absolute;
+	position: absolute;
     top: -7px;
     left: 170px;
     width: 0;
@@ -145,13 +152,13 @@ form#searchform:before {
 }
 
 form#searchform input {
-    width: 100%;
+	width: 100%;
     height: 100%;
     background: #fff;
     line-height: 100%;
     font-size: 18px;
     border-radius: 5px;
-    padding: 0 10px;
+	padding: 0 10px;
 }
 
 #mobile-menu {
@@ -258,7 +265,7 @@ form#searchform input {
 #main {
     position: relative;
     width: 980px;
-    margin: 50px auto 0;
+    margin: 90px auto 0;
     min-width: 80%;
     max-width: 100%;
     overflow: hidden;
@@ -878,7 +885,7 @@ form#searchform input {
     border: 1px solid #ddd;
     padding: 2px;
     -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
     background: rgba(255, 255, 255, .85);
 }
 
@@ -913,7 +920,7 @@ form#searchform input {
 }
 
 .commentator-comment .comment-chat .comment-comment .comment-operation {
-    text-align: right;
+	text-align: right;
 }
 
 #comment-info .have-login-name, #comment-info .log-out-now {
@@ -998,7 +1005,7 @@ form#searchform input {
 }
 
 .art .art-archive .category-des {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .art .art-archive ul li {
@@ -1027,7 +1034,7 @@ form#searchform input {
 #main-part .art .art-category a {
     padding: 0;
     margin: 0;
-    font-weight: normal;
+	font-weight: normal;
 }
 
 #main-part .art .art-category>a {
@@ -1060,14 +1067,16 @@ form#searchform input {
     content: "\f0c1\ ";
 }
 
-.commentator-comment .comment-chat .comment-comment a, .commentator-avatar .comment-reply-link {
-    font-size: 12px;
-    display: inline-block;
-    text-decoration: none;
-    color: #555;
+.commentator-comment .comment-chat .comment-comment a,
+.commentator-avatar .comment-reply-link {
+	font-size: 12px;
+	display: inline-block;
+	text-decoration: none;
+	color: #555;
 }
 
-.commentator-comment .comment-chat .comment-comment a:before, .commentator-avatar .comment-reply-link:before {
+.commentator-comment .comment-chat .comment-comment a:before,
+.commentator-avatar .comment-reply-link:before {
     font-family: FontAwesome;
 }
 
@@ -1080,11 +1089,11 @@ form#searchform input {
 }
 
 .commentator-comment .comment-chat .comment-comment .edit-link a:nth-child(2):before {
-    content: "\f014\ ";
+	content: "\f014\ ";
 }
 
 .commentator-comment .comment-chat .comment-comment .edit-link a:nth-child(3):before {
-    content: "\f235\ ";
+	content: "\f235\ ";
 }
 
 .art .art-content p {
@@ -1105,8 +1114,8 @@ form#searchform input {
 }
 
 .art span.pre-title {
-    color: #383a42;
-    background: #fafafa;
+    color: #9e98ff;
+    background: #282b2e;
     display: inline-block;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -1134,6 +1143,8 @@ form#searchform input {
     list-style: none;
 }
 
+
+
 .art .art-content ol li {
     margin-left: 20px;
 }
@@ -1144,8 +1155,8 @@ form#searchform input {
 
 .art .art-content ul li::before, .art-shuoshuo .shuoshuo ul li::before {
     font-family: FontAwesome;
-    content: "\f192\ ";
-    /*color: #0bf;*/
+    content: "\f08d\ ";
+    color: #0bf;
 }
 
 .art .art-content img {
@@ -1190,7 +1201,7 @@ form#searchform input {
     border: 1px solid #ddd;
     padding: 2px;
     -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
     background: rgba(255, 255, 255, .85);
 }
 
@@ -1595,7 +1606,7 @@ input[type=submit], button {
     border: 1px solid #ddd;
     padding: 2px;
     -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
     margin-top: 14px !important;
     margin-left: 14px !important;
 }
@@ -1654,7 +1665,7 @@ input[type=submit], button {
     background: none;
     color: #000;
     padding: 0;
-    font-weight: normal;
+	font-weight: normal;
 }
 
 @font-face {
@@ -1737,19 +1748,18 @@ input[type=submit], button {
  */
 
 @media screen and (max-width: 780px) {
-    body {
-        padding-top: 42px;
-    }
-    #header {
-        /*background: rgb(96, 96, 96);*/
+	#header {
         position: fixed;
         top: 0;
         left: 0;
         z-index: 1
     }
-    #menu-logo #logo a {
-        font-size: 20px;
-    }
+	.header-picture {
+		height: auto;
+	}
+	#menu-logo #logo a {
+		font-size: 20px;
+	}
     #menu {
         text-align: center;
     }
