@@ -1086,6 +1086,10 @@ form#searchform input {
     content: "\f112\ ";
 }
 
+.commentator-comment .comment-chat .comment-comment .edit-link a {
+	background: none;
+}
+
 .commentator-comment .comment-chat .comment-comment .comment-edit-link:before {
     content: "\f044\ ";
 }
