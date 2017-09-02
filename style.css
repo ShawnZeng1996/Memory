@@ -89,7 +89,7 @@ body {
 	-moz-transform: scale(1.1);
 }
 
-.header-picture-box:hover, #main .art:hover, #main .art-shuoshuo .shuoshuo:hover, .comment-part:hover {
+.header-picture-box:hover, #main .art:hover, #main .art-shuoshuo:hover .shuoshuo, #main .art-shuoshuo:hover img, .comment-part:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
     -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
 }
@@ -443,8 +443,13 @@ form#searchform input {
     -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
 }
 
-#main-part .art, #main-part .art-shuoshuo, #sidebar .art {
+#main-part .art, #sidebar .art {
     overflow: hidden;
+}
+
+#main-part .art-shuoshuo,
+#main {
+	overflow: visible;
 }
 
 #main-part .posts-list>li:last-child {
@@ -790,7 +795,7 @@ form#searchform input {
     margin-right: 15px;
 }
 
-.art-comment:hover .commentator-avatar>a>.avatar, .art-shuoshuo:hover .shuoshuo .avatar {
+.art-comment:hover .commentator-avatar>a>.avatar {
     transition: .9s!important;
     -webkit-transition: .9s!important;
     -moz-transition: .9s!important;
