@@ -5,7 +5,7 @@
  * Theme Name: Memory
  * Theme URI: https://shawnzeng.com
  * Description: Theme Memory by Shawn
- * Version: 1.0.7
+ * Version: 1.0.6
  * Author: Shawn
  * Author URI: https://shawnzeng.com
  * Tags: Memory, Shawn, Wordpress
@@ -18,7 +18,8 @@
 
 @font-face {
     font-family: rst;
-    src: url(fonts/rst.ttf);
+    src: url('https://pictures.shawnzeng.com/rst.ttf');
+    /*url(fonts/rst.ttf);*/
 }
 
 html, body, * {
@@ -45,10 +46,6 @@ body {
     font: 14px/25px PingFang TC, Avenir Next, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
     background: #F0F0F5;
     overflow-x: hidden;
-    /*background-image: url();
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;*/
 }
 
 .other-font {
@@ -1488,6 +1485,20 @@ input[type=submit], button {
 
 .art-content #archives .al_mon_list .al_mon, .art .art-content .al_mon_list .al_post_list>li {
     position: relative;
+}
+
+.art-content #archives .al_mon_list .al_mon,
+.art-content #archives .al_mon_list span {
+	padding: 0;
+	border-radius: 0px;
+	margin: 0;
+	color: #000;
+	background: none;
+	font-weight: normal;
+}
+
+.art .art-content #archives a {
+	font-weight: normal;
 }
 
 .art .art-content .al_mon_list {
