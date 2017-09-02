@@ -76,7 +76,7 @@ get_header();
 					}
 					foreach ( $xhdpost as $post ) : setup_postdata($post); 
 						$post_format = memory_get_post_format();
-							if( $post_format == 'status' ) {
+							if( $post_format == 'status' or $category->name =='未分类') {
 							continue;
 						}?>
 						<li><span class="art-category-time"><?php the_time('Y-m-d'); ?></span><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
