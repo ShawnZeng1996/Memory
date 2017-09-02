@@ -51,35 +51,15 @@ $(document).ready(function($) {
     $(".mobile-shade").click(menu_close)
   
     //------------------搜索按钮点击显示与隐藏------------------
-    var menu_search_click = 0;
-    function menu_search_expand() {
-        if (menu_search_click == 0) {
-          	$("#searchform").animate({
-                width: "200px",
-              	padding: "2px"
-            }, 500);
-            menu_search_click++;
-        }
-    }
-    function menu_search_close() {
-        if (menu_search_click == 1) {
-          	$("#searchform").animate({
-                width: "0",
-              	padding: "0"
-            }, 500);
-          	menu_search_click--;
-        }
-    }
-    $("#menu-search").click(
-        function() {
-            if (menu_search_click == 0) {
-                menu_search_expand()
-            } else {
-                menu_search_close()
-            }
-        }
-    )
-    $("#main,#foot").click(menu_search_close)
+    $("#menu-search").click(function() {
+    	$("#searchform").fadeToggle(250);
+    });
+    $("body").click(function(){
+      	$("#searchform").hide(250);
+    });
+    $("#menu-search, #searchform").click(function(){
+      	event.stopPropagation();
+    });
   
   	// ------------------模式切换------------------
   	var toolbar_click = 0;

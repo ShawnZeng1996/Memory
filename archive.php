@@ -9,9 +9,9 @@
  *
  * @author admin@shawnzeng.com
  * @link https://shawnzeng.com
- * Template Name: 分类
  */
 get_header(); 
+setPostViews(get_the_ID());
 function curPageURL() {
 	$pageURL = 'http://';
 	$this_page = $_SERVER["REQUEST_URI"];
@@ -19,7 +19,7 @@ function curPageURL() {
 		$this_page = reset(explode("?", $this_page));
 	$pageURL .= $_SERVER["SERVER_NAME"]  . $this_page;
 	return $pageURL;
-}
+} 
 ?>
    	<div id="main">
         <div id="main-part">
@@ -53,6 +53,7 @@ function curPageURL() {
 								}
 								?>
 							</h3>
+							<?php if (is_category()) { echo '<p class="category-des">' . category_description() . '</p>'; } ?>
 							<ul>
 								<li><a <?php if ( isset($_GET['order']) && ($_GET['order']=='rand') ) echo 'class="current"'; ?> href="<?php echo curPageURL() . '?' . http_build_query(array_merge($_GET, array('order' => 'rand'))); ?>">随机阅读</a></li>
 								<li><a <?php if ( isset($_GET['order']) && ($_GET['order']=='commented') ) echo 'class="current"'; ?> href="<?php echo curPageURL() . '?' . http_build_query(array_merge($_GET, array('order' => 'commented'))); ?>">评论最多</a></li>

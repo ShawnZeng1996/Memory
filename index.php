@@ -10,7 +10,8 @@
  * @author admin@shawnzeng.com
  * @link https://shawnzeng.com
  */
-get_header(); ?>
+get_header(); 
+?>
    	<div id="main">
         <div id="main-part">
             <ul class="posts-list">
@@ -83,10 +84,10 @@ get_header(); ?>
 			                            <h4><?php the_author(); ?></h4>
 			                            <p><?php the_content(); ?></p>
 			                            <span class="shuoshuo-info">
-			                                <i class="fa fa-calendar"></i>
-			                                <?php the_time('Y-n-j H:i'); ?>
-			                                &nbsp;•&nbsp;
+											<i class="fa fa-calendar"></i>&nbsp;<?php the_time('Y-n-j H:i') ?>
+											&nbsp;•&nbsp;
 			                                <i class="fa fa-commenting-o"></i>
+			                                <?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>			
 			                            </span>
 			                            <div class="text-right">
 			                                <span class="art-info-readmore">

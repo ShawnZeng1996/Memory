@@ -10,7 +10,8 @@
  * @author admin@shawnzeng.com
  * @link https://shawnzeng.com
  */
-get_header(); ?>
+get_header(); 
+?>
    	<div id="main">
         <div id="main-part">
             <ul class="posts-list">

@@ -10,7 +10,12 @@
  * @author admin@shawnzeng.com
  * @link https://shawnzeng.com
  */
-?>
+if(get_option( 'memory_setuptime_month' )!=null) { ?>
+	<style>
+	#foot, #foot a { color:<?php echo get_option( 'memory_foot_color' ); ?>; }
+	</style>
+<?php } ?>
+
 <div id="foot">
         版权所有 © <?php echo get_option( 'memory_copyright' ); ?> <a href="<?php echo get_option( 'siteurl' ); ?>"><?php bloginfo('name'); ?></a> |
         <a href="http://www.miitbeian.gov.cn"><?php echo get_option( 'memory_beian' ); ?></a> <br/> Theme <a href="https://shawnzeng.com/wordpress-theme-memory.html" target="_blank">Memory</a> By <a href="https://shawnzeng.com" target="_blank">Shawn</a> With <i class="fa fa-heart throb" style="color: #d43f57;"></i> | All Rights Reserved<br/> 

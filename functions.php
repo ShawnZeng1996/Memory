@@ -164,23 +164,32 @@ function memory_comment($comment, $args, $depth)
                	<a href="<?php echo get_comment_author_url(); ?>" target="_blank">
 					<?php if (function_exists('get_avatar') && get_option('show_avatars')) { echo get_avatar($comment, 50); } ?>
 				</a>
-				<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+			<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
         </div>
         <div class="commentator-comment" id="comment-<?php comment_ID(); ?>">
 			<p>
-            	<span class="commentator-name"><?php printf(__('<strong class="author_name">%s</strong>'), get_comment_author_link()); ?></span>
-				<?php if ($comment->user_id == '1' or $comment->comment_author_email == get_the_author_meta('user_email',1) ) {
-					echo '<span class="vip commentator-level">萌萌哒博主</span>';
-				}else{
-					echo get_author_class($comment->comment_author_email,$comment->user_id);
-				}
+                <span class="commentator-name"><?php printf(__('<strong class="author_name">%s</strong>'), get_comment_author_link()); ?></span>
+				<?php if ($comment->user_id == '1' or $comment->comment_author_email == get_the_author_meta('user_email',1)) {
+						echo '<span class="vip commentator-level">萌萌哒博主</span>';
+					}else if ($comment->comment_author_email == 'me@sucx.cn') {
+						echo '<span class="vip2 commentator-level">传说</span>';
+					}else if ($comment->comment_author_email == 'i@catonisland.cn') {
+						echo '<span class="vip commentator-level">渣渣~</span>';
+					}else if ($comment->comment_author_email == 'k@03k.org') {
+						echo '<span class="vip3 commentator-level">清纯唯美的小王子</span>';
+					}else if ($comment->comment_author_email == '1564646163@qq.com') {
+						echo '<span class="vip5 commentator-level">可靠的🍄</span>';
+					}else{
+						echo get_author_class($comment->comment_author_email,$comment->user_id);
+					}
 				?>
 				<span class="comment-time"><?php echo get_comment_time('Y-m-d H:i'); ?></span>
             </p>
             <div class="comment-chat">
-                <div class="comment-comment">
+                <div class="comment-arrow"></div>
+               	<div class="comment-comment">
                 <?php if ($comment->comment_approved == '0') : ?><p>你的评论正在审核，稍后会显示出来！</p><?php endif; ?>
-				<?php comment_text(); ?>
+				<?php comment_text(); ?><div class="comment-operation"><?php edit_comment_link( __( '编辑', 'Memory' ), '<span class="edit-link">', '</span>' );?></div>
                	</div>
             </div>
       	</div>
@@ -1055,3 +1064,23 @@ $rows_affected = $wpdb->insert( 'votes', array( 'id' => 1, 'likes' => 0 ));
 dbDelta($sql_3);
 }
 add_action( 'init', 'Memory_doyoulikeme' );
+     
+// 去除头部版本号
+remove_action('wp_head', 'wp_generator'); 
+// 隐藏面板登陆错误信息
+add_filter('login_errors', create_function('$a', "return null;"));
+
+// 前台评论添加“删除”和“标识为垃圾”链接
+function comment_manage_link($id) {
+	global $comment, $post;
+	$id = $comment->comment_ID;
+	if(current_user_can( 'moderate_comments', $post->ID )){
+		if ( null === $link ) $link = __('编辑');
+		$link = '<a class="comment-edit-link" href="' . get_edit_comment_link( $comment->comment_ID ) . '" title="' . __( '编辑评论' ) . '">' . $link . '</a>';
+		$link = $link . '<a href="'.admin_url("comment.php?action=cdc&c=$id").'">删除</a> ';
+		$link = $link . '<a href="'.admin_url("comment.php?action=cdc&dt=spam&c=$id").'">标记为垃圾评论</a>';
+		$link = $before . $link . $after;
+		return $link;
+	}
+}
+add_filter('edit_comment_link', 'comment_manage_link');
