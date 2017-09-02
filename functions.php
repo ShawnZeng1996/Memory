@@ -434,7 +434,7 @@ function mail_smtp( $phpmailer ) {
 	$phpmailer->SMTPSecure ="ssl";//是否验证 ssl，这个和上面的对应，如果不填写，则上面的端口须为25
 	$phpmailer->Host = "smtp.qq.com";//邮箱的SMTP服务器地址，如果是QQ的则为：smtp.exmail.qq.com
  	$phpmailer->Username = "admin@shawnzeng.com";//你的邮箱地址
- 	$phpmailer->Password = "cppsvsvzdklabfjh";//你的邮箱登陆密码
+ 	$phpmailer->Password = "";//你的邮箱登陆密码
 }
 add_action('phpmailer_init', 'mail_smtp');
 //下面这个很重要，得将发件地址改成和上面smtp邮箱一致才行。
