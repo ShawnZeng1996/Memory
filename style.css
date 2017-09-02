@@ -544,11 +544,13 @@ form#searchform input {
     padding-left: 2em;
 }
 
-.art .art-content p span {
+.art .art-content p span,
+.art .art-content li span {
     padding: 1px 3px;
     border-radius: 5px;
     margin: 3px;
-    color: #000;
+    color: #fff;
+	background: #0bf;
     word-break: break-all;
     font-weight: bold;
 }
@@ -984,7 +986,8 @@ form#searchform input {
 
 .art .art-content a, .art .art-intro a, .commentator-comment .comment-chat .comment-comment a, .art .shuoshuo p a, .art-shuoshuo .shuoshuo p a {
     text-decoration: none;
-    color: #000;
+    background: #ea9595;
+    color: white;
     padding: 1px 3px;
     border-radius: 5px;
     margin: 3px;
@@ -996,7 +999,6 @@ form#searchform input {
 
 .art .art-content a:hover, .art .art-intro a:hover, .commentator-comment .comment-chat .comment-comment a:hover, .art .shuoshuo p a:hover, .art-shuoshuo .shuoshuo p a:hover {
     background: #0bf;
-    color: white;
 }
 
 .art .art-content .no-bg, .art .art-intro .no-bg {
