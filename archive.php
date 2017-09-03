@@ -104,8 +104,7 @@ function curPageURL() {
 						);
 					    query_posts($arms);
 					} if (have_posts()) : while (have_posts()) : the_post(); ?>
-						<?php $post_format = memory_get_post_format(); ?>
-						<?php if( $post_format != 'status' ) { ?>
+						<?php if( $post->post_type== 'post' ) { ?>
 			                <li>
 			                    <article class="art">
 			                        <div class="art-main">
