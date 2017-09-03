@@ -9,7 +9,7 @@
  *
  * @author admin@shawnzeng.com
  * @link https://shawnzeng.com
- * Template Name: 友链
+ * Template Name: 友情链接
  * Template Post Type: page
  */
 get_header();
@@ -39,9 +39,9 @@ setPostViews(get_the_ID());
                            	<i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
                       	</span>&nbsp;•&nbsp;
 						<span class="post-like">
-         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['bigfa_ding_'.$post->ID])) echo ' done';?>"><span class="count">
-           					<?php if( get_post_meta($post->ID,'bigfa_ding',true) ){
-                    			echo get_post_meta($post->ID,'bigfa_ding',true);
+         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['memory_ding_'.$post->ID])) echo ' done';?>"><span class="count">
+           					<?php if( get_post_meta($post->ID,'memory_ding',true) ){
+                    			echo get_post_meta($post->ID,'memory_ding',true);
                  			} else {
                     			echo '0';
                  			}?></span>
@@ -60,17 +60,22 @@ setPostViews(get_the_ID());
 						?>
                   	</div>
                     <div class="art-content">
-						<p>以下友链为每次刷新随机排列，不分先后，友链申请请先加好本站，避免麻烦，格式见评论区~</p>
+						<?php the_content(); ?>
 						<div class="myfriends">
 							<div id="randomurl">
-                        		<?php remove_filter ('the_content', 'wpautop'); the_content(); ?>
+								<?php
+                        		$bookmarks = get_bookmarks('orderby=rand&categorize=0');
+								if(!empty($bookmarks)){
+    								$output = '';
+    								foreach ($bookmarks as $bookmark) {
+       						 			$output .= '<a class="friendurl" target="_blank" href="'.$bookmark->link_url.'" title="'.$bookmark->link_category.':'.$bookmark->link_name.':'.$bookmark->link_description.'">';
+										$output .= '<div class="frienddiv"><div class="frienddivleft"><img class="myfriend" src="'.$bookmark->link_image.'"></div><div class="frienddivright">'.$bookmark->link_name.'<br/>'.$bookmark->link_description.'</div></div></a>';
+    								}
+    							echo $output;
+								}
+								?>
 							</div>
 						</div>
-						<script type="text/javascript">
-							var ul = document.getElementById("randomurl"),lis = Array.prototype.slice.call(ul.childNodes, 0); 
-							var i = lis.length;
-							while(i-->0)ul.insertBefore(lis[i], lis[parseInt(Math.random() * lis.length)])
-						</script>
                     </div>
                     <span>分享至：</span><div class="social-share" data-sites="weibo,qq,qzone,wechat,tencent"></div>
                 </div>

@@ -9,8 +9,6 @@
  *
  * @author admin@shawnzeng.com
  * @link https://shawnzeng.com
- * Template Name: 说说
- * Template Post Type: post, status
  */
 get_header();
 setPostViews(get_the_ID());

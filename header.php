@@ -11,8 +11,6 @@ Author URI: https://shawnzeng.com
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="baidu-site-verification" content="qpvYOLcyM3" />
-	<meta name="google-site-verification" content="7BKqWmtziAfuISO3py0ZSSxB3fiZfNWOJORrtYqTl-E" />
     <?php
 	$description = '';
 	$keywords = '';
@@ -162,6 +160,7 @@ Author URI: https://shawnzeng.com
 		<div class="mobile-shade"></div>
     </header>
 <?php 
-    <div class="header-picture-box"><div class="header-picture" style="background:url(<?php echo get_option( 'memory_header_picture' ); ?>) center/cover no-repeat;" ></div></div>
+	if(get_option( 'memory_have_header_picture' ) and get_option( 'memory_header_picture' )!=null ) { ?>
+		<div class="header-picture-box"><div class="header-picture" style="background:url(<?php echo get_option( 'memory_header_picture' ); ?>) center/cover no-repeat;" ></div></div>
 <?php 	} ?>
     

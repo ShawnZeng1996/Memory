@@ -11,7 +11,6 @@
  * @link https://shawnzeng.com
  */
 get_header(); 
-setPostViews(get_the_ID());
 function curPageURL() {
 	$pageURL = 'http://';
 	$this_page = $_SERVER["REQUEST_URI"];
@@ -19,7 +18,7 @@ function curPageURL() {
 		$this_page = reset(explode("?", $this_page));
 	$pageURL .= $_SERVER["SERVER_NAME"]  . $this_page;
 	return $pageURL;
-} 
+}
 ?>
    	<div id="main">
         <div id="main-part">
@@ -129,7 +128,16 @@ function curPageURL() {
 			                                </span>&nbsp;•&nbsp;
 			                                <span class="art-info-comment">
 			                                    <i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
-			                                </span>
+			                                </span>&nbsp;•&nbsp;
+											<span class="post-like">
+         										<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['memory_ding_'.$post->ID])) echo ' done';?>"><span class="count">
+           										<?php if( get_post_meta($post->ID,'memory_ding',true) ){
+                    								echo get_post_meta($post->ID,'memory_ding',true);
+                 								} else {
+                    								echo '0';
+                 								}?></span>
+        										</a>
+ 											</span>
 			                            </div>
 			                            <div class="art-content">
 			                                <?php the_excerpt(); ?>

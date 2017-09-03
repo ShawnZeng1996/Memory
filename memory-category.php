@@ -33,9 +33,9 @@ get_header();
                            	<i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
                       	</span>&nbsp;•&nbsp;
 						<span class="post-like">
-         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['bigfa_ding_'.$post->ID])) echo ' done';?>"><span class="count">
-           					<?php if( get_post_meta($post->ID,'bigfa_ding',true) ){
-                    			echo get_post_meta($post->ID,'bigfa_ding',true);
+         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['memory_ding_'.$post->ID])) echo ' done';?>"><span class="count">
+           					<?php if( get_post_meta($post->ID,'memory_ding',true) ){
+                    			echo get_post_meta($post->ID,'memory_ding',true);
                  			} else {
                     			echo '0';
                  			}?></span>
@@ -75,8 +75,7 @@ get_header();
 						echo '<h3><a href="' . get_category_link( $category->term_id ) . '" name="' . sprintf( __( "%s" ), $category->name ) . '" ' . '>' . $category->name.'</a></h3><ul>';
 					}
 					foreach ( $xhdpost as $post ) : setup_postdata($post); 
-						$post_format = memory_get_post_format();
-							if( $post_format == 'status' or $category->name =='未分类') {
+							if( $post->post_type!= 'post' or $category->name =='未分类') {
 							continue;
 						}?>
 						<li><span class="art-category-time"><?php the_time('Y-m-d'); ?></span><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>

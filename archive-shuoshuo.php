@@ -38,9 +38,9 @@ setPostViews(get_the_ID());
                            	<i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
                       	</span>&nbsp;•&nbsp;
 						<span class="post-like">
-         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['bigfa_ding_'.$post->ID])) echo ' done';?>"><span class="count">
-           					<?php if( get_post_meta($post->ID,'bigfa_ding',true) ){
-                    			echo get_post_meta($post->ID,'bigfa_ding',true);
+         					<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['memory_ding_'.$post->ID])) echo ' done';?>"><span class="count">
+           					<?php if( get_post_meta($post->ID,'memory_ding',true) ){
+                    			echo get_post_meta($post->ID,'memory_ding',true);
                  			} else {
                     			echo '0';
                  			}?></span>

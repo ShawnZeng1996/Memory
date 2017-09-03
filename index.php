@@ -17,8 +17,7 @@ get_header();
             <ul class="posts-list">
 				<?php if ( have_posts() ) { ?>
 					<?php while ( have_posts() ) { the_post(); global $post; ?>
-						<?php $post_format = memory_get_post_format(); ?>
-						<?php if( $post_format != 'status' ) { ?>
+						<?php if( $post->post_type== 'post' ) { ?>
 			                <li>
 			                    <article class="art">
 									<?php if ( has_post_thumbnail() ) { ?>
@@ -51,9 +50,9 @@ get_header();
 			                                    <i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
 			                                </span>&nbsp;•&nbsp;
 											<span class="post-like">
-         										<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['bigfa_ding_'.$post->ID])) echo ' done';?>"><span class="count">
-           										<?php if( get_post_meta($post->ID,'bigfa_ding',true) ){
-                    								echo get_post_meta($post->ID,'bigfa_ding',true);
+         										<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['memory_ding_'.$post->ID])) echo ' done';?>"><span class="count">
+           										<?php if( get_post_meta($post->ID,'memory_ding',true) ){
+                    								echo get_post_meta($post->ID,'memory_ding',true);
                  								} else {
                     								echo '0';
                  								}?></span>
@@ -76,7 +75,7 @@ get_header();
 			                    </article>
 			                </li>
 						<?php } ?>
-						<?php if( $post_format == 'status' ) { ?>
+						<?php if( $post->post_type== 'shuoshuo') { ?>
 			                <li>
 			                    <article class="art-shuoshuo">
 			                        <div class="shuoshuo">

@@ -12,8 +12,7 @@
  * Template Name: 404
  * Template Post Type: page
  */
-get_header(); 
-?>
+get_header(); ?>
 	<div id="main">
         <div id="main-part">
             <ul class="posts-list">

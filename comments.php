@@ -46,8 +46,8 @@
 			<?php comment_id_fields(); ?>
 	    	<?php do_action('comment_form', $post->ID); ?>
 	  	</form>
-		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/OwO.min.js"></script>
-		<script src="<?php bloginfo('template_url'); ?>/js/activate-power-mode.js" charset="utf-8"></script>
+		<script type="text/javascript" src="//shawnzeng.com/wp-content/themes/Memory/js/OwO.min.js"></script>
+		<script src="//shawnzeng.com/wp-content/themes/Memory/js/activate-power-mode.js" charset="utf-8"></script>
 		<script>
         	var OwO_demo = new OwO({
             	logo: 'OωO表情',
@@ -56,7 +56,7 @@
             	api: '/wp-content/themes/Memory/OwO/OwO.min.json',
             	position: 'down',
             	width: '100%',
-            	maxHeight: '200px'
+            	maxHeight: '210px'
         	});
 			POWERMODE.colorful = true; // make power mode colorful  
 			POWERMODE.shake = false; // turn off shake  

@@ -106,26 +106,12 @@ if ( !function_exists( 'Memory_sidebar_posts_list' ) ) :
 	 * 边栏文章列表
 	 */
 	function Memory_sidebar_posts_list( $query_args ){
-		$query_first = new WP_Query( $query_args );
-		if( $query_first->have_posts() ):
-				while( $query_first->have_posts() ):
-				$query_first->the_post();
-				$post_format_first = memory_get_post_format();
-				if( $post_format_first == 'status' ) {
-					$query_args['posts_per_page']++;
-					continue;
-				}
-      			endwhile;
-      	endif;
+      	$query_args['post_type']='post';
 		$query = new WP_Query( $query_args );
 		if( $query->have_posts() ):
 			echo '<ul class="sidebar-posts-list">';
 				while( $query->have_posts() ):
 					$query->the_post();
-					$post_format = memory_get_post_format();
-					if( $post_format == 'status' ) {
-						continue;
-					}
 					Memory_sidebar_posts_list_loop();
 				endwhile;
 				wp_reset_postdata();
@@ -294,8 +280,7 @@ if ( !is_admin() ) {
     add_filter('show_admin_bar', '__return_false');
 }
 
-// 说说
-// 文章形式拓展
+/* 文章形式拓展
 add_theme_support( 'post-formats', array( 'status' ) );
 // 获取文章类型
 function memory_get_post_format() {
@@ -305,11 +290,105 @@ function memory_get_post_format() {
 // 回溯兼容4.7前的版本
 function makewp_exclude_page_templates( $post_templates ) {
     if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
-        unset( $post_templates['templates/my-full-width-post-template.php'] );
+        unset( $post_templates['single-status.php'] );
     }
     return $post_templates;
 }
 add_filter( 'theme_page_templates', 'makewp_exclude_page_templates' );
+
+add_action('template_include', 'load_single_template');   
+function load_single_template($template) {   
+  $new_template = '';   
+  if( is_single() ) {   
+    global $post;  
+    if (has_post_format( 'shuoshuo' )){
+		$new_template = locate_template(array('single-status.php' ));  
+	} else{
+		$new_template = locate_template(array('single.php' ));  
+	}
+ 
+  }   
+  return ('' != $new_template) ? $new_template : $template;   
+}   
+ */
+
+// 说说
+function create_shuoshuo() {
+    $labels = array(
+        'name'               => _x( '说说', 'post type 名称' ),
+        'singular_name'      => _x( '说说', 'post type 单个 item 时的名称，因为英文有复数' ),
+        'add_new'            => _x( '新建说说', '添加新内容的链接名称' ),
+        'add_new_item'       => __( '新建一个说说' ),
+        'edit_item'          => __( '编辑说说' ),
+        'new_item'           => __( '新说说' ),
+        'all_items'          => __( '所有说说' ),
+        'view_item'          => __( '查看说说' ),
+        'search_items'       => __( '搜索说说' ),
+        'not_found'          => __( '没有找到有关说说' ),
+        'not_found_in_trash' => __( '回收站里面没有相关说说' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => '说说'
+    );
+    $args = array(
+        'labels'        => $labels,
+        'description'   => '写条说说',
+        'public'        => true,
+    	'menu_position' => 5,
+    	'menu_icon'		=> 'dashicons-format-status',
+        'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
+        'has_archive'   => true
+    );
+    register_post_type( 'shuoshuo', $args );
+}
+add_action( 'init', 'create_shuoshuo' );
+function Memory_posts_per_page($query){
+    if ( (is_home() || is_search()) && $query->is_main_query() )
+        $query->set( 'post_type', array( 'post', 'shuoshuo' ) ); //主循环中显示post和product
+    return $query;
+}
+add_action('pre_get_posts','Memory_posts_per_page');
+add_action( 'add_meta_boxes', 'Memory_add_shuoshuo_box' );
+function Memory_add_shuoshuo_box(){
+    add_meta_box( 'Memory_shuoshuo_sticky', '置顶', 'Memory_shuoshuo_sticky', 'shuoshuo', 'side', 'high' );
+}
+function Memory_shuoshuo_sticky (){ ?>
+    <input id="super-sticky" name="sticky" type="checkbox" value="sticky" <?php checked( is_sticky() ); ?> /><label for="super-sticky" class="selectit">置顶本条说说</label>
+<?php
+}
+
+/*
+function my_taxonomies_shuoshuo() {
+    $labels = array(
+        'name'              => _x( '说说分类', 'taxonomy 名称' ),
+        'singular_name'     => _x( '说说分类', 'taxonomy 单数名称' ),
+        'search_items'      => __( '搜索说说分类' ),
+        'all_items'         => __( '所有说说分类' ),
+        'parent_item'       => __( '该说说分类的上级分类' ),
+        'parent_item_colon' => __( '该说说分类的上级分类：' ),
+        'edit_item'         => __( '编辑说说分类' ),
+        'update_item'       => __( '更新说说分类' ),
+        'add_new_item'      => __( '添加新的说说分类' ),
+        'new_item_name'     => __( '新说说分类' ),
+        'menu_name'         => __( '说说分类' ),
+    );
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+    );
+    register_taxonomy( 'shuoshuo_category', 'shuoshuo', $args );
+}
+add_action( 'init', 'my_taxonomies_shuoshuo', 0 );
+*/
+
+/* 页面伪静态化
+function html_page_permalink() {
+	global $wp_rewrite;
+	if ( !strpos($wp_rewrite->get_page_permastruct(), '.html')){
+		$wp_rewrite->page_structure = $wp_rewrite->page_structure . '.html';
+	}
+}
+add_action('init', 'html_page_permalink', -1);
+*/
 
 // RSS 中添加查看全文链接防采集
 function feed_read_more($content) {
@@ -353,13 +432,9 @@ function setPostViews($postID) {
 function memory_archives_list() {
 	if( !$output = get_option('memory_archives_list') ){
 		$output = '<div id="archives"><p style="text-align:right;">[<a id="al_expand_collapse" href="#">全部展开/收缩</a>] (注: 点击月份可以展开)</p>';
-		$the_query = new WP_Query( 'posts_per_page=-1&ignore_sticky_posts=1' ); //update: 加上忽略置顶文章
+		$the_query = new WP_Query( 'posts_per_page=-1&ignore_sticky_posts=1&post_type=post' ); //update: 加上忽略置顶文章
 		$year=0; $mon=0; $i=0; $j=0;
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			$post_format = memory_get_post_format();
-			if( $post_format == 'status' ) {
-				continue;
-			}
 			$year_tmp = get_the_time('Y');
             $mon_tmp = get_the_time('m');
             $y=$year; $m=$mon;
@@ -386,13 +461,9 @@ function memory_archives_list() {
 function memory_shuoshuo_list() {
 	if( !$output = get_option('memory_shuoshuo_list') ){
 		$output = '<div id="archives"><p style="text-align:right;">[<a id="al_expand_collapse" href="#">全部展开/收缩</a>] (注: 点击月份可以展开)</p>';
-		$the_query = new WP_Query( 'posts_per_page=-1&ignore_sticky_posts=1' ); //update: 加上忽略置顶文章
+		$the_query = new WP_Query( 'posts_per_page=-1&ignore_sticky_posts=1&post_type=shuoshuo' ); //update: 加上忽略置顶文章
 		$year=0; $mon=0; $i=0; $j=0;
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			$post_format = memory_get_post_format();
-			if( $post_format != 'status' ) {
-				continue;
-			}
 			$year_tmp = get_the_time('Y');
             $mon_tmp = get_the_time('m');
             $y=$year; $m=$mon;
@@ -507,16 +578,6 @@ function enable_more_buttons($buttons) {
 }
 add_filter("mce_buttons", "enable_more_buttons");
 
-/* 页面伪静态化
-function html_page_permalink() {
-	global $wp_rewrite;
-	if ( !strpos($wp_rewrite->get_page_permastruct(), '.html')){
-		$wp_rewrite->page_structure = $wp_rewrite->page_structure . '.html';
-	}
-}
-add_action('init', 'html_page_permalink', -1);
-*/
-
 // 删除左侧工具菜单
 function memory_remove_menus() {
 	global $menu;
@@ -570,7 +631,6 @@ function add_button_mce($mce_settings) {
 QTags.addButton( 'no_des_link', 'no_des_link', '<a class="no-des no-bg" href="链接URL">链接文本</a>', '');
 QTags.addButton( 'at', '@link', '<a class="at" href="链接URL">链接文本</a>', '');
 QTags.addButton( 'memorycode', 'memory_code', '<pre><span class="pre-title">语言类型</span><code class="hljs 语言类型">请输入您的代码......</code></pre>', '');
-QTags.addButton( 'flink','flink','[flink href="" name="" des="" imgsrc=""]','');
 QTags.addButton( 'mr','mr','[mr]','');
 </script>
 <?php
@@ -597,16 +657,6 @@ function my_register_mce_button( $buttons ) {
 }
 
 // 短代码
-function memory_friend_link($atts) {
-	extract(shortcode_atts(array(
-   		'href' => '#',
-		'name' => '我的友链',
-		'des'  => '友链描述', 
-		'imgsrc'=> '#'
-   	), $atts));	
-
-	return '<a class="friendurl" target="_blank" href="' . $href . '" title="' . $name. ':' . $des .'" ><div class="frienddiv"><div class="frienddivleft"><img class="myfriend" src="' . $imgsrc . '" /></div><div class="frienddivright">' . $name. '<br/>' . $des .'</div></div></a>';
-}
 function memory_line(){
 	return '<p class="line"></p>';
 }
@@ -618,9 +668,8 @@ function memory_pre($atts, $content=null) {
 	return '<pre><span class="pre-title">' . $lan . '</span><code class="hljs ' . $lan . '">' . $content . '</code></pre>';
 }
 function register_shortcodes(){
-   add_shortcode('flink', 'memory_friend_link');
    add_shortcode('mr', 'memory_line');
-   add_shortcode('mc', 'memory_pre');
+   add_shortcode('mcode', 'memory_pre');
 }
 add_action( 'init', 'register_shortcodes');
 
@@ -665,15 +714,13 @@ if ( !function_exists('mb_strlen') ) {
 if (!function_exists('mb_substr')) {
     function mb_substr($str, $start, $len = '', $encoding="UTF-8"){
         $limit = strlen($str);
- 
         for ($s = 0; $start > 0;--$start) {
             if ($s >= $limit)
                 break;
- 
             if ($str[$s] <= "\x7F")
                 ++$s;
             else {
-                ++$s; 
+                ++$s;
                 while ($str[$s] >= "\x80" && $str[$s] <= "\xBF")
                     ++$s;
             }
@@ -684,7 +731,6 @@ if (!function_exists('mb_substr')) {
             for ($e = $s; $len > 0; --$len) {
                 if ($e >= $limit)
                     break;
- 
                 if ($str[$e] <= "\x7F")
                     ++$e;
                 else {
@@ -696,9 +742,9 @@ if (!function_exists('mb_substr')) {
         return substr($str, $s, $e - $s);
     }
 }
-define ('HOME_EXCERPT_LENGTH', 100);
+define ('HOME_EXCERPT_LENGTH', 300);
 define ('ARCHIVE_EXCERPT_LENGTH', 150);
-define ('ALLOWD_TAG', '<a><b><blockquote><br><cite><code><dd><del><div><dl><dt><em><h1><h2><h3><h4><h5><h6><i><img><li><ol><p><pre><span><strong><ul>');
+define ('ALLOWD_TAG', '<a><b><blockquote><br><cite><dd><del><div><dl><dt><em><h1><h2><h3><h4><h5><h6><i><img><li><ol><p><pre><span><strong><ul>');
 define ('READ_MORE_LINK', __( 'Read more', 'wp-utf8-excerpt') );
 if (!function_exists('utf8_excerpt')) {
 	function utf8_excerpt ($text, $type) {
@@ -790,7 +836,6 @@ if (!function_exists('utf8_excerpt_readmore')) {
 		return $text;
 	}
 }
-//hook on the_excerpt hook
 if (!function_exists('utf8_excerpt_for_excerpt')) {
 	function utf8_excerpt_for_excerpt ($text) {
 		return utf8_excerpt($text, 'excerpt');
@@ -804,149 +849,148 @@ function memory_modifiy_comment_author_anchor( $author_link ){
     return str_replace( "<a", "<a target='_blank'", $author_link );
 }
 
-// 添加@评论者及替换OwO表情
 function comment_add_owo($comment_text, $comment = '') {
-  if($comment->comment_parent > 0) {
-    $comment_text = '<strong><a href="#comment-' . $comment->comment_parent . '" title="' .get_comment_author( $comment->comment_parent ) . '" class="at-no-des">' .get_comment_author( $comment->comment_parent ) . '</a></strong>' . $comment_text;
-  }
-  $data_OwO = array(
-    '@(暗地观察)' => '<img src="/wp-content/themes/Memory/OwO/alu/暗地观察.png" alt="暗地观察" style="vertical-align: middle;">',
-    '@(便便)' => '<img src="/wp-content/themes/Memory/OwO/alu/便便.png" alt="便便" style="vertical-align: middle;">',
-    '@(不出所料)' => '<img src="/wp-content/themes/Memory/OwO/alu/不出所料.png" alt="不出所料" style="vertical-align: middle;">',
-    '@(不高兴)' => '<img src="/wp-content/themes/Memory/OwO/alu/不高兴.png" alt="不高兴" style="vertical-align: middle;">',
-    '@(不说话)' => '<img src="/wp-content/themes/Memory/OwO/alu/不说话.png" alt="不说话" style="vertical-align: middle;">',
-    '@(抽烟)' => '<img src="/wp-content/themes/Memory/OwO/alu/抽烟.png" alt="抽烟" style="vertical-align: middle;">',
-    '@(呲牙)' => '<img src="/wp-content/themes/Memory/OwO/alu/呲牙.png" alt="呲牙" style="vertical-align: middle;">',
-    '@(大囧)' => '<img src="/wp-content/themes/Memory/OwO/alu/大囧.png" alt="大囧" style="vertical-align: middle;">',
-    '@(得意)' => '<img src="/wp-content/themes/Memory/OwO/alu/得意.png" alt="得意" style="vertical-align: middle;">',
-    '@(愤怒)' => '<img src="/wp-content/themes/Memory/OwO/alu/愤怒.png" alt="愤怒" style="vertical-align: middle;">',
-    '@(尴尬)' => '<img src="/wp-content/themes/Memory/OwO/alu/尴尬.png" alt="尴尬" style="vertical-align: middle;">',
-    '@(高兴)' => '<img src="/wp-content/themes/Memory/OwO/alu/高兴.png" alt="高兴" style="vertical-align: middle;">',
-    '@(鼓掌)' => '<img src="/wp-content/themes/Memory/OwO/alu/鼓掌.png" alt="鼓掌" style="vertical-align: middle;">',
-    '@(观察)' => '<img src="/wp-content/themes/Memory/OwO/alu/观察.png" alt="观察" style="vertical-align: middle;">',
-    '@(害羞)' => '<img src="/wp-content/themes/Memory/OwO/alu/害羞.png" alt="害羞" style="vertical-align: middle;">',
-    '@(汗)' => '<img src="/wp-content/themes/Memory/OwO/alu/汗.png" alt="汗" style="vertical-align: middle;">',
-    '@(黑线)' => '<img src="/wp-content/themes/Memory/OwO/alu/黑线.png" alt="黑线" style="vertical-align: middle;">',
-    '@(欢呼)' => '<img src="/wp-content/themes/Memory/OwO/alu/欢呼.png" alt="欢呼" style="vertical-align: middle;">',
-    '@(击掌)' => '<img src="/wp-content/themes/Memory/OwO/alu/击掌.png" alt="击掌" style="vertical-align: middle;">',
-    '@(惊喜)' => '<img src="/wp-content/themes/Memory/OwO/alu/惊喜.png" alt="惊喜" style="vertical-align: middle;">',
-    '@(看不见)' => '<img src="/wp-content/themes/Memory/OwO/alu/看不见.png" alt="看不见" style="vertical-align: middle;">',
-    '@(看热闹)' => '<img src="/wp-content/themes/Memory/OwO/alu/看热闹.png" alt="看热闹" style="vertical-align: middle;">',
-    '@(抠鼻)' => '<img src="/wp-content/themes/Memory/OwO/alu/抠鼻.png" alt="抠鼻" style="vertical-align: middle;">',
-    '@(口水)' => '<img src="/wp-content/themes/Memory/OwO/alu/口水.png" alt="口水" style="vertical-align: middle;">',
-    '@(哭泣)' => '<img src="/wp-content/themes/Memory/OwO/alu/哭泣.png" alt="哭泣" style="vertical-align: middle;">',
-    '@(狂汗)' => '<img src="/wp-content/themes/Memory/OwO/alu/狂汗.png" alt="狂汗" style="vertical-align: middle;">',
-    '@(蜡烛)' => '<img src="/wp-content/themes/Memory/OwO/alu/蜡烛.png" alt="蜡烛" style="vertical-align: middle;">',
-    '@(脸红)' => '<img src="/wp-content/themes/Memory/OwO/alu/脸红.png" alt="脸红" style="vertical-align: middle;">',
-    '@(内伤)' => '<img src="/wp-content/themes/Memory/OwO/alu/内伤.png" alt="内伤" style="vertical-align: middle;">',
-    '@(喷水)' => '<img src="/wp-content/themes/Memory/OwO/alu/喷水.png" alt="喷水" style="vertical-align: middle;">',
-    '@(喷血)' => '<img src="/wp-content/themes/Memory/OwO/alu/喷血.png" alt="喷血" style="vertical-align: middle;">',
-    '@(期待)' => '<img src="/wp-content/themes/Memory/OwO/alu/期待.png" alt="期待" style="vertical-align: middle;">',
-    '@(亲亲)' => '<img src="/wp-content/themes/Memory/OwO/alu/亲亲.png" alt="亲亲" style="vertical-align: middle;">',
-    '@(傻笑)' => '<img src="/wp-content/themes/Memory/OwO/alu/傻笑.png" alt="傻笑" style="vertical-align: middle;">',
-    '@(扇耳光)' => '<img src="/wp-content/themes/Memory/OwO/alu/扇耳光.png" alt="扇耳光" style="vertical-align: middle;">',
-    '@(深思)' => '<img src="/wp-content/themes/Memory/OwO/alu/深思.png" alt="深思" style="vertical-align: middle;">',
-    '@(锁眉)' => '<img src="/wp-content/themes/Memory/OwO/alu/锁眉.png" alt="锁眉" style="vertical-align: middle;">',
-    '@(投降)' => '<img src="/wp-content/themes/Memory/OwO/alu/投降.png" alt="投降" style="vertical-align: middle;">',
-    '@(吐)' => '<img src="/wp-content/themes/Memory/OwO/alu/吐.png" alt="吐" style="vertical-align: middle;">',
-    '@(吐舌)' => '<img src="/wp-content/themes/Memory/OwO/alu/吐舌.png" alt="吐舌" style="vertical-align: middle;">',
-    '@(吐血倒地)' => '<img src="/wp-content/themes/Memory/OwO/alu/吐血倒地.png" alt="吐血倒地" style="vertical-align: middle;">',
-    '@(无奈)' => '<img src="/wp-content/themes/Memory/OwO/alu/无奈.png" alt="无奈" style="vertical-align: middle;">',
-    '@(无所谓)' => '<img src="/wp-content/themes/Memory/OwO/alu/无所谓.png" alt="无所谓" style="vertical-align: middle;">',
-    '@(无语)' => '<img src="/wp-content/themes/Memory/OwO/alu/无语.png" alt="无语" style="vertical-align: middle;">',
-    '@(喜极而泣)' => '<img src="/wp-content/themes/Memory/OwO/alu/喜极而泣.png" alt="喜极而泣" style="vertical-align: middle;">',
-    '@(献花)' => '<img src="/wp-content/themes/Memory/OwO/alu/献花.png" alt="献花" style="vertical-align: middle;">',
-    '@(献黄瓜)' => '<img src="/wp-content/themes/Memory/OwO/alu/献黄瓜.png" alt="献黄瓜" style="vertical-align: middle;">',
-    '@(想一想)' => '<img src="/wp-content/themes/Memory/OwO/alu/想一想.png" alt="想一想" style="vertical-align: middle;">',
-    '@(小怒)' => '<img src="/wp-content/themes/Memory/OwO/alu/小怒.png" alt="小怒" style="vertical-align: middle;">',
-    '@(小眼睛)' => '<img src="/wp-content/themes/Memory/OwO/alu/小眼睛.png" alt="小眼睛" style="vertical-align: middle;">',
-    '@(邪恶)' => '<img src="/wp-content/themes/Memory/OwO/alu/邪恶.png" alt="邪恶" style="vertical-align: middle;">',
-    '@(咽气)' => '<img src="/wp-content/themes/Memory/OwO/alu/咽气.png" alt="咽气" style="vertical-align: middle;">',
-    '@(阴暗)' => '<img src="/wp-content/themes/Memory/OwO/alu/阴暗.png" alt="阴暗" style="vertical-align: middle;">',
-    '@(赞一个)' => '<img src="/wp-content/themes/Memory/OwO/alu/赞一个.png" alt="赞一个" style="vertical-align: middle;">',
-    '@(长草)' => '<img src="/wp-content/themes/Memory/OwO/alu/长草.png" alt="长草" style="vertical-align: middle;">',
-    '@(中刀)' => '<img src="/wp-content/themes/Memory/OwO/alu/中刀.png" alt="中刀" style="vertical-align: middle;">',
-    '@(中枪)' => '<img src="/wp-content/themes/Memory/OwO/alu/中枪.png" alt="中枪" style="vertical-align: middle;">',
-    '@(中指)' => '<img src="/wp-content/themes/Memory/OwO/alu/中指.png" alt="中指" style="vertical-align: middle;">',
-    '@(肿包)' => '<img src="/wp-content/themes/Memory/OwO/alu/肿包.png" alt="肿包" style="vertical-align: middle;">',
-    '@(皱眉)' => '<img src="/wp-content/themes/Memory/OwO/alu/皱眉.png" alt="皱眉" style="vertical-align: middle;">',
-    '@(装大款)' => '<img src="/wp-content/themes/Memory/OwO/alu/装大款.png" alt="装大款" style="vertical-align: middle;">',
-    '@(坐等)' => '<img src="/wp-content/themes/Memory/OwO/alu/坐等.png" alt="坐等" style="vertical-align: middle;">',
-    '@[啊]' => '<img src="/wp-content/themes/Memory/OwO/paopao/啊.png" alt="啊" style="vertical-align: middle;">',
-    '@[爱心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/爱心.png" alt="爱心" style="vertical-align: middle;">',
-    '@[鄙视]' => '<img src="/wp-content/themes/Memory/OwO/paopao/鄙视.png" alt="鄙视" style="vertical-align: middle;">',
-    '@[便便]' => '<img src="/wp-content/themes/Memory/OwO/paopao/便便.png" alt="便便" style="vertical-align: middle;">',
-    '@[不高兴]' => '<img src="/wp-content/themes/Memory/OwO/paopao/不高兴.png" alt="不高兴" style="vertical-align: middle;">',
-    '@[彩虹]' => '<img src="/wp-content/themes/Memory/OwO/paopao/彩虹.png" alt="彩虹" style="vertical-align: middle;">',
-    '@[茶杯]' => '<img src="/wp-content/themes/Memory/OwO/paopao/茶杯.png" alt="茶杯" style="vertical-align: middle;">',
-    '@[吃瓜]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吃瓜.png" alt="吃瓜" style="vertical-align: middle;">',
-    '@[吃翔]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吃翔.png" alt="吃翔" style="vertical-align: middle;">',
-    '@[大拇指]' => '<img src="/wp-content/themes/Memory/OwO/paopao/大拇指.png" alt="大拇指" style="vertical-align: middle;">',
-    '@[蛋糕]' => '<img src="/wp-content/themes/Memory/OwO/paopao/蛋糕.png" alt="蛋糕" style="vertical-align: middle;">',
-    '@[嘚瑟]' => '<img src="/wp-content/themes/Memory/OwO/paopao/嘚瑟.png" alt="嘚瑟" style="vertical-align: middle;">',
-    '@[灯泡]' => '<img src="/wp-content/themes/Memory/OwO/paopao/灯泡.png" alt="灯泡" style="vertical-align: middle;">',
-    '@[乖]' => '<img src="/wp-content/themes/Memory/OwO/paopao/乖.png" alt="乖" style="vertical-align: middle;">',
-    '@[哈哈]' => '<img src="/wp-content/themes/Memory/OwO/paopao/哈哈.png" alt="哈哈" style="vertical-align: middle;">',
-    '@[汗]' => '<img src="/wp-content/themes/Memory/OwO/paopao/汗.png" alt="汗" style="vertical-align: middle;">',
-    '@[呵呵]' => '<img src="/wp-content/themes/Memory/OwO/paopao/呵呵.png" alt="呵呵" style="vertical-align: middle;">',
-    '@[黑线]' => '<img src="/wp-content/themes/Memory/OwO/paopao/黑线.png" alt="黑线" style="vertical-align: middle;">',
-    '@[红领巾]' => '<img src="/wp-content/themes/Memory/OwO/paopao/红领巾.png" alt="红领巾" style="vertical-align: middle;">',
-    '@[呼]' => '<img src="/wp-content/themes/Memory/OwO/paopao/呼.png" alt="呼" style="vertical-align: middle;">',
-    '@[花心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/花心.png" alt="花心" style="vertical-align: middle;">',
-    '@[滑稽]' => '<img src="/wp-content/themes/Memory/OwO/paopao/滑稽.png" alt="滑稽" style="vertical-align: middle;">',
-    '@[惊恐]' => '<img src="/wp-content/themes/Memory/OwO/paopao/惊恐.png" alt="惊恐" style="vertical-align: middle;">',
-    '@[惊哭]' => '<img src="/wp-content/themes/Memory/OwO/paopao/惊哭.png" alt="惊哭" style="vertical-align: middle;">',
-    '@[惊讶]' => '<img src="/wp-content/themes/Memory/OwO/paopao/惊讶.png" alt="惊讶" style="vertical-align: middle;">',
-    '@[开心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/开心.png" alt="开心" style="vertical-align: middle;">',
-    '@[酷]' => '<img src="/wp-content/themes/Memory/OwO/paopao/酷.png" alt="酷" style="vertical-align: middle;">',
-    '@[狂汗]' => '<img src="/wp-content/themes/Memory/OwO/paopao/狂汗.png" alt="狂汗" style="vertical-align: middle;">',
-    '@[蜡烛]' => '<img src="/wp-content/themes/Memory/OwO/paopao/蜡烛.png" alt="蜡烛" style="vertical-align: middle;">',
-    '@[懒得理]' => '<img src="/wp-content/themes/Memory/OwO/paopao/懒得理.png" alt="懒得理" style="vertical-align: middle;">',
-    '@[泪]' => '<img src="/wp-content/themes/Memory/OwO/paopao/泪.png" alt="泪" style="vertical-align: middle;">',
-    '@[冷]' => '<img src="/wp-content/themes/Memory/OwO/paopao/冷.png" alt="冷" style="vertical-align: middle;">',
-    '@[礼物]' => '<img src="/wp-content/themes/Memory/OwO/paopao/礼物.png" alt="礼物" style="vertical-align: middle;">',
-    '@[玫瑰]' => '<img src="/wp-content/themes/Memory/OwO/paopao/玫瑰.png" alt="玫瑰" style="vertical-align: middle;">',
-    '@[勉强]' => '<img src="/wp-content/themes/Memory/OwO/paopao/勉强.png" alt="勉强" style="vertical-align: middle;">',
-    '@[你懂的]' => '<img src="/wp-content/themes/Memory/OwO/paopao/你懂的.png" alt="你懂的" style="vertical-align: middle;">',
-    '@[怒]' => '<img src="/wp-content/themes/Memory/OwO/paopao/怒.png" alt="怒" style="vertical-align: middle;">',
-    '@[喷]' => '<img src="/wp-content/themes/Memory/OwO/paopao/喷.png" alt="喷" style="vertical-align: middle;">',
-    '@[钱]' => '<img src="/wp-content/themes/Memory/OwO/paopao/钱.png" alt="钱" style="vertical-align: middle;">',
-    '@[钱币]' => '<img src="/wp-content/themes/Memory/OwO/paopao/钱币.png" alt="钱币" style="vertical-align: middle;">',
-    '@[弱]' => '<img src="/wp-content/themes/Memory/OwO/paopao/弱.png" alt="弱" style="vertical-align: middle;">',
-    '@[三道杠]' => '<img src="/wp-content/themes/Memory/OwO/paopao/三道杠.png" alt="三道杠" style="vertical-align: middle;">',
-    '@[沙发]' => '<img src="/wp-content/themes/Memory/OwO/paopao/沙发.png" alt="沙发" style="vertical-align: middle;">',
-    '@[生气]' => '<img src="/wp-content/themes/Memory/OwO/paopao/生气.png" alt="生气" style="vertical-align: middle;">',
-    '@[胜利]' => '<img src="/wp-content/themes/Memory/OwO/paopao/胜利.png" alt="胜利" style="vertical-align: middle;">',
-    '@[手纸]' => '<img src="/wp-content/themes/Memory/OwO/paopao/手纸.png" alt="手纸" style="vertical-align: middle;">',
-    '@[睡觉]' => '<img src="/wp-content/themes/Memory/OwO/paopao/睡觉.png" alt="睡觉" style="vertical-align: middle;">',
-    '@[酸爽]' => '<img src="/wp-content/themes/Memory/OwO/paopao/酸爽.png" alt="酸爽" style="vertical-align: middle;">',
-    '@[太开心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/太开心.png" alt="太开心" style="vertical-align: middle;">',
-    '@[太阳]' => '<img src="/wp-content/themes/Memory/OwO/paopao/太阳.png" alt="太阳" style="vertical-align: middle;">',
-    '@[吐]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吐.png" alt="吐" style="vertical-align: middle;">',
-    '@[吐舌]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吐舌.png" alt="吐舌" style="vertical-align: middle;">',
-    '@[挖鼻]' => '<img src="/wp-content/themes/Memory/OwO/paopao/挖鼻.png" alt="挖鼻" style="vertical-align: middle;">',
-    '@[委屈]' => '<img src="/wp-content/themes/Memory/OwO/paopao/委屈.png" alt="委屈" style="vertical-align: middle;">',
-    '@[捂嘴笑]' => '<img src="/wp-content/themes/Memory/OwO/paopao/捂嘴笑.png" alt="捂嘴笑" style="vertical-align: middle;">',
-    '@[犀利]' => '<img src="/wp-content/themes/Memory/OwO/paopao/犀利.png" alt="犀利" style="vertical-align: middle;">',
-    '@[香蕉]' => '<img src="/wp-content/themes/Memory/OwO/paopao/香蕉.png" alt="香蕉" style="vertical-align: middle;">',
-    '@[小乖]' => '<img src="/wp-content/themes/Memory/OwO/paopao/小乖.png" alt="小乖" style="vertical-align: middle;">',
-    '@[小红脸]' => '<img src="/wp-content/themes/Memory/OwO/paopao/小红脸.png" alt="小红脸" style="vertical-align: middle;">',
-    '@[笑尿]' => '<img src="/wp-content/themes/Memory/OwO/paopao/笑尿.png" alt="笑尿" style="vertical-align: middle;">',
-    '@[笑眼]' => '<img src="/wp-content/themes/Memory/OwO/paopao/笑眼.png" alt="笑眼" style="vertical-align: middle;">',
-    '@[心碎]' => '<img src="/wp-content/themes/Memory/OwO/paopao/心碎.png" alt="心碎" style="vertical-align: middle;">',
-    '@[星星月亮]' => '<img src="/wp-content/themes/Memory/OwO/paopao/星星月亮.png" alt="星星月亮" style="vertical-align: middle;">',
-    '@[呀咩爹]' => '<img src="/wp-content/themes/Memory/OwO/paopao/呀咩爹.png" alt="呀咩爹" style="vertical-align: middle;">',
-    '@[药丸]' => '<img src="/wp-content/themes/Memory/OwO/paopao/药丸.png" alt="药丸" style="vertical-align: middle;">',
-    '@[咦]' => '<img src="/wp-content/themes/Memory/OwO/paopao/咦.png" alt="咦" style="vertical-align: middle;">',
-    '@[疑问]' => '<img src="/wp-content/themes/Memory/OwO/paopao/疑问.png" alt="疑问" style="vertical-align: middle;">',
-    '@[阴险]' => '<img src="/wp-content/themes/Memory/OwO/paopao/阴险.png" alt="阴险" style="vertical-align: middle;">',
-    '@[音乐]' => '<img src="/wp-content/themes/Memory/OwO/paopao/音乐.png" alt="音乐" style="vertical-align: middle;">',
-    '@[真棒]' => '<img src="/wp-content/themes/Memory/OwO/paopao/真棒.png" alt="真棒" style="vertical-align: middle;">',
-    '@[nico]' => '<img src="/wp-content/themes/Memory/OwO/paopao/nico.png" alt="nico" style="vertical-align: middle;">',
-    '@[OK]' => '<img src="/wp-content/themes/Memory/OwO/paopao/OK.png" alt="OK" style="vertical-align: middle;">',
-    '@[what]' => '<img src="/wp-content/themes/Memory/OwO/paopao/what.png" alt="what" style="vertical-align: middle;">'
-  );
-  return strtr($comment_text,$data_OwO);
+    if($comment->comment_parent > 0) {
+        $comment_text = '<strong><a href="#comment-' . $comment->comment_parent . '" title="' .get_comment_author( $comment->comment_parent ) . '" class="at-no-des">' .get_comment_author( $comment->comment_parent ) . '</a></strong>' . $comment_text;
+    }
+    $data_OwO = array(
+        '@(暗地观察)' => '<img src="/wp-content/themes/Memory/OwO/alu/暗地观察.png" alt="暗地观察" style="vertical-align: middle;">',
+        '@(便便)' => '<img src="/wp-content/themes/Memory/OwO/alu/便便.png" alt="便便" style="vertical-align: middle;">',
+        '@(不出所料)' => '<img src="/wp-content/themes/Memory/OwO/alu/不出所料.png" alt="不出所料" style="vertical-align: middle;">',
+        '@(不高兴)' => '<img src="/wp-content/themes/Memory/OwO/alu/不高兴.png" alt="不高兴" style="vertical-align: middle;">',
+        '@(不说话)' => '<img src="/wp-content/themes/Memory/OwO/alu/不说话.png" alt="不说话" style="vertical-align: middle;">',
+        '@(抽烟)' => '<img src="/wp-content/themes/Memory/OwO/alu/抽烟.png" alt="抽烟" style="vertical-align: middle;">',
+        '@(呲牙)' => '<img src="/wp-content/themes/Memory/OwO/alu/呲牙.png" alt="呲牙" style="vertical-align: middle;">',
+        '@(大囧)' => '<img src="/wp-content/themes/Memory/OwO/alu/大囧.png" alt="大囧" style="vertical-align: middle;">',
+        '@(得意)' => '<img src="/wp-content/themes/Memory/OwO/alu/得意.png" alt="得意" style="vertical-align: middle;">',
+        '@(愤怒)' => '<img src="/wp-content/themes/Memory/OwO/alu/愤怒.png" alt="愤怒" style="vertical-align: middle;">',
+        '@(尴尬)' => '<img src="/wp-content/themes/Memory/OwO/alu/尴尬.png" alt="尴尬" style="vertical-align: middle;">',
+        '@(高兴)' => '<img src="/wp-content/themes/Memory/OwO/alu/高兴.png" alt="高兴" style="vertical-align: middle;">',
+        '@(鼓掌)' => '<img src="/wp-content/themes/Memory/OwO/alu/鼓掌.png" alt="鼓掌" style="vertical-align: middle;">',
+        '@(观察)' => '<img src="/wp-content/themes/Memory/OwO/alu/观察.png" alt="观察" style="vertical-align: middle;">',
+        '@(害羞)' => '<img src="/wp-content/themes/Memory/OwO/alu/害羞.png" alt="害羞" style="vertical-align: middle;">',
+        '@(汗)' => '<img src="/wp-content/themes/Memory/OwO/alu/汗.png" alt="汗" style="vertical-align: middle;">',
+        '@(黑线)' => '<img src="/wp-content/themes/Memory/OwO/alu/黑线.png" alt="黑线" style="vertical-align: middle;">',
+        '@(欢呼)' => '<img src="/wp-content/themes/Memory/OwO/alu/欢呼.png" alt="欢呼" style="vertical-align: middle;">',
+        '@(击掌)' => '<img src="/wp-content/themes/Memory/OwO/alu/击掌.png" alt="击掌" style="vertical-align: middle;">',
+        '@(惊喜)' => '<img src="/wp-content/themes/Memory/OwO/alu/惊喜.png" alt="惊喜" style="vertical-align: middle;">',
+        '@(看不见)' => '<img src="/wp-content/themes/Memory/OwO/alu/看不见.png" alt="看不见" style="vertical-align: middle;">',
+        '@(看热闹)' => '<img src="/wp-content/themes/Memory/OwO/alu/看热闹.png" alt="看热闹" style="vertical-align: middle;">',
+        '@(抠鼻)' => '<img src="/wp-content/themes/Memory/OwO/alu/抠鼻.png" alt="抠鼻" style="vertical-align: middle;">',
+        '@(口水)' => '<img src="/wp-content/themes/Memory/OwO/alu/口水.png" alt="口水" style="vertical-align: middle;">',
+        '@(哭泣)' => '<img src="/wp-content/themes/Memory/OwO/alu/哭泣.png" alt="哭泣" style="vertical-align: middle;">',
+        '@(狂汗)' => '<img src="/wp-content/themes/Memory/OwO/alu/狂汗.png" alt="狂汗" style="vertical-align: middle;">',
+        '@(蜡烛)' => '<img src="/wp-content/themes/Memory/OwO/alu/蜡烛.png" alt="蜡烛" style="vertical-align: middle;">',
+        '@(脸红)' => '<img src="/wp-content/themes/Memory/OwO/alu/脸红.png" alt="脸红" style="vertical-align: middle;">',
+        '@(内伤)' => '<img src="/wp-content/themes/Memory/OwO/alu/内伤.png" alt="内伤" style="vertical-align: middle;">',
+        '@(喷水)' => '<img src="/wp-content/themes/Memory/OwO/alu/喷水.png" alt="喷水" style="vertical-align: middle;">',
+        '@(喷血)' => '<img src="/wp-content/themes/Memory/OwO/alu/喷血.png" alt="喷血" style="vertical-align: middle;">',
+        '@(期待)' => '<img src="/wp-content/themes/Memory/OwO/alu/期待.png" alt="期待" style="vertical-align: middle;">',
+        '@(亲亲)' => '<img src="/wp-content/themes/Memory/OwO/alu/亲亲.png" alt="亲亲" style="vertical-align: middle;">',
+        '@(傻笑)' => '<img src="/wp-content/themes/Memory/OwO/alu/傻笑.png" alt="傻笑" style="vertical-align: middle;">',
+        '@(扇耳光)' => '<img src="/wp-content/themes/Memory/OwO/alu/扇耳光.png" alt="扇耳光" style="vertical-align: middle;">',
+        '@(深思)' => '<img src="/wp-content/themes/Memory/OwO/alu/深思.png" alt="深思" style="vertical-align: middle;">',
+        '@(锁眉)' => '<img src="/wp-content/themes/Memory/OwO/alu/锁眉.png" alt="锁眉" style="vertical-align: middle;">',
+        '@(投降)' => '<img src="/wp-content/themes/Memory/OwO/alu/投降.png" alt="投降" style="vertical-align: middle;">',
+        '@(吐)' => '<img src="/wp-content/themes/Memory/OwO/alu/吐.png" alt="吐" style="vertical-align: middle;">',
+        '@(吐舌)' => '<img src="/wp-content/themes/Memory/OwO/alu/吐舌.png" alt="吐舌" style="vertical-align: middle;">',
+        '@(吐血倒地)' => '<img src="/wp-content/themes/Memory/OwO/alu/吐血倒地.png" alt="吐血倒地" style="vertical-align: middle;">',
+        '@(无奈)' => '<img src="/wp-content/themes/Memory/OwO/alu/无奈.png" alt="无奈" style="vertical-align: middle;">',
+        '@(无所谓)' => '<img src="/wp-content/themes/Memory/OwO/alu/无所谓.png" alt="无所谓" style="vertical-align: middle;">',
+        '@(无语)' => '<img src="/wp-content/themes/Memory/OwO/alu/无语.png" alt="无语" style="vertical-align: middle;">',
+        '@(喜极而泣)' => '<img src="/wp-content/themes/Memory/OwO/alu/喜极而泣.png" alt="喜极而泣" style="vertical-align: middle;">',
+        '@(献花)' => '<img src="/wp-content/themes/Memory/OwO/alu/献花.png" alt="献花" style="vertical-align: middle;">',
+        '@(献黄瓜)' => '<img src="/wp-content/themes/Memory/OwO/alu/献黄瓜.png" alt="献黄瓜" style="vertical-align: middle;">',
+        '@(想一想)' => '<img src="/wp-content/themes/Memory/OwO/alu/想一想.png" alt="想一想" style="vertical-align: middle;">',
+        '@(小怒)' => '<img src="/wp-content/themes/Memory/OwO/alu/小怒.png" alt="小怒" style="vertical-align: middle;">',
+        '@(小眼睛)' => '<img src="/wp-content/themes/Memory/OwO/alu/小眼睛.png" alt="小眼睛" style="vertical-align: middle;">',
+        '@(邪恶)' => '<img src="/wp-content/themes/Memory/OwO/alu/邪恶.png" alt="邪恶" style="vertical-align: middle;">',
+        '@(咽气)' => '<img src="/wp-content/themes/Memory/OwO/alu/咽气.png" alt="咽气" style="vertical-align: middle;">',
+        '@(阴暗)' => '<img src="/wp-content/themes/Memory/OwO/alu/阴暗.png" alt="阴暗" style="vertical-align: middle;">',
+        '@(赞一个)' => '<img src="/wp-content/themes/Memory/OwO/alu/赞一个.png" alt="赞一个" style="vertical-align: middle;">',
+        '@(长草)' => '<img src="/wp-content/themes/Memory/OwO/alu/长草.png" alt="长草" style="vertical-align: middle;">',
+        '@(中刀)' => '<img src="/wp-content/themes/Memory/OwO/alu/中刀.png" alt="中刀" style="vertical-align: middle;">',
+        '@(中枪)' => '<img src="/wp-content/themes/Memory/OwO/alu/中枪.png" alt="中枪" style="vertical-align: middle;">',
+        '@(中指)' => '<img src="/wp-content/themes/Memory/OwO/alu/中指.png" alt="中指" style="vertical-align: middle;">',
+        '@(肿包)' => '<img src="/wp-content/themes/Memory/OwO/alu/肿包.png" alt="肿包" style="vertical-align: middle;">',
+        '@(皱眉)' => '<img src="/wp-content/themes/Memory/OwO/alu/皱眉.png" alt="皱眉" style="vertical-align: middle;">',
+        '@(装大款)' => '<img src="/wp-content/themes/Memory/OwO/alu/装大款.png" alt="装大款" style="vertical-align: middle;">',
+        '@(坐等)' => '<img src="/wp-content/themes/Memory/OwO/alu/坐等.png" alt="坐等" style="vertical-align: middle;">',
+        '@[啊]' => '<img src="/wp-content/themes/Memory/OwO/paopao/啊.png" alt="啊" style="vertical-align: middle;">',
+        '@[爱心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/爱心.png" alt="爱心" style="vertical-align: middle;">',
+        '@[鄙视]' => '<img src="/wp-content/themes/Memory/OwO/paopao/鄙视.png" alt="鄙视" style="vertical-align: middle;">',
+        '@[便便]' => '<img src="/wp-content/themes/Memory/OwO/paopao/便便.png" alt="便便" style="vertical-align: middle;">',
+        '@[不高兴]' => '<img src="/wp-content/themes/Memory/OwO/paopao/不高兴.png" alt="不高兴" style="vertical-align: middle;">',
+        '@[彩虹]' => '<img src="/wp-content/themes/Memory/OwO/paopao/彩虹.png" alt="彩虹" style="vertical-align: middle;">',
+        '@[茶杯]' => '<img src="/wp-content/themes/Memory/OwO/paopao/茶杯.png" alt="茶杯" style="vertical-align: middle;">',
+        '@[吃瓜]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吃瓜.png" alt="吃瓜" style="vertical-align: middle;">',
+        '@[吃翔]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吃翔.png" alt="吃翔" style="vertical-align: middle;">',
+        '@[大拇指]' => '<img src="/wp-content/themes/Memory/OwO/paopao/大拇指.png" alt="大拇指" style="vertical-align: middle;">',
+        '@[蛋糕]' => '<img src="/wp-content/themes/Memory/OwO/paopao/蛋糕.png" alt="蛋糕" style="vertical-align: middle;">',
+        '@[嘚瑟]' => '<img src="/wp-content/themes/Memory/OwO/paopao/嘚瑟.png" alt="嘚瑟" style="vertical-align: middle;">',
+        '@[灯泡]' => '<img src="/wp-content/themes/Memory/OwO/paopao/灯泡.png" alt="灯泡" style="vertical-align: middle;">',
+        '@[乖]' => '<img src="/wp-content/themes/Memory/OwO/paopao/乖.png" alt="乖" style="vertical-align: middle;">',
+        '@[哈哈]' => '<img src="/wp-content/themes/Memory/OwO/paopao/哈哈.png" alt="哈哈" style="vertical-align: middle;">',
+        '@[汗]' => '<img src="/wp-content/themes/Memory/OwO/paopao/汗.png" alt="汗" style="vertical-align: middle;">',
+        '@[呵呵]' => '<img src="/wp-content/themes/Memory/OwO/paopao/呵呵.png" alt="呵呵" style="vertical-align: middle;">',
+        '@[黑线]' => '<img src="/wp-content/themes/Memory/OwO/paopao/黑线.png" alt="黑线" style="vertical-align: middle;">',
+        '@[红领巾]' => '<img src="/wp-content/themes/Memory/OwO/paopao/红领巾.png" alt="红领巾" style="vertical-align: middle;">',
+        '@[呼]' => '<img src="/wp-content/themes/Memory/OwO/paopao/呼.png" alt="呼" style="vertical-align: middle;">',
+        '@[花心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/花心.png" alt="花心" style="vertical-align: middle;">',
+        '@[滑稽]' => '<img src="/wp-content/themes/Memory/OwO/paopao/滑稽.png" alt="滑稽" style="vertical-align: middle;">',
+        '@[惊恐]' => '<img src="/wp-content/themes/Memory/OwO/paopao/惊恐.png" alt="惊恐" style="vertical-align: middle;">',
+        '@[惊哭]' => '<img src="/wp-content/themes/Memory/OwO/paopao/惊哭.png" alt="惊哭" style="vertical-align: middle;">',
+        '@[惊讶]' => '<img src="/wp-content/themes/Memory/OwO/paopao/惊讶.png" alt="惊讶" style="vertical-align: middle;">',
+        '@[开心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/开心.png" alt="开心" style="vertical-align: middle;">',
+        '@[酷]' => '<img src="/wp-content/themes/Memory/OwO/paopao/酷.png" alt="酷" style="vertical-align: middle;">',
+        '@[狂汗]' => '<img src="/wp-content/themes/Memory/OwO/paopao/狂汗.png" alt="狂汗" style="vertical-align: middle;">',
+        '@[蜡烛]' => '<img src="/wp-content/themes/Memory/OwO/paopao/蜡烛.png" alt="蜡烛" style="vertical-align: middle;">',
+        '@[懒得理]' => '<img src="/wp-content/themes/Memory/OwO/paopao/懒得理.png" alt="懒得理" style="vertical-align: middle;">',
+        '@[泪]' => '<img src="/wp-content/themes/Memory/OwO/paopao/泪.png" alt="泪" style="vertical-align: middle;">',
+        '@[冷]' => '<img src="/wp-content/themes/Memory/OwO/paopao/冷.png" alt="冷" style="vertical-align: middle;">',
+        '@[礼物]' => '<img src="/wp-content/themes/Memory/OwO/paopao/礼物.png" alt="礼物" style="vertical-align: middle;">',
+        '@[玫瑰]' => '<img src="/wp-content/themes/Memory/OwO/paopao/玫瑰.png" alt="玫瑰" style="vertical-align: middle;">',
+        '@[勉强]' => '<img src="/wp-content/themes/Memory/OwO/paopao/勉强.png" alt="勉强" style="vertical-align: middle;">',
+        '@[你懂的]' => '<img src="/wp-content/themes/Memory/OwO/paopao/你懂的.png" alt="你懂的" style="vertical-align: middle;">',
+        '@[怒]' => '<img src="/wp-content/themes/Memory/OwO/paopao/怒.png" alt="怒" style="vertical-align: middle;">',
+        '@[喷]' => '<img src="/wp-content/themes/Memory/OwO/paopao/喷.png" alt="喷" style="vertical-align: middle;">',
+        '@[钱]' => '<img src="/wp-content/themes/Memory/OwO/paopao/钱.png" alt="钱" style="vertical-align: middle;">',
+        '@[钱币]' => '<img src="/wp-content/themes/Memory/OwO/paopao/钱币.png" alt="钱币" style="vertical-align: middle;">',
+        '@[弱]' => '<img src="/wp-content/themes/Memory/OwO/paopao/弱.png" alt="弱" style="vertical-align: middle;">',
+        '@[三道杠]' => '<img src="/wp-content/themes/Memory/OwO/paopao/三道杠.png" alt="三道杠" style="vertical-align: middle;">',
+        '@[沙发]' => '<img src="/wp-content/themes/Memory/OwO/paopao/沙发.png" alt="沙发" style="vertical-align: middle;">',
+        '@[生气]' => '<img src="/wp-content/themes/Memory/OwO/paopao/生气.png" alt="生气" style="vertical-align: middle;">',
+        '@[胜利]' => '<img src="/wp-content/themes/Memory/OwO/paopao/胜利.png" alt="胜利" style="vertical-align: middle;">',
+        '@[手纸]' => '<img src="/wp-content/themes/Memory/OwO/paopao/手纸.png" alt="手纸" style="vertical-align: middle;">',
+        '@[睡觉]' => '<img src="/wp-content/themes/Memory/OwO/paopao/睡觉.png" alt="睡觉" style="vertical-align: middle;">',
+        '@[酸爽]' => '<img src="/wp-content/themes/Memory/OwO/paopao/酸爽.png" alt="酸爽" style="vertical-align: middle;">',
+        '@[太开心]' => '<img src="/wp-content/themes/Memory/OwO/paopao/太开心.png" alt="太开心" style="vertical-align: middle;">',
+        '@[太阳]' => '<img src="/wp-content/themes/Memory/OwO/paopao/太阳.png" alt="太阳" style="vertical-align: middle;">',
+        '@[吐]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吐.png" alt="吐" style="vertical-align: middle;">',
+        '@[吐舌]' => '<img src="/wp-content/themes/Memory/OwO/paopao/吐舌.png" alt="吐舌" style="vertical-align: middle;">',
+        '@[挖鼻]' => '<img src="/wp-content/themes/Memory/OwO/paopao/挖鼻.png" alt="挖鼻" style="vertical-align: middle;">',
+        '@[委屈]' => '<img src="/wp-content/themes/Memory/OwO/paopao/委屈.png" alt="委屈" style="vertical-align: middle;">',
+        '@[捂嘴笑]' => '<img src="/wp-content/themes/Memory/OwO/paopao/捂嘴笑.png" alt="捂嘴笑" style="vertical-align: middle;">',
+        '@[犀利]' => '<img src="/wp-content/themes/Memory/OwO/paopao/犀利.png" alt="犀利" style="vertical-align: middle;">',
+        '@[香蕉]' => '<img src="/wp-content/themes/Memory/OwO/paopao/香蕉.png" alt="香蕉" style="vertical-align: middle;">',
+        '@[小乖]' => '<img src="/wp-content/themes/Memory/OwO/paopao/小乖.png" alt="小乖" style="vertical-align: middle;">',
+        '@[小红脸]' => '<img src="/wp-content/themes/Memory/OwO/paopao/小红脸.png" alt="小红脸" style="vertical-align: middle;">',
+        '@[笑尿]' => '<img src="/wp-content/themes/Memory/OwO/paopao/笑尿.png" alt="笑尿" style="vertical-align: middle;">',
+        '@[笑眼]' => '<img src="/wp-content/themes/Memory/OwO/paopao/笑眼.png" alt="笑眼" style="vertical-align: middle;">',
+        '@[心碎]' => '<img src="/wp-content/themes/Memory/OwO/paopao/心碎.png" alt="心碎" style="vertical-align: middle;">',
+        '@[星星月亮]' => '<img src="/wp-content/themes/Memory/OwO/paopao/星星月亮.png" alt="星星月亮" style="vertical-align: middle;">',
+        '@[呀咩爹]' => '<img src="/wp-content/themes/Memory/OwO/paopao/呀咩爹.png" alt="呀咩爹" style="vertical-align: middle;">',
+        '@[药丸]' => '<img src="/wp-content/themes/Memory/OwO/paopao/药丸.png" alt="药丸" style="vertical-align: middle;">',
+        '@[咦]' => '<img src="/wp-content/themes/Memory/OwO/paopao/咦.png" alt="咦" style="vertical-align: middle;">',
+        '@[疑问]' => '<img src="/wp-content/themes/Memory/OwO/paopao/疑问.png" alt="疑问" style="vertical-align: middle;">',
+        '@[阴险]' => '<img src="/wp-content/themes/Memory/OwO/paopao/阴险.png" alt="阴险" style="vertical-align: middle;">',
+        '@[音乐]' => '<img src="/wp-content/themes/Memory/OwO/paopao/音乐.png" alt="音乐" style="vertical-align: middle;">',
+        '@[真棒]' => '<img src="/wp-content/themes/Memory/OwO/paopao/真棒.png" alt="真棒" style="vertical-align: middle;">',
+        '@[nico]' => '<img src="/wp-content/themes/Memory/OwO/paopao/nico.png" alt="nico" style="vertical-align: middle;">',
+        '@[OK]' => '<img src="/wp-content/themes/Memory/OwO/paopao/OK.png" alt="OK" style="vertical-align: middle;">',
+        '@[what]' => '<img src="/wp-content/themes/Memory/OwO/paopao/what.png" alt="what" style="vertical-align: middle;">'
+    );
+    return strtr($comment_text,$data_OwO);
 }
 add_filter( 'comment_text' , 'comment_add_owo', 20, 2);
      
@@ -1021,24 +1065,24 @@ if($comment_data['comment_type']==''){
 }
 
 // 喜欢功能
-add_action('wp_ajax_nopriv_bigfa_like', 'bigfa_like');
-add_action('wp_ajax_bigfa_like', 'bigfa_like');
-function bigfa_like(){
+add_action('wp_ajax_nopriv_memory_like', 'memory_ding');
+add_action('wp_ajax_memory_like', 'memory_ding');
+function memory_ding(){
     global $wpdb,$post;
     $id = $_POST["um_id"];
     $action = $_POST["um_action"];
     if ( $action == 'ding'){
-    $bigfa_raters = get_post_meta($id,'bigfa_ding',true);
+    $memory_raters = get_post_meta($id,'memory_ding',true);
     $expire = time() + 99999999;
     $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false; // make cookies work with localhost
-    setcookie('bigfa_ding_'.$id,$id,$expire,'/',$domain,false);
-    if (!$bigfa_raters || !is_numeric($bigfa_raters)) {
-        update_post_meta($id, 'bigfa_ding', 1);
+    setcookie('memory_ding_'.$id,$id,$expire,'/',$domain,false);
+    if (!$memory_raters || !is_numeric($memory_raters)) {
+        update_post_meta($id, 'memory_ding', 1);
     }
     else {
-            update_post_meta($id, 'bigfa_ding', ($bigfa_raters + 1));
+            update_post_meta($id, 'memory_ding', ($memory_raters + 1));
         }
-    echo get_post_meta($id,'bigfa_ding',true);
+    echo get_post_meta($id,'memory_ding',true);
     }
     die;
 }
@@ -1084,3 +1128,5 @@ function comment_manage_link($id) {
 	}
 }
 add_filter('edit_comment_link', 'comment_manage_link');
+// 添加链接菜单
+add_filter('pre_option_link_manager_enabled','__return_true');
