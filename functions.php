@@ -147,9 +147,10 @@ function memory_comment($comment, $args, $depth)
 ?>
    <li class="art-comment" id="li-comment-<?php comment_ID(); ?>">
 		<div class="commentator-avatar">
-               	<a href="<?php echo get_comment_author_url(); ?>" target="_blank">
-					<?php if (function_exists('get_avatar') && get_option('show_avatars')) { echo get_avatar($comment, 50); } ?>
-				</a>
+			<?php if (function_exists('get_avatar') && get_option('show_avatars')) { ?>
+               		<a href="<?php echo get_comment_author_url(); ?>" target="_blank">
+				<?php echo get_avatar($comment, 50); } ?>
+			</a>
 			<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
         </div>
         <div class="commentator-comment" id="comment-<?php comment_ID(); ?>">
