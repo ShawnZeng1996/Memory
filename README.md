@@ -16,7 +16,7 @@
 
 ### View
 
-![screenshot](https://github.com/ZengShuai1996/Wordpress-theme-Memory/blob/master/screenshot.png)
+![screenshot](http://on85xlk7u.bkt.clouddn.com/screenshot.png)
 
 ---
 
