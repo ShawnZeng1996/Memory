@@ -278,7 +278,7 @@ $.fn.postLike = function() {
         action = $(this).data('action'),
         rateHolder = $(this).children('.count');
         var ajax_data = {
-            action: "bigfa_like",
+            action: "memory_like",
             um_id: id,
             um_action: action
         };
