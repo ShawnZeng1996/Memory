@@ -10,7 +10,7 @@
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
 
-欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的 Pull Request。
+下载后请修改包名为Memory.zip再进行安装，欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的 Pull Request。
 
 ---
 
