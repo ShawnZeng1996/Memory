@@ -70,6 +70,7 @@ body {
 }
 
 .header-picture-box {
+	position: relative;
 	overflow: hidden;
     max-height: 100vh;
 	box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
@@ -123,7 +124,6 @@ body {
 
 #header {
     width: 100%;
-	position: absolute;
 	top: 0;
 	z-index: 1;
 }
@@ -277,7 +277,7 @@ form#searchform input {
 #main {
     position: relative;
     width: 980px;
-    margin: 90px auto 0;
+    margin: 48px auto 0;
     min-width: 80%;
     max-width: 100%;
     overflow: hidden;
@@ -459,7 +459,8 @@ form#searchform input {
 }
 
 .art, .comment-part {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 1);
+	opacity: .75;
     position: relative;
     border-radius: 15px;
 }
@@ -697,7 +698,7 @@ form#searchform input {
     width: 100%;
     font-family: inherit;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: url(//shawnzeng.com/wp-content/themes/Memory/img/cur/shawn_pointer.ico), pointer !important
 }
 
 .comment-part #comments-area {
@@ -1062,7 +1063,7 @@ form#searchform input {
     transition: all 1s;
 }
 
-.art .art-content a:hover, .art .art-intro a:hover, .commentator-comment .comment-chat .comment-comment a:hover, .art .shuoshuo p a:hover, .art-shuoshuo .shuoshuo p a:hover {
+.art .art-content a:hover, .art .art-intro a:hover, .commentator-comment .comment-chat .comment-comment .edit-link :hover, .art .shuoshuo p a:hover, .art-shuoshuo .shuoshuo p a:hover {
     background: #0bf;
     color: #fff;
 }
@@ -1250,7 +1251,8 @@ form#searchform input {
 .art-shuoshuo .shuoshuo {
     padding: 15px 15px 10px 15px;
     margin-left: 65px;
-    background: rgba(255, 255, 255, .9);
+    background: rgba(255, 255, 255, 1);
+	opacity: .75;
     position: relative;
     border-radius: 15px;
 }
@@ -1399,7 +1401,7 @@ form#searchform input {
 }
 
 #page-nav a, #page-nav .current {
-    width: 25px;
+    padding: 0 5px;
     height: 25px;
     background: #fff;
     text-decoration: none;
@@ -1409,7 +1411,7 @@ form#searchform input {
     line-height: 25px;
     font-size: 16px;
     margin: 0 3px 30px;
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
 #page-nav .page {
@@ -1423,7 +1425,7 @@ form#searchform input {
     font-size: 16px;
     margin: 0 3px 30px;
     padding: 0 3px;
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
 #page-nav .page, #page-nav .page-number, #page-nav .next-page {
@@ -1771,16 +1773,9 @@ input[type=submit], button {
 	font-weight: normal;
 }
 
-@font-face {
-    font-family: 'fontello';
-    src: url('fonts/fontello.eot?18737310');
-    src: url('fonts/fontello.eot?18737310#iefix') format('embedded-opentype'), url('fonts/fontello.woff?18737310') format('woff'), url('fonts/fontello.ttf?18737310') format('truetype'), url('fonts/fontello.svg?18737310#fontello') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .icon-heart:before {
-    font-family: "fontello";
+    font-family: FontAwesome;
+	content: "\f004\ ";
     font-style: normal;
     font-weight: normal;
     speak: none;
@@ -1797,13 +1792,9 @@ input[type=submit], button {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-heart:before {
-    content: '\e803';
-}
-
 .like-vote {
     text-align: center;
-    cursor: pointer;
+    cursor: pointer;  
     padding: 10px 0 4px;
 }
 
@@ -1823,7 +1814,7 @@ input[type=submit], button {
     color: #e51c23;
     font-size: 20px;
     margin-bottom: 10px;
-    cursor: pointer;
+    cursor: pointer;  
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1832,11 +1823,11 @@ input[type=submit], button {
 .like-count {
     color: #e51c23;
     font-size: 30px;
-    cursor: pointer;
+    cursor: pointer;  
 }
 
 .like-count span {
-    cursor: pointer;
+    cursor: pointer;  
 }
 
 @media screen and (min-width: 780px) {
