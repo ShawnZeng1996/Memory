@@ -44,7 +44,7 @@ if(get_option( 'memory_setuptime_month' )!=null) { ?>
             </a>   	
 	<?php }; ?>
     <footer>
-		<link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet"> 
+		<link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/androidstudio.min.css" rel="stylesheet"> 
 		<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>  
 		<script>hljs.initHighlightingOnLoad();</script>  
         <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
