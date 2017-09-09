@@ -158,14 +158,6 @@ function memory_comment($comment, $args, $depth)
                 <span class="commentator-name"><?php printf(__('<strong class="author_name">%s</strong>'), get_comment_author_link()); ?></span>
 				<?php if ($comment->user_id == '1' or $comment->comment_author_email == get_the_author_meta('user_email',1)) {
 						echo '<span class="vip commentator-level">萌萌哒博主</span>';
-					}else if ($comment->comment_author_email == 'me@sucx.cn') {
-						echo '<span class="vip2 commentator-level">传说</span>';
-					}else if ($comment->comment_author_email == 'i@catonisland.cn') {
-						echo '<span class="vip commentator-level">渣渣~</span>';
-					}else if ($comment->comment_author_email == 'k@03k.org') {
-						echo '<span class="vip3 commentator-level">清纯唯美的小王子</span>';
-					}else if ($comment->comment_author_email == '1564646163@qq.com') {
-						echo '<span class="vip5 commentator-level">可靠的🍄</span>';
 					}else{
 						echo get_author_class($comment->comment_author_email,$comment->user_id);
 					}
@@ -192,8 +184,8 @@ function memory_page_navi( $args = array() ){
 		'pages_text'                   => '%CURRENT_PAGE%/%TOTAL_PAGES%',
 		'current_text'                 => '%PAGE_NUMBER%',
 		'page_text'                    => '%PAGE_NUMBER%',
-		'first_text'                   => __( '&laquo; 首页', 'Memory' ),
-		'last_text'                    => __( '尾页 &raquo;', 'Memory' ),
+		'first_text'                   => __( '首页', 'Memory' ),
+		'last_text'                    => __( '尾页', 'Memory' ),
 		'next_text'                    => __( '&raquo;', 'Memory' ),
 		'prev_text'                    => '&laquo;',
 		'dotright_text'                => '...',
@@ -281,38 +273,6 @@ if ( !is_admin() ) {
     add_filter('show_admin_bar', '__return_false');
 }
 
-/* 文章形式拓展
-add_theme_support( 'post-formats', array( 'status' ) );
-// 获取文章类型
-function memory_get_post_format() {
-    $format = get_post_format ();
-    return $format == '' ? 'normal' : $format;
-}
-// 回溯兼容4.7前的版本
-function makewp_exclude_page_templates( $post_templates ) {
-    if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
-        unset( $post_templates['single-status.php'] );
-    }
-    return $post_templates;
-}
-add_filter( 'theme_page_templates', 'makewp_exclude_page_templates' );
-
-add_action('template_include', 'load_single_template');   
-function load_single_template($template) {   
-  $new_template = '';   
-  if( is_single() ) {   
-    global $post;  
-    if (has_post_format( 'shuoshuo' )){
-		$new_template = locate_template(array('single-status.php' ));  
-	} else{
-		$new_template = locate_template(array('single.php' ));  
-	}
- 
-  }   
-  return ('' != $new_template) ? $new_template : $template;   
-}   
- */
-
 // 说说
 function create_shuoshuo() {
     $labels = array(
@@ -356,30 +316,6 @@ function Memory_shuoshuo_sticky (){ ?>
     <input id="super-sticky" name="sticky" type="checkbox" value="sticky" <?php checked( is_sticky() ); ?> /><label for="super-sticky" class="selectit">置顶本条说说</label>
 <?php
 }
-
-/*
-function my_taxonomies_shuoshuo() {
-    $labels = array(
-        'name'              => _x( '说说分类', 'taxonomy 名称' ),
-        'singular_name'     => _x( '说说分类', 'taxonomy 单数名称' ),
-        'search_items'      => __( '搜索说说分类' ),
-        'all_items'         => __( '所有说说分类' ),
-        'parent_item'       => __( '该说说分类的上级分类' ),
-        'parent_item_colon' => __( '该说说分类的上级分类：' ),
-        'edit_item'         => __( '编辑说说分类' ),
-        'update_item'       => __( '更新说说分类' ),
-        'add_new_item'      => __( '添加新的说说分类' ),
-        'new_item_name'     => __( '新说说分类' ),
-        'menu_name'         => __( '说说分类' ),
-    );
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => true,
-    );
-    register_taxonomy( 'shuoshuo_category', 'shuoshuo', $args );
-}
-add_action( 'init', 'my_taxonomies_shuoshuo', 0 );
-*/
 
 /* 页面伪静态化
 function html_page_permalink() {
@@ -673,10 +609,6 @@ function register_shortcodes(){
    add_shortcode('mcode', 'memory_pre');
 }
 add_action( 'init', 'register_shortcodes');
-
-// 禁用文本模式自动添加<p>，<br>标签
-// remove_filter ('the_content', 'wpautop');
-// remove_filter ('comment_text', 'wpautop');
 
 // 百度收录查询/提交
 function d4v($url){
