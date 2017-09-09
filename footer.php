@@ -12,16 +12,15 @@
  */
 if(get_option( 'memory_setuptime_month' )!=null) { ?>
 	<style>
-	#foot, #foot a { color:<?php echo get_option( 'memory_foot_color' ); ?>; }
+		#foot, #foot a { color:<?php echo get_option( 'memory_foot_color' ); ?>; }
 	</style>
 <?php } ?>
 
-<div id="foot">
-        版权所有 © <?php echo get_option( 'memory_copyright' ); ?> <a href="<?php echo get_option( 'siteurl' ); ?>"><?php bloginfo('name'); ?></a> |
-        <a href="http://www.miitbeian.gov.cn"><?php echo get_option( 'memory_beian' ); ?></a> <br/> Theme <a href="https://shawnzeng.com/wordpress-theme-memory.html" target="_blank">Memory</a> By <a href="https://shawnzeng.com" target="_blank">Shawn</a> With <i class="fa fa-heart throb" style="color: #d43f57;"></i> | All Rights Reserved<br/> 
+	<div id="foot">
+        版权所有 © <?php echo get_option( 'memory_copyright' ); ?> <a href="<?php echo get_option( 'siteurl' ); ?>"><?php bloginfo('name'); ?></a> <?php if (get_option( 'memory_beian' )!=null) { ?> |<a href="http://www.miitbeian.gov.cn"><?php echo get_option( 'memory_beian' ); ?></a> <?php } ?><br/> Theme <a href="https://shawnzeng.com/wordpress-theme-memory.html" target="_blank">Memory</a> By <a href="https://shawnzeng.com" target="_blank">Shawn</a> With <i class="fa fa-heart throb" style="color: #d43f57;"></i> | All Rights Reserved<br/> 
         <span class="my-face">(●'◡'●)ﾉ</span>
         本博客已萌萌哒运行了<span id="span_dt_dt"></span>
-</div>
+	</div>
 	<a href="javascript:void(0)" class="go-top">
         <i class="fa fa-rocket fa-2x fa-fw"></i>
     </a>
@@ -39,9 +38,9 @@ if(get_option( 'memory_setuptime_month' )!=null) { ?>
         </div>
     </div>
 	<?php if ( current_user_can( 'manage_options' ) ) { ?> 
-			<a href="/wp-admin" title="" class="fawpadmin">
-                <i class="fa fa-user-secret fa-2x fa-fw"></i>
-            </a>   	
+		<a href="/wp-admin" title="" class="fawpadmin">
+            <i class="fa fa-user-secret fa-2x fa-fw"></i>
+        </a>   	
 	<?php }; ?>
     <footer>
 		<link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/androidstudio.min.css" rel="stylesheet"> 
@@ -71,7 +70,6 @@ if(get_option( 'memory_setuptime_month' )!=null) { ?>
             show_date_time();
         </script>
     </footer>
-<?php wp_footer(); ?>
+	<?php wp_footer(); ?>
 </body>
-
 </html>

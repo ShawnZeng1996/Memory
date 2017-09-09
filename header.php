@@ -129,11 +129,9 @@ Author URI: https://shawnzeng.com
                     <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>
                 </h1>
             </div>
-
             <?php
     			wp_nav_menu( array( 'menu' => '', 'container' => 'nav', 'container_id' => 'menu-main', 'container_class' => 'menu-main', 'echo' => true, 'fallback_cb' => 'wp_page_menu', 'items_wrap' => '<ul>%3$s</ul>', 'depth' => 2 ) );
 			?>
-
         </div>
     </header>
 	<header id="mobile-menu">

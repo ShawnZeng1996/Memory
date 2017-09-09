@@ -1,40 +1,26 @@
 ## Wordpress Theme Memory
 
-[![Version](https://img.shields.io/badge/version-1.0.8-green.svg?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-1.0.6-green.svg?style=flat-square)]()
 [![Author](https://img.shields.io/badge/author-Shawn-blue.svg?style=flat-square)](https://shawnzeng.com)
 
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
 - Description: Theme Memory by Shawn
-- Version: 1.0.8
+- Version: 1.0.6
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
 
-下载后请修改包名为Memory.zip再进行安装，欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的 Pull Request。
+欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的 Pull Request。
 
 ---
 
 ### View
 
-![screenshot](https://github.com/ShawnZeng1996/Wordpress-theme-Memory/blob/master/screenshot.png)
+![screenshot](https://github.com/ZengShuai1996/Wordpress-theme-Memory/blob/master/screenshot.png)
 
 ---
 
 ### Version
-
-#### v1.0.8(2017/9/3)
->1. 修复小工具文章显示数量问题（去除说说）
->2. 说说功能重构，友链添加方式调整
->3. 样式调整
-
-#### v1.0.7(2017/9/2)
->1. 主题设置可选择条带状背景还是图片背景
->2. 分类页面显示各个分类文章，添加分类描述
->3. 搜索样式优化
->4. 前端评论编辑、删除、标记为垃圾评论
->5. 文章内显示上一篇，下一篇文章
->6. 去除head中wordpress版本号
->7. 隐藏面板登陆错误信息
 
 #### v1.0.6(2017/8/27)
 >1. 评论改为交互对话式，部分样式调整
