@@ -65,30 +65,29 @@ get_header(); ?>
 			                </li>
 					<?php if( $post->post_type== 'shuoshuo' ) { ?>
 			                <li>
-			                    <article class="art">
+			                    <article class="art-shuoshuo">
 			                        <div class="shuoshuo">
 			                            <?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 			                            <h4><?php the_author(); ?></h4>
-			                            <p><?php the_excerpt(); ?></p>
+			                            <p><?php the_content(); ?></p>
 			                            <span class="shuoshuo-info">
-			                                <i class="fa fa-clock-o"></i>
-			                                2017-8-3
-			                                &nbsp;•&nbsp;
-			                                <i class="fa fa-commenting-o"></i>
-			                                <?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
+											<i class="iconfont icon-calendar"></i>&nbsp;<?php the_time('Y-n-j H:i') ?>
+											&nbsp;•&nbsp;
+			                                <i class="iconfont icon-comment-1"></i>
+			                                <?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>			
 			                            </span>
 			                            <div class="text-right">
 			                                <span class="art-info-readmore">
 			                                    <a href="<?php the_permalink(); ?>">
-			                                        参与讨论 <i class="fa fa-angle-double-right"></i>
+			                                        参与讨论 <i class="iconfont icon-next"></i>
 			                                    </a>
 			                                </span>
 			                            </div>
 			                        </div>
 			                    </article>
 			                </li>
-						<?php } ?>
 					<?php } ?>
+				<?php } ?>
 				<?php } else { ?>
 					<li>
 						<article class="art">
