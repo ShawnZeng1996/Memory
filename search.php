@@ -25,8 +25,7 @@ get_header(); ?>
 				</li>
 				<?php if ( have_posts() ) { ?>
 					<?php while ( have_posts() ) { the_post(); global $post; ?>
-						<?php $post_format = memory_get_post_format(); ?>
-						<?php if( $post_format != 'status' ) { ?>
+					<?php if( $post->post_type== 'post' ) { ?>
 			                <li>
 			                    <article class="art">
 			                        <div class="art-main">
@@ -64,8 +63,7 @@ get_header(); ?>
 			                        </div>
 			                    </article>
 			                </li>
-						<?php } ?>
-						<?php if( $post_format == 'status' ) { ?>
+					<?php if( $post->post_type== 'shuoshuo' ) { ?>
 			                <li>
 			                    <article class="art">
 			                        <div class="shuoshuo">
