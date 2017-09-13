@@ -107,16 +107,16 @@ function memory_comment($comment, $args, $depth)
 {
    $GLOBALS['comment'] = $comment;
 ?>
-   	<li class="art-comment" id="li-comment-<?php comment_ID(); ?>">
+   <li class="art-comment" id="li-comment-<?php comment_ID(); ?>">
 		<div class="commentator-avatar">
 			<?php if (function_exists('get_avatar') && get_option('show_avatars')) { 
 				if (get_comment_author_url()!=null) { ?>
-				<a href="<?php echo get_comment_author_url(); ?>" target="_blank">
-			<?php } 
+					<a href="<?php echo get_comment_author_url(); ?>" target="_blank">
+				<?php } 
 				echo get_avatar($comment, 50);
 				if (get_comment_author_url()!=null) { ?>
 				</a>
-			<?php } 
+				<?php } 
 				} 
   				comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
         </div>
@@ -139,8 +139,7 @@ function memory_comment($comment, $args, $depth)
                	</div>
             </div>
       	</div>
-    </li>
-<?php } 
+<?php }
 // RSS 中添加查看全文链接防采集
 function feed_read_more($content) {
 	return $content . '<p><a rel="bookmark" href="'.get_permalink().'" target="_blank">查看全文</a></p>';
