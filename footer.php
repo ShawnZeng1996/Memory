@@ -10,7 +10,7 @@
  * @author admin@shawnzeng.com
  * @link https://shawnzeng.com
  */
-if(get_option( 'memory_setuptime_month' )!=null) { ?>
+if(get_option( 'memory_foot_color' )!=null) { ?>
 	<style>
 		#foot, #foot a { color:<?php echo get_option( 'memory_foot_color' ); ?>; }
 	</style>
