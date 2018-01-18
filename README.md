@@ -1,12 +1,12 @@
 ## Wordpress Theme Memory
 
-[![Version](https://img.shields.io/badge/version-1.0.8-green.svg?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-1.0.9-green.svg?style=flat-square)]()
 [![Author](https://img.shields.io/badge/author-Shawn-blue.svg?style=flat-square)](https://shawnzeng.com)
 
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
 - Description: Theme Memory by Shawn
-- Version: 1.0.8
+- Version: 1.0.9
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
 
@@ -21,6 +21,12 @@
 ---
 
 ### Version
+
+#### v1.0.9(2018/1/18)
+>1. 优化do you like me功能
+>2. 添加激活主题自动创建页面功能
+>3. 样式调整
+>4. 后台配置优化
 
 #### v1.0.8(2017/9/3)
 >1. 修复小工具文章显示数量问题（去除说说）
