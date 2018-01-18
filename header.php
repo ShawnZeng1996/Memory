@@ -86,7 +86,7 @@ Author URI: https://shawnzeng.com
 	} else {
 		wp_title('',true);
 	} ?></title>
-    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-3.2.1.min.js"></script>
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	<link id="favicon" href="<?php bloginfo('template_url'); ?>/img/icon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
@@ -97,6 +97,7 @@ Author URI: https://shawnzeng.com
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="<?php echo get_bloginfo('rss2_url'); ?>" />
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="<?php bloginfo('comments_rss2_url'); ?>" />
+	<style><?php if (get_option( 'memory_canvas_or_background' )==1 and get_option( 'memory_background' )!=null ) { ?>body { background-image: url(<?php echo get_option( 'memory_background' ); ?>); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; } <?php } if( get_option( 'memory_user_style' )!=null ) echo get_option( 'memory_user_style' ); if(get_option( 'memory_foot_color' )!=null) { ?> #foot, #foot a { color: <?php echo get_option( 'memory_foot_color' ); ?>!important; } <?php } ?></style>
 	<?php wp_head(); ?>
 </head>
 
@@ -104,15 +105,6 @@ Author URI: https://shawnzeng.com
 	<?php if(get_option( 'memory_canvas_or_background' )==0) { ?>
     	<canvas id="evanyou"></canvas>	
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/canvas.js"></script>
-	<?php } elseif (get_option( 'memory_canvas_or_background' )==1 and get_option( 'memory_background' )!=null ) { ?>
-	<style>
-		body {
-    		background-image: url(<?php echo get_option( 'memory_background' ); ?>);
-    		background-repeat: no-repeat;
-    		background-attachment: fixed;
-    		background-size: cover;*/
-		}
-	</style>
 	<?php } ?>
     <div class="cover"></div>
     <header id="header">
@@ -134,31 +126,37 @@ Author URI: https://shawnzeng.com
 			?>
         </div>
     </header>
-	<header id="mobile-menu">
-        <div class="mobile-menu-img">
-            <img src="<?php echo get_option( 'memory_useravatar' ); ?>">
-            <h1 class="mobile-menu-title"><?php echo get_option( 'memory_username' ); ?></h1>
-            <h2 class="mobile-menu-description"><?php echo get_option( 'memory_mobile_qm' ); ?></h2>
-        </div>
-        <div class="mobile-menu-main">
-            <div class="mobile-menu-container">
-                <?php 
-    				wp_nav_menu( array( 'menu' => '', 'container' => false, 'menu_class' => '', 'menu_id' => 'menu-main', 'echo' => true, 'fallback_cb' => 'wp_page_menu', 'items_wrap' => '<ul>%3$s</ul>', 'depth' => 1 ) );
-				?>
-            </div>
-            <div class="mobile-menu-social">
+	<header id="mobile-menu" <?php if( get_option( 'memory_mobilebck' )!=null ) ?> style="background: url(<?php echo get_option( 'memory_mobilebck' ); ?>) no-repeat;" >
+		<div class="mobile-menu-img">
+			<img src="<?php echo get_option( 'memory_useravatar' ); ?>" />
+			<h1 class="mobile-menu-title"><?php echo get_option( 'memory_username' ); ?></h1>
+			<h2 class="mobile-menu-description"><?php echo get_option( 'memory_mobile_qm' ); ?></h2>
+		</div>
+		<div class="mobile-menu-main">
+			<div class="mobile-menu-container">
+			<?php wp_nav_menu( array( 'menu' => '', 'container' => false, 'menu_class' => '', 'menu_id' => 'menu-main', 'echo' => true, 'fallback_cb' => 'wp_page_menu', 'items_wrap' => '<ul>%3$s</ul>', 'depth' => 1 ) ); ?>
+			</div>
+			<div class="mobile-menu-social">
                 <ul>
-					<li><a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo get_option( 'memory_QQ' ); ?>&site=qq&menu=yes" target="_blank"><i class="fa fa-qq fa-fw"></i></a></li>
-                    <li><a href="<?php echo get_option( 'memory_weibo' ); ?>"><i class="fa fa-weibo fa-fw"></i></a></li>
-                    <li><a href="<?php echo get_option( 'memory_zhihu' ); ?>"><i class="fa" style="font-weight: 500;">知</i></a></li>
-                </ul>
+					<li><a href="<?php echo get_bloginfo('rss2_url'); ?>"><i class="fa fa-rss"></i></a></li>
+					<?php if( get_option('memory_weibo')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_weibo'); ?>" class="external" rel="nofollow"><i class="fa fa-weibo"></i></a></li><?php } ?>
+					<?php if( get_option('memory_github')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_github'); ?>" class="external" rel="nofollow"><i class="fa fa-github"></i></a></li><?php } ?>
+					<li><a href="javascript:void(0)" class="set-view-mode external"><i class="fa fa-moon-o"></i></a></li>
+				</ul>
+				<ul>
+					<?php if( get_option('memory_qqqun')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_qqqun'); ?>" class="external" rel="nofollow"><i class="fa fa-group"></i></a></li><?php } ?>
+					<?php if( get_option('memory_email')!=null ) { ?><li><a target="_blank" href="mailto:<?php echo get_option('memory_email'); ?>" class="external" rel="nofollow"><i class="fa fa-envelope-o"></i></a></li><?php } ?>
+					<?php if( get_option('memory_zhihu')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_zhihu'); ?>" class="external" rel="nofollow"><i style="font-weight:200;">知</i></a></li><?php } ?>
+					<li><a data-balloon="字体切换" data-balloon-pos="up" href="javascript:void(0)" class="set-font-mode external"><i class="fa fa-font"></i></a></li>
+				</ul>
             </div>
         </div>
         <div class="mobile-menu-plur"></div>
 		<div class="mobile-shade"></div>
     </header>
-<?php 
-	if(get_option( 'memory_have_header_picture' ) and get_option( 'memory_header_picture' )!=null ) { ?>
-		<div class="header-picture-box"><div class="header-picture" style="background:url(<?php echo get_option( 'memory_header_picture' ); ?>) center/cover no-repeat;" ></div></div>
-<?php 	} ?>
+	<?php if(get_option( 'memory_have_header_picture' ) and get_option( 'memory_header_picture' )!=null ) { ?>
+		<div class="header-picture-box">
+			<div class="header-picture" style="background:url(<?php echo get_option( 'memory_header_picture' ); ?>) center/cover no-repeat;" ></div>
+		</div>
+	<?php } ?>
     

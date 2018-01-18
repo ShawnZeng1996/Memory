@@ -1,48 +1,33 @@
 <?php
-/**
- * ┌─┐┬ ┬┌─┐┬ ┬┌┐┌┌─┐┌─┐┌┐┌┌─┐ ┌─┐┌─┐┌┬┐
- * └─┐├─┤├─┤││││││┌─┘├┤ ││││ ┬ │  │ ││││
- * └─┘┴ ┴┴ ┴└┴┘┘└┘└─┘└─┘┘└┘└─┘o└─┘└─┘┴ ┴
- *
- * @package WordPress
- * @Theme Memory
- *
- * @author admin@shawnzeng.com
- * @link https://shawnzeng.com
- */
-require_once('../../../wp-load.php' );
-$host="localhost";
-$db_user=get_option('memory_sql_dbu');//用户名
-$db_pass=get_option('memory_sql_dbp');//密码
-$db_name=get_option('memory_sql_dbn');//数据库名
 header("Content-Type: application/json; charset=utf-8");
-
+require('../../../wp-load.php');
 $action = $_GET['action'];
 $id = 1;
 $ip = get_client_ip();
-
-$link=mysqli_connect($host,$db_user,$db_pass,$db_name);
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
 if($action=='add'){
-	likes($id,$ip,$link);
+	likes($id,$ip);
 }else if($action=='get'){
-	echo jsons($id,$link);
+	echo jsons($id);
 } else {
 	exit();
 }
 
-function likes($id,$ip,$link){
-	$ip_sql=mysqli_query($link,"select ip from votes_ip where vid='$id' and ip='$ip'");
-	$count=mysqli_num_rows($ip_sql);
-	if($count==0){//还没有顶过
-		$sql = "update votes set likes=likes+1 where id=".$id;
-		mysqli_query($link,$sql);
-		$sql_in = "insert into votes_ip (vid,ip) values ('$id','$ip')";
-		mysqli_query($link,$sql_in);
-		echo jsons($id,$link);
+global $wpdb;
+function likes($id,$ip){
+	global $wpdb;
+	$likes = $wpdb->get_var($wpdb->prepare("SELECT likes FROM wp_votes_num WHERE ID = %d;",$id)); 
+	$count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM wp_votes_ip WHERE IP = '%s';",$ip));
+	if(0==$count){
+		$likes = $likes+1;
+		$wpdb->update( 'wp_votes_num', 
+			array( 'likes' => $likes ), 
+			array( 'id' => '1' ), 
+			array( '%d' ), 
+			array( '%d' ) 
+		); 
+        $data['ip'] = $ip;
+		$wpdb->insert('wp_votes_ip', $data);
+		echo jsons($id);
 	}else{
 		$msg = 'repeat';
 		$arr['success'] = 0;
@@ -50,14 +35,13 @@ function likes($id,$ip,$link){
 		echo json_encode($arr);
 	}
 }
-
-function jsons($id,$link){
-	$row = mysqli_fetch_array(mysqli_query($link,"select * from votes where id=".$id));
+function jsons($id){
+	global $wpdb;
+	$likes = $wpdb->get_var($wpdb->prepare("SELECT `likes` FROM wp_votes_num WHERE `id` = %d ", $id));
 	$arr['success'] = 1;
-	$arr['like'] = $row['likes'];	
+	$arr['like'] = $likes;	
 	return json_encode($arr);
 }
-
 //获取用户真实IP
 function get_client_ip() {
 	if (getenv("HTTP_CLIENT_IP") && strcasecmp(getenv("HTTP_CLIENT_IP"), "unknown"))

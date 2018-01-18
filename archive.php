@@ -107,27 +107,42 @@ function curPageURL() {
 						<?php if( $post->post_type== 'post' ) { ?>
 			                <li>
 			                    <article class="art">
-			                        <div class="art-main">
-			                            <h3 class="art-title">
-			                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-			                            </h3>
-			                            <div class="art-info">
-			                                <span class="art-info-author">
-			                                    <i class="fa fa-user"></i>&nbsp;<?php the_author(); ?>
-			                                </span>&nbsp;•&nbsp;
+			                        <header class="art-header">
+									<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
+									<div class="right-box">
+										<h3 class="article-author"><?php the_author(); ?>
+											<i class="fa fa-check-circle"></i>
+					 						<span class="normal">发布了一篇<?php if( is_sticky() ) echo '<span>置顶</span>'; ?>文章</span>		
+										</h3>
+										<h3 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark">「<?php the_title(); ?>」</a></h3>
+										<div class="art-info">
 			                                <span class="art-info-date">
-			                                    <i class="fa fa-calendar"></i>&nbsp;<?php the_time('Y-n-j H:i') ?>
+			                                    <i class="fa fa-calendar"></i>&nbsp;<?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . '前'; ?>
+											</span>&nbsp;•&nbsp;
+											<span class="art-info-category">
+												<i class="fa fa-archive"></i>&nbsp;<?php the_category( ', ' ); ?>
 											</span>&nbsp;•&nbsp;
 			                                <span class="art-info-tag">
 			                                    <i class="fa fa-tags"></i>&nbsp;<?php the_tags('', ', ', ''); ?>
-			                                </span>
 			                                </span>&nbsp;•&nbsp;
-			                                <span class="art-info-view">
+											<span class="art-info-view">
 			                                    <i class="fa fa-eye"></i>&nbsp;<?php echo getPostViews(get_the_ID()); ?>
 			                                </span>&nbsp;•&nbsp;
 			                                <span class="art-info-comment">
-			                                    <i class="fa fa-commenting-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
-			                                </span>&nbsp;•&nbsp;
+			                                    <i class="fa fa-comment-o"></i>&nbsp;<?php comments_popup_link('0', '1', '%', '', '评论已关闭'); ?>
+			                                </span>
+			                            </div>
+									</div>
+									</header>
+			                        <div class="art-main">
+			                            <div class="art-content">
+											<?php if ( has_post_thumbnail() ) {
+												the_post_thumbnail();
+											}
+											the_excerpt();
+											?>
+			                            </div>
+			                            <div class="article-info info-index">
 											<span class="post-like">
          										<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if(isset($_COOKIE['memory_ding_'.$post->ID])) echo ' done';?>"><span class="count">
            										<?php if( get_post_meta($post->ID,'memory_ding',true) ){
@@ -137,14 +152,9 @@ function curPageURL() {
                  								}?></span>
         										</a>
  											</span>
-			                            </div>
-			                            <div class="art-content">
-			                                <?php the_excerpt(); ?>
-			                            </div>
-			                            <div class="text-right">
 			                                <span class="art-info-readmore">
 			                                    <a href="<?php the_permalink(); ?>">
-			                                        阅读全文 <i class="fa fa-angle-double-right"></i>
+			                                        <i class="fa fa-ellipsis-h"></i> 阅读全文
 			                                    </a>
 			                                </span>
 			                            </div>

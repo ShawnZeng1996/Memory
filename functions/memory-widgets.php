@@ -26,6 +26,7 @@ if( function_exists( 'register_sidebar_widget' ) ) {
     register_sidebar_widget('Do you like me?','Memory_like');   
 }  
 function Memory_like() { include(TEMPLATEPATH . '/widgets/doyoulikeme.php'); } 
+
 if ( !function_exists( 'Memory_sidebar_posts_list' ) ) :
 	/**
 	 * 边栏文章列表

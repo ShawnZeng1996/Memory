@@ -34,8 +34,12 @@ add_filter( 'wp_mail_from', 'memory_wp_mail_from' );
 // 默认头像
 add_filter( 'avatar_defaults', 'newgravatar' );  
 function newgravatar ($avatar_defaults) {  
-	$myavatar = get_bloginfo('template_directory') . '/img/default.png';
-    $avatar_defaults[$myavatar] = "Memory默认头像";  
+	if( get_option( 'memory_comment_default' )==null ) {
+		$myavatar = get_bloginfo('template_directory') . '/img/60535674_p0_master1200.jpg';
+	} else {
+		$myavatar = get_option( 'memory_comment_default' );
+	}
+    $avatar_defaults[$myavatar] = "Memory"; 
     return $avatar_defaults;  
 }
 // 说说
@@ -194,20 +198,35 @@ function get_author_class($comment_author_email, $user_id){
     global $wpdb;
     $author_count = count($wpdb->get_results(
     "SELECT comment_ID as author_count FROM $wpdb->comments WHERE comment_author_email = '$comment_author_email' "));
-    if($author_count>=1 && $author_count<= 10 )//数字可自行修改，代表评论次数。
-        echo '<span class="vip1 commentator-level">潜水</span>';
-    else if($author_count>=11 && $author_count<= 20)
-        echo '<span class="vip2 commentator-level">冒泡</span>';
-    else if($author_count>=21 && $author_count<= 40)
-        echo '<span class="vip3 commentator-level">吐槽</span>';
-    else if($author_count>=41 && $author_count<= 80)
-        echo '<span class="vip4 commentator-level">活跃</span>';
-    else if($author_count>=81 && $author_count<= 160)
-        echo '<span class="vip5 commentator-level">话唠</span>';
-    else if($author_count>=161 && $author_count<= 320)
-        echo '<span class="vip6 commentator-level">史诗</span>';
-    else if($author_count>=321)
-        echo '<span class="vip7 commentator-level">传说</span>';
+    if($author_count>=1 && $author_count<= 10 ) { //数字可自行修改，代表评论次数。
+        echo '<span class="vip1 commentator-level">';
+		if( get_option('memory_com_vip1')==null ) { echo '潜水'; } else { echo get_option('memory_com_vip1'); }
+		echo '</span>';
+	} else if($author_count>=11 && $author_count<= 20) {
+        echo '<span class="vip2 commentator-level">';
+		if( get_option('memory_com_vip2')==null ) { echo '冒泡'; } else { echo get_option('memory_com_vip2'); }
+		echo '</span>';
+	} else if($author_count>=21 && $author_count<= 40) {
+        echo '<span class="vip3 commentator-level">';
+		if( get_option('memory_com_vip3')==null ){ echo '吐槽'; } else { echo get_option('memory_com_vip3'); }
+		echo '</span>';
+    } else if($author_count>=41 && $author_count<= 80) {
+        echo '<span class="vip4 commentator-level">';
+		if( get_option('memory_com_vip4')==null ){ echo '活跃'; } else { echo get_option('memory_com_vip4'); }
+		echo '</span>';
+    } else if($author_count>=81 && $author_count<= 160) {
+        echo '<span class="vip5 commentator-level">';
+		if( get_option('memory_com_vip5')==null ){ echo '话唠'; } else { echo get_option('memory_com_vip5'); }
+		echo '</span>';
+    } else if($author_count>=161 && $author_count<= 320) {
+        echo '<span class="vip6 commentator-level">';
+		if( get_option('memory_com_vip6')==null ){ echo '史诗'; } else { echo get_option('memory_com_vip6'); }
+		echo '</span>';
+    } else if($author_count>=321) {
+        echo '<span class="vip7 commentator-level">';
+		if( get_option('memory_com_vip7')==null ){ echo '传说'; } else { echo get_option('memory_com_vip7'); }
+		echo '</span>';
+	}
 }
 // 添加编辑器按钮
 add_action('after_wp_tiny_mce', 'add_button_mce');
@@ -611,25 +630,32 @@ function memory_ding(){
     }
     die;
 }
+
 // Do you like me?
 function Memory_doyoulikeme() {
-	$sql_1="CREATE TABLE IF NOT EXISTS `votes` (
-	    `id` int(10) NOT NULL AUTO_INCREMENT,
-	    `likes` int(10) NOT NULL DEFAULT '0',
-	    PRIMARY KEY (`id`)
-	) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-	$sql_3="CREATE TABLE IF NOT EXISTS `votes_ip` (
-	    `id` int(10) NOT NULL AUTO_INCREMENT,
-	    `vid` int(10) NOT NULL,
-	    `ip` varchar(40) NOT NULL,
-	    PRIMARY KEY (`id`)
-	) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-	dbDelta($sql_1);
-	$rows_affected = $wpdb->insert( 'votes', array( 'id' => 1, 'likes' => 0 ));
-	dbDelta($sql_3);
+	global $pagenow;   
+    //判断是否为激活主题页面   
+    if ( 'themes.php' == $pagenow && isset( $_GET['activated'] ) ){   
+		$sql_1="CREATE TABLE IF NOT EXISTS `wp_votes_num` (
+			`id` int(10) NOT NULL AUTO_INCREMENT,
+			`likes` int(10) NOT NULL DEFAULT '0',
+			PRIMARY KEY (`id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
+		$sql_3="CREATE TABLE IF NOT EXISTS `wp_votes_ip` (
+			`id` int(10) NOT NULL AUTO_INCREMENT,
+			`ip` varchar(40) NOT NULL,
+			PRIMARY KEY (`id`)
+		) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
+		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+		dbDelta($sql_1);
+		$data['id'] = '1';
+		$data['likes'] = '0';
+		$wpdb->insert('wp_votes_num', $data);
+		dbDelta($sql_3);
+    }  	
 }
-add_action( 'init', 'Memory_doyoulikeme' );
+add_action( 'load-themes.php', 'Memory_doyoulikeme' );
+
 // 前台评论添加“删除”和“标识为垃圾”链接
 function comment_manage_link($id) {
 	global $comment, $post;
@@ -644,3 +670,17 @@ function comment_manage_link($id) {
 	}
 }
 add_filter('edit_comment_link', 'comment_manage_link');
+
+// py！
+function memory_donate() {
+	if( get_option( 'memory_zhifubao_donate' )!=null or get_option( 'memory_weixin_donate' )!=null ) { 
+		echo '<div class="erweima">';
+		if( get_option( 'memory_zhifubao_donate' )!=null ) {
+			echo '<img  class="zhifubaodonate" src="' . get_option( 'memory_zhifubao_donate' ) . '" /> ';
+		}
+		if( get_option( 'memory_weixin_donate' )!=null ) {
+			echo '<img class="weixindonate" src="' . get_option( 'memory_weixin_donate' ) . '" />';
+		}
+		echo '</div>';
+	}
+}

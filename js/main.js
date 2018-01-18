@@ -11,44 +11,21 @@ $(document).ready(function($) {
     const isMobile = /mobile/i.test(window.navigator.userAgent);
 
     //------------------手机端菜单点击显示与隐藏------------------
-    var mobile_menu_click = 0;
-    //菜单展开
-    function menu_expand() {
-        if (mobile_menu_click == 0) {
-            $("#mobile-menu").animate({
-                left: "0"
-            }, 500);
-            $("#header,#main,#foot,.header-picture-box").animate({
-                left: "60%"
-            }, 500);
-          	$(".mobile-shade").css("display","block");
-            mobile_menu_click++;
-        }
-    }
-    //菜单收起
-    function menu_close() {
-        if (mobile_menu_click == 1) {
-            $("#mobile-menu").animate({
-                left: "-60%"
-            }, 500);
-            $("#header,#main,#foot,.header-picture-box").animate({
-                left: "0"
-            }, 500);
-          	$(".mobile-shade").css("display","none");
-            mobile_menu_click--;
-        }
-    }
-    //监听事件
+  	//监听事件
     $("#menu-bar").click(
         function() {
-            if (mobile_menu_click == 0) {
-                menu_expand()
-            } else {
-                menu_close()
-            }
+            $("#header,#main,#foot,.header-picture-box").toggleClass("mobile-left");
+          	$("#mobile-menu").toggleClass("mobile-normal");
+          	$(".mobile-shade").toggleClass("mobile-show");
         }
-    )
-    $(".mobile-shade").click(menu_close)
+    );
+  	$(".mobile-shade").click(
+        function() {
+            $("#header,#main,#foot").removeClass("mobile-left");
+          	$("#mobile-menu").removeClass("mobile-normal");
+          	$(".mobile-shade").removeClass("mobile-show");
+        }
+    );
   
     //------------------搜索按钮点击显示与隐藏------------------
     $("#menu-search").click(function() {
@@ -60,37 +37,12 @@ $(document).ready(function($) {
     $("#menu-search, #searchform").click(function(){
       	event.stopPropagation();
     });
-  
-  	// ------------------模式切换------------------
-  	var toolbar_click = 0;
-    //菜单展开
-    function toolbar_expand() {
-        if (toolbar_click == 0) {
-            $(".toolbar").animate({
-                right: "0"
-            }, 500);
-            toolbar_click++;
-        }
-    }
-    //菜单收起
-    function toolbar_close() {
-        if (toolbar_click == 1) {
-            $(".toolbar").animate({
-                right: "-100px"
-            }, 500);
-            toolbar_click--;
-        }
-    }
-    //监听事件
-    $(".toolbarl-expand").click(
-        function() {
-            if (toolbar_click == 0) {
-                toolbar_expand()
-            } else {
-                toolbar_close()
-            }
-        }
-    )
+  	$(".share").click(function() {
+    	$(".social-share").stop().slideToggle();
+    });
+  	$(".dashang").click(function() {
+    	$(".erweima").stop().slideToggle();
+    });
 
     //------------------回到顶部------------------
     $(".go-top").hide()
@@ -115,17 +67,17 @@ $(document).ready(function($) {
     btn_nightmode = $('.set-view-mode');
     if (sessionStorage.nightmode == "night") {
         $('body').addClass('night-mode');
-        btn_nightmode.find('i').attr('class', 'fa fa-sun-o fa-2x fa-fw');
+        btn_nightmode.find('i').attr('class', 'fa fa-sun-o fa-fw');
     }
     btn_nightmode.click(function() {
         var next_mode = $('body').hasClass('night-mode') ? 'day' : 'night';
         if (next_mode != 'day') {
             $('body').addClass('night-mode');
-            btn_nightmode.find('i').attr('class', 'fa fa-sun-o fa-2x fa-fw');
+            btn_nightmode.find('i').attr('class', 'fa fa-sun-o fa-fw');
             sessionStorage.nightmode = "night";
         } else {
             $('body').removeClass('night-mode');
-            btn_nightmode.find('i').attr('class', 'fa fa-moon-o fa-2x fa-fw');
+            btn_nightmode.find('i').attr('class', 'fa fa-moon-o fa-fw');
             sessionStorage.nightmode = "day";
         }
     });
@@ -144,36 +96,7 @@ $(document).ready(function($) {
             $('body').removeClass('other-font');
             sessionStorage.font = "normal-font";
         }
-    });
-  
-  	//------------------存档页面jQuery伸缩------------------
-    (function(){
-        $('#al_expand_collapse,#archives span.al_mon').css({cursor:"s-resize"});
-        $('#archives span.al_mon').each(function(){
-            var num=$(this).next().children('li').size();
-            var text=$(this).text();
-            $(this).html(text+' ('+num+'篇文章)');
-        });
-        var $al_post_list=$('#archives ul.al_post_list'),
-            $al_post_list_f=$('#archives ul.al_post_list:first');
-        $al_post_list.hide(1,function(){
-            $al_post_list_f.show();
-        });
-        $('#archives span.al_mon').click(function(){
-            $(this).next().slideToggle(400);
-            return false;
-        });
-      	var al_expand_collapse_click=0;
-        $('#al_expand_collapse').click(function(){
-          	if (al_expand_collapse_click == 0){
-              	$al_post_list.show();
-              	al_expand_collapse_click++;
-            }else if (al_expand_collapse_click == 1){
-              	$al_post_list.hide();
-              	al_expand_collapse_click--;
-            }
-        });
-    })(); 
+    }); 
   
 	// do you like me?
   	$.getJSON("/wp-content/themes/Memory/like.php?action=get", function (data) {

@@ -31,10 +31,10 @@
 			<div class="OwO"></div>
 	          	<div id="comment-info">
 				<?php if ( !is_user_logged_in() ) : ?>
-	               	<input type="text" name="author" value="" class="text-input" id="comment-author" placeholder="昵称 *">
-	               	<input type="text" name="email" value="" class="text-input" id="comment-email" placeholder="邮箱 *">
+	               	<input type="text" name="author" value="<?php if (isset($_COOKIE['comment_author_'.COOKIEHASH])) {$comment_author = $_COOKIE['comment_author_'.COOKIEHASH];echo $comment_author;} ?>" class="text-input" id="comment-author" placeholder="昵称 *">
+	               	<input type="text" name="email" value="<?php if (isset($_COOKIE['comment_author_email_'.COOKIEHASH])) {$comment_author_email = $_COOKIE['comment_author_email_'.COOKIEHASH];echo $comment_author_email;} ?>" class="text-input" id="comment-email" placeholder="邮箱 *">
 					<br/>
-	              	<input type="text" name="url" value="" class="text-input" id="comment-url" placeholder="网址">
+	              	<input type="text" name="url" value="<?php if (isset($_COOKIE['comment_author_url_'.COOKIEHASH])) {$comment_author_url = $_COOKIE['comment_author_url_'.COOKIEHASH];echo $comment_author_url;} ?>" class="text-input" id="comment-url" placeholder="网址">
 					<?php Memory_protection_math();?>
 	          	<?php else : ?>
 					<p>您已登录:<a class="have-login-name" href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a class="log-out-now" href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录"><i class="fa fa-sign-out"></i> 退出</a></p>
@@ -46,8 +46,8 @@
 			<?php comment_id_fields(); ?>
 	    	<?php do_action('comment_form', $post->ID); ?>
 	  	</form>
-		<script type="text/javascript" src="//shawnzeng.com/wp-content/themes/Memory/js/OwO.min.js"></script>
-		<script src="//shawnzeng.com/wp-content/themes/Memory/js/activate-power-mode.js" charset="utf-8"></script>
+		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/OwO.min.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/activate-power-mode.js"></script>
 		<script>
         	var OwO_demo = new OwO({
             	logo: 'OωO表情',
