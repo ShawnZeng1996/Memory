@@ -4,7 +4,7 @@
 		<div class='like-vote'>
 			<p class='like-title'>Do you like me?</p>
 			<div class='like-count'>
-				<i class="demo-icon icon-heart"></i><span></span>
+				<i class="demo-icon fa fa-heart"></i><span></span>
             </div>
         </div>
 	</div>
