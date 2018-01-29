@@ -1532,8 +1532,8 @@ art .art-content img, .shuoshuo .shuoshuo-content img {
     color: #000;
     line-height: 25px;
     font-size: 16px;
-	font-size: 1rem;
-    margin: 0 3px 30px;
+    font-size: 1rem;
+    margin: 0 3px;
 }
 
 #page-nav .page {
@@ -1568,10 +1568,11 @@ art .art-content img, .shuoshuo .shuoshuo-content img {
     text-align: center;
     clear: both;
     position: relative;
-	left: 0;
+    left: 0;
     overflow: hidden;
     margin-bottom: 20px;
-	transition: 1s;
+    transition: 1s;
+    padding-top: 30px;
 }
 
 #foot, #foot a {
