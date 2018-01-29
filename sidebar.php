@@ -13,8 +13,6 @@
 						<?php if( get_option('memory_weibo')!=null ) { ?><a data-balloon="微博" data-balloon-pos="up" target="_blank" href="<?php echo get_option('memory_weibo'); ?>" class="external" rel="nofollow"><i class="fa fa-weibo"></i></a><?php } ?>
 						<?php if( get_option('memory_github')!=null ) { ?><a data-balloon="GitHub" data-balloon-pos="up" target="_blank" href="<?php echo get_option('memory_github'); ?>" class="external" rel="nofollow"><i class="fa fa-github"></i></a><?php } ?>
 						<a data-balloon="日/夜间模式" data-balloon-pos="up" href="javascript:void(0)" class="set-view-mode external"><i class="fa fa-moon-o"></i></a>
-					</div>
-					<div>
 						<?php if( get_option('memory_qqqun')!=null ) { ?><a data-balloon="点击加入QQ群" data-balloon-pos="up" target="_blank" href="<?php echo get_option('memory_qqqun'); ?>" class="external" rel="nofollow"><i class="fa fa-group"></i></a><?php } ?>
 						<?php if( get_option('memory_email')!=null ) { ?><a data-balloon="Email" data-balloon-pos="up" target="_blank" href="mailto:<?php echo get_option('memory_email'); ?>" class="external" rel="nofollow"><i class="fa fa-envelope-o"></i></a><?php } ?>
 						<?php if( get_option('memory_zhihu')!=null ) { ?><a data-balloon="知乎" data-balloon-pos="up" target="_blank" href="<?php echo get_option('memory_zhihu'); ?>" class="external" rel="nofollow"><i  style="font-weight:200;">知</i></a><?php } ?>
