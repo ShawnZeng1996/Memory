@@ -1470,12 +1470,14 @@ art .art-content img, .shuoshuo .shuoshuo-content img {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+    min-width: 20%;
 }
 
 .art .catch-me div {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .art .catch-me i {
