@@ -684,14 +684,3 @@ function memory_donate() {
 		echo '</div>';
 	}
 }
-
-//自动创建页面
-function memory_add_pages() {   
-    global $pagenow;   
-    //判断是否为激活主题页面   
-    if ( 'themes.php' == $pagenow && isset( $_GET['activated'] ) ){
-        memory_add_page('分类','category','memory-category.php'); //页面标题、别名、页面模板  
-        memory_add_page('友情链接','friend-link','friend-link.php');
-        memory_add_page('时光轴','timeline','archives.php');
-    }   
-}

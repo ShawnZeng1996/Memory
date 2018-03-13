@@ -20,12 +20,13 @@ get_header();
 						<?php if( $post->post_type== 'post' ) { ?>
 			                <li>
 			                    <article class="art">
+									<?php if( is_sticky() ) echo '<div class="set-top"><div><i class="fa fa-thumb-tack"></i></div></div>'; ?>
 									<header class="art-header">
 									<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 									<div class="right-box">
 										<h3 class="article-author"><?php the_author(); ?>
-					 						<i class="fa fa-check-circle"></i>	
-					 						<span class="normal">发布了一篇文章</span>	<?php if( is_sticky() ) echo '<span>[置顶]</span>'; ?>	
+											<i class="fa fa-vcard"></i>
+					 						<span class="normal">发布了一篇文章</span>		
 										</h3>
 										<h3 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark">「<?php the_title(); ?>」</a></h3>
 										<div class="art-info">
@@ -76,11 +77,12 @@ get_header();
 						<?php if( $post->post_type== 'shuoshuo') { ?>
 			                <li>
 			                    <article class="shuoshuo">
+									<?php if( is_sticky() ) echo '<div class="set-top"><div><i class="fa fa-thumb-tack"></i></div></div>'; ?>
 									<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 									<div class="right-box">
 			                            <h3 class="shuoshuo-author"><?php the_author(); ?>
-					 					<i class="fa fa-check-circle"></i>	
-					 					<span class="normal">发布了一条说说</span><?php if( is_sticky() ) echo '<span>[置顶]</span>'; ?>			
+					 					<i class="fa fa-vcard"></i>
+					 					<span class="normal">发布了一条说说</span>
 										</h3>
 										<span class="shuoshuo-publish">
 											<span class="shuoshuo-time">

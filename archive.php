@@ -111,7 +111,7 @@ function curPageURL() {
 									<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 									<div class="right-box">
 										<h3 class="article-author"><?php the_author(); ?>
-											<i class="fa fa-check-circle"></i>
+											<i class="fa fa-vcard"></i>
 					 						<span class="normal">发布了一篇<?php if( is_sticky() ) echo '<span>置顶</span>'; ?>文章</span>		
 										</h3>
 										<h3 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark">「<?php the_title(); ?>」</a></h3>

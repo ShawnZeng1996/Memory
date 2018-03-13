@@ -24,15 +24,15 @@ if(get_option( 'memory_foot_color' )!=null) { ?>
 	<a href="javascript:void(0)" class="go-top"><i class="fa fa-paper-plane fa-fw"></i></a>
 	<?php if ( current_user_can( 'manage_options' ) ) { ?> 
 		<a href="/wp-admin" title="" class="fawpadmin">
-            <i class="fa fa-user-secret fa-fw"></i>
+            <i class="fa fa-tachometer fa-fw"></i>
         </a>   	
 	<?php }; ?>
     <footer>
 		<link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/xcode.min.css" rel="stylesheet">
 		<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>  
-        <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
-		<script src="<?php bloginfo('template_url'); ?>/js/jquery.share.min.js" charset="utf-8"></script>
+        <script src="<?php bloginfo('template_url'); ?>/js/main.js?ver=<?php echo wp_get_theme()->get('Version'); ?>"></script>
+		<script src="<?php bloginfo('template_url'); ?>/js/jquery.share.min.js?ver=<?php echo wp_get_theme()->get('Version'); ?>" charset="utf-8"></script>
       	<script>
             //------------------本博客已萌萌哒运行了……------------------
             function show_date_time() {

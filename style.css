@@ -5,7 +5,7 @@
  * Theme Name: Memory
  * Theme URI: https://shawnzeng.com
  * Description: Theme Memory by Shawn
- * Version: 1.0.9
+ * Version: 1.1.0
  * Author: Shawn
  * Author URI: https://shawnzeng.com
  * Tags: Memory, Shawn, Wordpress
@@ -33,8 +33,6 @@ html, body, * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -webkit-font-smoothing: antialiased; /*chrome、safari*/
-    -moz-osx-font-smoothing: grayscale;/*firefox*/
 }
 
 html, body {
@@ -44,13 +42,22 @@ html, body {
 
 body {
     color: black;
-    font-size: 14px;
-	font-size: 0.875rem;
+	font-size: 13px;
+    font-size: 0.8125rem;
 	line-height: 25px;
 	line-height: 1.625rem;
-	font-family: Helvetica Neue, Helvetica, PingFang SC, Avenir Next, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
 	background: #f3f3f3;
     overflow-x: hidden;
+}
+
+a:focus {
+	outline: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #333;
 }
 
 #canvas {
@@ -63,7 +70,11 @@ body {
 }
 
 .other-font {
-    font: 13px/25px rst, PingFang TC, Avenir Next, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    font-size: 15px;
+    font-size: 0.9375rem;
+    line-height: 25px;
+    line-height: 1.625rem;
+    font-family: Helvetica Neue, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
 }
 
 .night-mode .cover {
@@ -197,8 +208,8 @@ body {
     z-index: -1;
 }
 
-.fa-check-circle {
-	color: #0f88eb;
+.fa-vcard {
+	color: rgb(15, 136, 235);
 }
 
 #header {
@@ -207,7 +218,7 @@ body {
 	position: fixed;
     top: 0;
     z-index: 1;
-	transition: 1s;
+	transition: 0.5s;
 	border-bottom: 1px solid rgba(30, 35, 42, .06);
 	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -245,7 +256,7 @@ form#searchform {
 form#searchform:before {
     position: absolute;
     top: -7px;
-    left: 130px;
+    left: 170px;
     width: 0;
     height: 0;
     content: '';
@@ -253,6 +264,32 @@ form#searchform:before {
     border-width: 0px 7px 7px 7px;
     z-index: 1;
     border-color: #fff transparent;
+}
+
+form#searchform:after {
+    position: absolute;
+    top: -7px;
+    left: 170px;
+    width: 0;
+    height: 0;
+    content: '';
+    border-style: solid;
+    border-width: 0px 7px 7px 7px;
+    z-index: 1;
+    border-color: #fff transparent;
+}
+
+form#searchform:after {
+    position: absolute;
+    top: -8px;
+    left: 169px;
+    width: 0;
+    height: 0;
+    content: '';
+    border-style: solid;
+    border-width: 0px 8px 8px 8px;
+    z-index: -1;
+    border-color: #e0cdcd transparent;
 }
 
 form#searchform input {
@@ -268,7 +305,7 @@ form#searchform input {
 
 #mobile-menu {
     display: none;
-	transition: 1s;
+	transition: 0.5s;
 }
 
 #menu ul {
@@ -337,7 +374,7 @@ form#searchform input {
     float: right;
     display: inline-block;
     margin-right: 10px;
-    color: white;
+    color: #635f5f;
     line-height: 42px;
     padding-top: 8px;
 }
@@ -380,11 +417,11 @@ form#searchform input {
     position: relative;
     width: 980px;
     margin: 50px auto 0;
-    min-width: 80%;
+    min-width: 60%;
     max-width: 100%;
     overflow: initial;
 	left: 0;
-	transition: 1s;
+	transition: 0.5s;
 }
 
 .center {
@@ -598,6 +635,56 @@ form#searchform input {
 .art-main.art-archive p,
 .art-main.art-archive ul {
 	padding: 0 15px;
+}
+
+.set-top {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+}
+
+.set-top>div {
+    line-height: 18px;
+    text-align: center;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    position: relative;
+    padding: 3px 0;
+    top: 12px;
+    width: 113px;
+    background-color: rgb(15, 136, 235);
+    color: #fff;
+    -webkit-box-shadow: -3px 5px 6px -5px rgba(0, 0, 0, .5);
+    box-shadow: -3px 5px 6px -5px rgba(0, 0, 0, .5);
+}
+
+.set-top>div:before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 100%;
+    z-index: -1;
+    border-left: 4px solid rgb(15, 136, 235);
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid rgb(15, 136, 235);
+}
+
+.set-top>div:after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 100%;
+    z-index: -1;
+    border-left: 4px solid transparent;
+    border-right: 4px solid rgb(15, 136, 235);
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid rgb(15, 136, 235);
 }
 
 .art .share {
@@ -1380,127 +1467,51 @@ art .art-content img, .shuoshuo .shuoshuo-content img {
 	margin-bottom: 10px;
 }
 
-.art .card-bg img {
-	width: 100%;
-	height: auto;
-	width: 100%;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+.art #user-card {
+	position: relative;
+    padding: 15px 20px;
 }
 
-
-.art .card-info-avatar {
-	width: 35%;
-	max-width: 100%;
-	border-radius: 8px;
-	border: 3px solid #f3f3f3;
-	margin-left: 5%;
-	margin-top: -20px;
-	float: left;
+.art #user-card .card-user-name {
+	width: 60%;
+    font-size: 18px;
+	font-weight: bold;
 }
 
-.art .card-info-avatar:hover {
-	-webkit-animation: profilepic 0.15s linear infinite alternate;
-	-moz-animation: profilepic 0.15s linear infinite alternate;
-	-ms-animation: profilepic 0.15s linear infinite alternate;
-	animation: profilepic 0.15s linear infinite alternate;
+.art #user-card .card-user-des {
+	width: 60%;
+    font-size: 14px;
+	color: #333;
 }
 
-.art .card-info-block {
-	margin-left: 45%;
+.art #user-card .card-user-avatar {
+	width: 60px;
+	height: 60px;
     display: block;
-	font-size: 16px;
-	font-size: 1rem;
-}	
-
-.art .card-info-name {
-	font-weight: 700;
-	font-size: 16px;
-	font-size: 1rem;
+    border-radius: 5px;
+    border: 3px solid #f3f3f3;
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
-.art .left-pic {
-    float: left;
-    padding: 5px 8px 5px 0;
-    width: 40%;
-    text-align: center;
+.art #user-card .card-user-contact {
+	width: 60%;
 }
 
-.art .right-info {
-    width: 60%;
-    float: right;
-    display: block;
-    padding: 8px 0 5px 0;
-    text-align: left;
-    line-height: 20px;
+.art #user-card .card-user-contact a {	
+	display: inline-block;
+    width: 20px;
+	min-width: 18%;
+	color: grey;
 }
 
-.art .right-info ul {
-    list-style: none;
+.art #user-card .card-user-contact a[data-balloon]:after, .art #user-card .card-user-contact a[data-balloon]:before {
+	left: 25%;
 }
 
-.art .right-info ul li {
-    border-bottom: 1px dotted rgba(0, 0, 0, .5);
-}
-
-.art .right-info ul li span {
-    color: rgba(0, 0, 0, .5);
-    font-weight: bold;
-}
-
-.art .left-pic img {
-    width: 100px;
-    max-width: 100%;
-    padding: 2px;
-}
-
-.art .catch-me {
-    clear: both;
-    padding-top: 7px;
-}
-
-.art .catch-me, .art .catch-me a {
-    text-align: center
-}
-
-.art .catch-me a {
-    display: inline-block;
-    margin-bottom: 7px;
-    text-decoration: none;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-	width: 20%;
-    min-width: 20%;
-    max-width: 20%;
-}
-
-.art .catch-me div {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.art .catch-me i {
-    display: inline-block;
-    font-size: 20px;
-	font-size: 1.25rem;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 40px;
-    color: rgba(0, 0, 0, .5);
-    background-color: rgba(0, 0, 0, .1);
-    -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    font-style: normal
-}
-
-.art .catch-me i:hover {
-    background-color: #0bf;
-    color: #fff
+.art #user-card .card-user-contact a:hover {	
+	color: #000;
 }
 
 .art .art-widget-header {
@@ -1537,8 +1548,8 @@ art .art-content img, .shuoshuo .shuoshuo-content img {
     color: #000;
     line-height: 25px;
     font-size: 16px;
-    font-size: 1rem;
-    margin: 0 3px;
+	font-size: 1rem;
+    margin: 0 3px 30px;
 }
 
 #page-nav .page {
@@ -1573,11 +1584,10 @@ art .art-content img, .shuoshuo .shuoshuo-content img {
     text-align: center;
     clear: both;
     position: relative;
-    left: 0;
+	left: 0;
     overflow: hidden;
-    margin-bottom: 20px;
-    transition: 1s;
-    padding-top: 30px;
+    transition: 0.5s;
+	padding: 30px 0 20px;
 }
 
 #foot, #foot a {
@@ -1984,6 +1994,7 @@ input[type=submit], button {
         float: left;
         display: inline-block;
         margin-left: 10px;
+		margin-top: 7px;
         color: #635f5f;
         line-height: 42px;
     }
@@ -2023,13 +2034,13 @@ input[type=submit], button {
         display: block;
         width: 60%!important;
         background: url('img/mobile_bg.jpg') no-repeat;
-        background-size: cover;
+		background-size: cover;
+		background-position: top center;
         height: 100%;
         z-index: 1;
         left: -60%;
         top: 0;
         overflow: hidden;
-        background-position: top center;
     }
     #mobile-menu .mobile-menu-img {
         padding: 22px 15px 20px 15px;
@@ -2116,7 +2127,11 @@ input[type=submit], button {
         height: 100%;
         z-index: 5;
         display: none;
-		transition: 1s;
+		transition: 0.5s;
+		-webkit-tap-highlight-color: transparent;
+    	-webkit-touch-callout: none;
+    	-webkit-user-select: none;
+    	user-select:none;
     }
     .commentator-comment .comment-reply-link {
         display: inline-block;

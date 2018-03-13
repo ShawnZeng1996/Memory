@@ -86,14 +86,14 @@ Author URI: https://shawnzeng.com
 	} else {
 		wp_title('',true);
 	} ?></title>
-    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-3.2.1.min.js?ver=<?php echo wp_get_theme()->get('Version'); ?>"></script>
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	<link id="favicon" href="<?php bloginfo('template_url'); ?>/img/icon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>?ver=<?php echo wp_get_theme()->get('Version'); ?>">
 	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/balloon-css/0.4.0/balloon.min.css" />
-    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/share.min.css">
-    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/OwO.min.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/share.min.css?ver=<?php echo wp_get_theme()->get('Version'); ?>">
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/OwO.min.css?ver=<?php echo wp_get_theme()->get('Version'); ?>">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="<?php echo get_bloginfo('rss2_url'); ?>" />
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="<?php bloginfo('comments_rss2_url'); ?>" />
@@ -113,7 +113,7 @@ Author URI: https://shawnzeng.com
                 <i class="fa fa-bars fa-2x"></i>
             </a>
 			<a id="menu-search">
-                <i class="fa fa-search fa-2x"></i>
+                <i class="fa fa-search fa-2x" style="font-weight: lighter;"></i>
             </a>
 			<?php get_search_form(); ?>
             <div id="menu-logo">
@@ -126,9 +126,9 @@ Author URI: https://shawnzeng.com
 			?>
         </div>
     </header>
-	<header id="mobile-menu" <?php if( get_option( 'memory_mobilebck' )!=null ) ?> style="background: url(<?php echo get_option( 'memory_mobilebck' ); ?>) no-repeat;" >
+	<header id="mobile-menu" <?php if( get_option( 'memory_mobilebck' )!=null ) { ?> style="background: url(<?php echo get_option( 'memory_mobilebck' ); ?>) no-repeat;background-size: cover;background-position: top center;" <?php } ?> >
 		<div class="mobile-menu-img">
-			<img src="<?php echo get_option( 'memory_useravatar' ); ?>" />
+			<img src="<?php if(get_option( 'memory_useravatar' )!=null) { echo get_option( 'memory_useravatar' ); } else { ?>wp-content/themes/Memory/img/default.png<?php } ?>" alt="头像" />
 			<h1 class="mobile-menu-title"><?php echo get_option( 'memory_username' ); ?></h1>
 			<h2 class="mobile-menu-description"><?php echo get_option( 'memory_mobile_qm' ); ?></h2>
 		</div>
@@ -136,12 +136,12 @@ Author URI: https://shawnzeng.com
 			<div class="mobile-menu-container">
 			<?php wp_nav_menu( array( 'menu' => '', 'container' => false, 'menu_class' => '', 'menu_id' => 'menu-main', 'echo' => true, 'fallback_cb' => 'wp_page_menu', 'items_wrap' => '<ul>%3$s</ul>', 'depth' => 1 ) ); ?>
 			</div>
-			<div class="mobile-menu-social">
+			<!--div class="mobile-menu-social">
                 <ul>
-					<li><a href="<?php echo get_bloginfo('rss2_url'); ?>"><i class="fa fa-rss"></i></a></li>
 					<?php if( get_option('memory_weibo')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_weibo'); ?>" class="external" rel="nofollow"><i class="fa fa-weibo"></i></a></li><?php } ?>
 					<?php if( get_option('memory_github')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_github'); ?>" class="external" rel="nofollow"><i class="fa fa-github"></i></a></li><?php } ?>
 					<li><a href="javascript:void(0)" class="set-view-mode external"><i class="fa fa-moon-o"></i></a></li>
+					<?php if( get_option('memory_QQ')!=null ) { ?><li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo get_option('memory_QQ'); ?>&site=qq&menu=yes" class="external" rel="nofollow"><i class="fa fa-qq"></i></a></li><?php } ?>
 				</ul>
 				<ul>
 					<?php if( get_option('memory_qqqun')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_qqqun'); ?>" class="external" rel="nofollow"><i class="fa fa-group"></i></a></li><?php } ?>
@@ -149,7 +149,7 @@ Author URI: https://shawnzeng.com
 					<?php if( get_option('memory_zhihu')!=null ) { ?><li><a target="_blank" href="<?php echo get_option('memory_zhihu'); ?>" class="external" rel="nofollow"><i style="font-weight:200;">知</i></a></li><?php } ?>
 					<li><a data-balloon="字体切换" data-balloon-pos="up" href="javascript:void(0)" class="set-font-mode external"><i class="fa fa-font"></i></a></li>
 				</ul>
-            </div>
+            </div-->
         </div>
         <div class="mobile-menu-plur"></div>
 		<div class="mobile-shade"></div>

@@ -19,11 +19,11 @@ function memory_add_menus() {
 }
 
 function memory_menu() { ?>
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/config.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/config.css?ver=<?php echo wp_get_theme()->get('Version'); ?>">
 	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery-3.2.1.min.js"></script>
 	<div class="wrap">
 		<h2>	
-			<span id="theme-name">Memory V1.0.9</span>
+			<span id="theme-name">Memory V<?php echo wp_get_theme()->get('Version'); ?></span>
 			<span id="theme-welcome">欢迎使用Wordpress主题Memory！</span>
 		</h2>
 		<ul id="config-menu">
@@ -39,9 +39,8 @@ function memory_menu() { ?>
 		//基本信息
     	memory_up_or_del('memory_username');//博主昵称
     	memory_up_or_del('memory_useravatar');//博主头像地址
-    	memory_up_or_del('memory_cardbck');//名片背景
     	memory_up_or_del('memory_mobilebck');//手机侧边背景
-    	memory_up_or_del('memory_mobile_qm');//移动端签名
+    	memory_up_or_del('memory_mobile_qm');//签名
 		memory_up_or_del('memory_beian');// 备案
 		memory_up_or_del('memory_copyright');// copyright
 		//博客建立日期
@@ -135,13 +134,6 @@ function memory_menu() { ?>
 	    				</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="memory_cardbck">PC名片背景:</label></th>
-						<td>
-							<input type="text" class="regular-text" name="memory_cardbck" id="memory_cardbck" value="<?php echo get_option('memory_cardbck'); ?>" />
-							<a id="memory_cardbck_upload" class="button" href="#">选择/上传图片</a>
-						</td>
-					</tr>
-					<tr>
 						<th scope="row"><label for="memory_mobilebck">移动端侧边背景:</label></th>
 						<td>
 							<input type="text" class="regular-text" name="memory_mobilebck" id="memory_mobilebck" value="<?php echo get_option('memory_mobilebck'); ?>" />
@@ -149,7 +141,7 @@ function memory_menu() { ?>
 						</td>
 					</tr>
 					<tr>
-	              		<th scope="row"><label for="memory_mobile_qm">移动端签名:</label></th>
+	              		<th scope="row"><label for="memory_mobile_qm">签名:</label></th>
 	    				<td>
 	                		<input type="text" class="regular-text" name="memory_mobile_qm" id="memory_mobile_qm" value="<?php echo get_option('memory_mobile_qm'); ?>" />
 	    				</td>
@@ -244,6 +236,12 @@ function memory_menu() { ?>
 	    				</td>
 	    			</tr>
 	    			<tr>
+						<th scope="row"><label for="memory_qqqun">QQ:</label></th>
+	    				<td>
+	                		<input type="text" class="regular-text" name="memory_qq" id="memory_qq" value=" <?php echo get_option('memory_qq'); ?>" />
+						</td>
+	    			</tr>
+	    			<tr>
 						<th scope="row"><label for="memory_qqqun">QQ群加群链接:</label></th>
 	    				<td>
 	                		<input type="text" class="regular-text" name="memory_qqqun" id="memory_qqqun" value=" <?php echo get_option('memory_qqqun'); ?>" />
@@ -269,8 +267,8 @@ function memory_menu() { ?>
 	                		<input type="checkbox" name="memory_comment_reply" id="memory_comment_reply" class="choose" value="1" <?php checked( '1', get_option( 'memory_comment_reply' ) ); ?>  />
 							<label for="memory_comment_reply" class="select">
 	                			<span class="circle"></span>
-	                			<span class="text on">ON</span>
-	                			<span class="text off">OFF</span>
+	                			<span class="text on"></span>
+	                			<span class="text off"></span>
 	            			</label>
 	    				</td>
 	    			</tr>
@@ -283,8 +281,8 @@ function memory_menu() { ?>
 	                		<input type="checkbox" name="memory_touxian" id="memory_touxian" class="choose" value="1" <?php checked( '1', get_option( 'memory_touxian' ) ); ?>  />
 							<label for="memory_touxian" class="select">
 	                			<span class="circle"></span>
-	                			<span class="text on">ON</span>
-	                			<span class="text off">OFF</span>
+	                			<span class="text on"></span>
+	                			<span class="text off"></span>
 	            			</label>
 	    				</td>
 	    			</tr>
@@ -358,8 +356,8 @@ function memory_menu() { ?>
 	                		<input type="checkbox" name="memory_have_header_picture" id="memory_have_header_picture" class="choose" value="1" <?php checked( '1', get_option( 'memory_have_header_picture' ) ); ?>  />
 							<label for="memory_have_header_picture" class="select">
 	                			<span class="circle"></span>
-	                			<span class="text on">ON</span>
-	                			<span class="text off">OFF</span>
+	                			<span class="text on"></span>
+	                			<span class="text off"></span>
 	            			</label>
 	    				</td>
 	    			</tr>
@@ -381,7 +379,7 @@ function memory_menu() { ?>
 	            	<tr>
 	              		<th scope="row"><label for="memory_user_style">自定义css:</label></th>
 	    				<td>
-	                		<textarea name="memory_user_style" id="memory_user_style" rows="10" cols="50" class="large-text code" value="<?php echo get_option('memory_user_style'); ?>" ></textarea>
+	                		<textarea name="memory_user_style" id="memory_user_style" rows="10" cols="50" class="large-text code" ><?php echo get_option('memory_user_style'); ?></textarea>
 	    				</td>
 	    			</tr>
 				</table>

@@ -21,7 +21,7 @@ setPostViews(get_the_ID());
 					<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 					<div class="right-box">
 						<h3 class="article-author"><?php the_author(); ?>
-					 		<i class="fa fa-check-circle"></i>
+					 		<i class="fa fa-vcard"></i>
 							<span class="page-title">「<?php the_title(); ?>」</span>
 						</h3>
 						<div class="page-info">

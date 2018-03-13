@@ -20,7 +20,7 @@ setPostViews(get_the_ID());
                 <?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
 				<div class="right-box">
 			    	<h3 class="shuoshuo-author"><?php the_author(); ?>
-						<i class="fa fa-check-circle"></i>	
+						<i class="fa fa-vcard"></i>
 					 	<span class="normal">发布了一条说说</span>			
 					</h3>
 					<span class="shuoshuo-publish">
