@@ -12,8 +12,8 @@
 					<?php if( get_option('memory_QQ')!=null ) { ?><a data-balloon="QQ" data-balloon-pos="up" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo get_option('memory_QQ'); ?>&site=qq&menu=yes" class="external" rel="nofollow"><i class="fa fa-qq"></i></a><?php } ?>
 					<?php if( get_option('memory_qqqun')!=null ) { ?><a data-balloon="点击加入QQ群" data-balloon-pos="up" target="_blank" href="<?php echo get_option('memory_qqqun'); ?>" class="external" rel="nofollow"><i class="fa fa-group"></i></a><?php } ?>
   					<?php if( get_option('memory_email')!=null ) { ?><a data-balloon="Email" data-balloon-pos="up" target="_blank" href="mailto:<?php echo get_option('memory_email'); ?>" class="external" rel="nofollow"><i class="fa fa-envelope-o"></i></a><?php } ?>
-  					<?php if( get_option('memory_zhihu')!=null ) { ?><a data-balloon="知乎" data-balloon-pos="up" target="_blank" href="<?php echo get_option('memory_zhihu'); ?>" class="external" rel="nofollow"><span style="font-weight:200;">知</span></a><?php } ?>
-					<a data-balloon="字体切换" data-balloon-pos="up" href="javascript:void(0)" class="set-font-mode external"><i class="iconfont icon-font"></i></a>
+  					<?php if( get_option('memory_zhihu')!=null ) { ?><a data-balloon="知乎" data-balloon-pos="up" target="_blank" href="<?php echo get_option('memory_zhihu'); ?>" class="external" rel="nofollow"><i  style="font-weight:200;">知</i></a><?php } ?>
+					<a data-balloon="字体切换" data-balloon-pos="up" href="javascript:void(0)" class="set-font-mode external"><span class="iconfont icon-font"></span></a>
 				</div>
 			</div>
 			</li>

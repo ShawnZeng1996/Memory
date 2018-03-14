@@ -1,12 +1,12 @@
 ## Wordpress Theme Memory
 
-[![Version](https://img.shields.io/badge/version-1.1.0-green.svg?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-1.0.9-green.svg?style=flat-square)]()
 [![Author](https://img.shields.io/badge/author-Shawn-blue.svg?style=flat-square)](https://shawnzeng.com)
 
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
 - Description: Theme Memory by Shawn (the free version)
-- Version: 1.1.0
+- Version: 1.0.9
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
 
@@ -21,6 +21,9 @@
 ---
 
 ### Version
+
+#### v1.1.1(2018/3/14)
+>1. UX优化
 
 #### v1.1.0(2018/3/13)
 >1. UX优化
@@ -97,4 +100,5 @@
 ---
 
 MIT ©  [Shawn](https://shawnzeng.com)
+
 

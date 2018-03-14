@@ -157,6 +157,20 @@ input:-webkit-autofill {
 	height: auto;
 }
 
+.art .art-content img, .shuoshuo .shuoshuo-content img {
+	display: block;
+    margin: 1em auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    -webkit-transition: -webkit-box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: -webkit-box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), -webkit-box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
 #crumbs {
 	display: inline-block;
 }
@@ -459,6 +473,12 @@ form#searchform input {
     padding: 8px;
 }
 
+#sidebar .aplayer {
+	margin: -8px;
+	box-shadow: none;
+	border-radius: 2px;
+}
+
 #sidebar .art .art-widget-header>h3:before {
     font-family: FontAwesome;
 }
@@ -515,8 +535,6 @@ form#searchform input {
 }
 
 #sidebar .sidebar-posts-list li .post-title {
-    font-size: 14px;
-	font-size: 0.875rem;
     margin-bottom: 5px;
 }
 
@@ -594,14 +612,12 @@ form#searchform input {
 #main-part .art, #main-part .shuoshuo, #sidebar .art, .comment-part {
     margin-bottom: 10px;
     margin-top: 5px;
+    -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
     -webkit-transform: translate3d(0, -2px, 0);
     transform: translate3d(0, -2px, 0);
-    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-	border: 1px solid #e3e3e3;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #main-part .posts-list>li:last-child {
@@ -615,7 +631,7 @@ form#searchform input {
 .art, .comment-part {
     background: rgba(255, 255, 255, 1);
     position: relative;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .art .tagcloud {
@@ -1425,22 +1441,12 @@ form#searchform input {
     border: 1px solid #E6E6EB;
 }
 
-.art .art-content ul li, .art-shuoshuo .shuoshuo ul li {
-    list-style: none;
-}
-
-.art .art-content ol li {
+.art .art-content ul li, .art-shuoshuo .shuoshuo ul li, .art .art-content ol li, .art-shuoshuo .shuoshuo ol li {
     margin-left: 20px;
 }
 
 .art .art-content dl dd {
     margin-left: 2em;
-}
-
-.art .art-content ul li::before, .art-shuoshuo .shuoshuo ul li::before {
-    font-family: FontAwesome;
-    content: "\f08d\ ";
-    color: #0bf;
 }
 
 art .art-content img, .shuoshuo .shuoshuo-content img {
@@ -1599,6 +1605,20 @@ art .art-content img, .shuoshuo .shuoshuo-content img {
 }
 
 .throb:before {
+	font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: .2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     -webkit-animation: xintiao 1.33s ease-in-out infinite;
     animation: xintiao 1.33s ease-in-out infinite;
 }
@@ -1896,7 +1916,8 @@ input[type=submit], button {
 .like-vote {
     text-align: center;
     cursor: pointer;
-    padding: 10px 0 4px;
+    padding: 5px 0;
+    margin: -8px;
 }
 
 .like-vote p {
@@ -1924,8 +1945,8 @@ input[type=submit], button {
 
 .like-count {
     color: #e51c23;
-    font-size: 30px;
-	font-size: 1.875rem;
+    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
