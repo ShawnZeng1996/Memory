@@ -80,10 +80,11 @@ function memory_menu() { ?>
 		
 		// 社交信息
 		memory_up_or_del('memory_github');
-    	memory_up_or_del('memory_weibo');
-    	memory_up_or_del('memory_zhihu');
-    	memory_up_or_del('memory_email');
-    	memory_up_or_del('memory_qqqun');
+		memory_up_or_del('memory_weibo');
+		memory_up_or_del('memory_zhihu');
+		memory_up_or_del('memory_email');
+		memory_up_or_del('memory_qqqun');
+		memory_up_or_del('memory_qq');
 
 		// 评论设置
 		memory_up_or_del('memory_comment_default');		
@@ -91,12 +92,12 @@ function memory_menu() { ?>
 		memory_up('memory_touxian');
 		memory_up_or_del('memory_com_vip');
 		memory_up_or_del('memory_com_vip1');
-    	memory_up_or_del('memory_com_vip2');
-    	memory_up_or_del('memory_com_vip3');
-    	memory_up_or_del('memory_com_vip4');
-    	memory_up_or_del('memory_com_vip5');
-    	memory_up_or_del('memory_com_vip6');
-    	memory_up_or_del('memory_com_vip7');
+		memory_up_or_del('memory_com_vip2');
+		memory_up_or_del('memory_com_vip3');
+		memory_up_or_del('memory_com_vip4');
+		memory_up_or_del('memory_com_vip5');
+		memory_up_or_del('memory_com_vip6');
+		memory_up_or_del('memory_com_vip7');
 
 		// 样式设置
 		memory_up('memory_canvas_or_background');
@@ -107,8 +108,8 @@ function memory_menu() { ?>
 		memory_up_or_del('memory_user_style');
 
 		// SEO设置
-    	memory_up_or_del('memory_description');
-    	memory_up_or_del('memory_keywords');
+		memory_up_or_del('memory_description');
+		memory_up_or_del('memory_keywords');
 
 		echo '<script>alert("保存成功！");</script>';//保存完毕显示文字提示
 	}
@@ -236,7 +237,7 @@ function memory_menu() { ?>
 	    				</td>
 	    			</tr>
 	    			<tr>
-						<th scope="row"><label for="memory_qqqun">QQ:</label></th>
+						<th scope="row"><label for="memory_qq">QQ:</label></th>
 	    				<td>
 	                		<input type="text" class="regular-text" name="memory_qq" id="memory_qq" value=" <?php echo get_option('memory_qq'); ?>" />
 						</td>
