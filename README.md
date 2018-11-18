@@ -6,7 +6,7 @@
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
 - Description: Theme Memory by Shawn (the free version)
-- Version: 1.1.1
+- Version: 3.0.0
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
 
