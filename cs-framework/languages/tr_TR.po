@@ -1,0 +1,187 @@
+# Copyright (C) 2015 Codestar
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Codestar Framework 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/cs-framework\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: classes/framework.class.php:179
+msgid "Success. Imported backup options."
+msgstr "Başarılı. Ayarlar yüklendi."
+
+#: classes/framework.class.php:184
+msgid "Default options restored."
+msgstr "Ayarlar onarıldı."
+
+#: classes/framework.class.php:203
+msgid "Default options restored for only this section."
+msgstr "Bu bölüm içindeki ayarlar onarıldı."
+
+#: classes/framework.class.php:359
+msgid "Settings saved."
+msgstr "Ayarlar kayıt edildi."
+
+#: classes/framework.class.php:360
+msgid "Save"
+msgstr "Kaydet"
+
+#: classes/framework.class.php:360
+msgid "Saving..."
+msgstr "Kayıt ediliyor..."
+
+#: classes/framework.class.php:361
+msgid "Restore"
+msgstr "Onar"
+
+#: classes/framework.class.php:363
+msgid "show all options"
+msgstr "tüm ayarları göster"
+
+#: classes/options.class.php:126
+msgid "CONFIG"
+msgstr "AYARLAR"
+
+#: classes/options.class.php:132
+msgid "USAGE"
+msgstr "KULLANIM"
+
+#: classes/options.class.php:138
+msgid "VALUE"
+msgstr "ÇIKTI"
+
+#: classes/options.class.php:211
+msgid "You are editing language: ( %s )"
+msgstr "Şu anda düzenlenen dil: ( %s )"
+
+#: classes/shortcode.class.php:82 classes/shortcode.class.php:90
+#: fields/textarea/textarea.php:27
+msgid "Add Shortcode"
+msgstr "Kısa Kod Ekle"
+
+#: classes/shortcode.class.php:92
+msgid "Select a shortcode"
+msgstr "Kısa kod seçiniz"
+
+#: classes/shortcode.class.php:108
+msgid "Insert Shortcode"
+msgstr "Kısa kodu yerleştir"
+
+#: fields/background/background.php:31 fields/background/background.php:32
+#: fields/upload/upload.php:23 fields/upload/upload.php:24
+msgid "Upload"
+msgstr "Yükle"
+
+#: fields/background/background.php:33 fields/upload/upload.php:25
+msgid "Use Image"
+msgstr "Resmi Kullan"
+
+#: fields/backup/backup.php:21
+msgid "Import a Backup"
+msgstr "Yedeklenmiş ayarları yükle"
+
+#: fields/backup/backup.php:22
+msgid "copy-paste your backup string here"
+msgstr "Buraya yedeklenen ayarları kopyala-yapıştır"
+
+#: fields/backup/backup.php:27
+msgid "Export and Download Backup"
+msgstr "Ayarları yedekle ve indir"
+
+#: fields/backup/backup.php:28
+msgid "or"
+msgstr "veya"
+
+#: fields/backup/backup.php:29
+msgid "Reset All Options"
+msgstr "Tüm Ayarları Sıfırla"
+
+#: fields/backup/backup.php:30
+msgid "Please be sure for reset all of framework options."
+msgstr "Tüm ayarları sıfırlamadan önce, bir kez daha düşünün."
+
+#: fields/gallery/gallery.php:21
+msgid "Add Gallery"
+msgstr "Galeri Ekle"
+
+#: fields/gallery/gallery.php:22
+msgid "Edit Gallery"
+msgstr "Galeriyi Düzenle"
+
+#: fields/gallery/gallery.php:23
+msgid "Clear"
+msgstr "Temizle"
+
+#: fields/group/group.php:21
+msgid "Adding"
+msgstr "Ekleniyor"
+
+#: fields/group/group.php:43 fields/group/group.php:75
+msgid "Remove"
+msgstr "Kaldır"
+
+#: fields/icon/icon.php:25 functions/actions.php:47
+msgid "Add Icon"
+msgstr "İkon Ekle"
+
+#: fields/icon/icon.php:26
+msgid "Remove Icon"
+msgstr "İkonu Kaldır"
+
+#: fields/image/image.php:22
+msgid "Add Image"
+msgstr "Resim Ekle"
+
+#: fields/sorter/sorter.php:24
+msgid "Enabled Modules"
+msgstr "Etkin Olanlar"
+
+#: fields/sorter/sorter.php:25
+msgid "Disabled Modules"
+msgstr "Etkin Olmayanlar"
+
+#: fields/switcher/switcher.php:20
+msgid "on"
+msgstr ""
+
+#: fields/switcher/switcher.php:20
+msgid "off"
+msgstr ""
+
+#: fields/typography/typography.php:73
+msgid "Web Safe Fonts"
+msgstr ""
+
+#: fields/typography/typography.php:79
+msgid "Google Fonts"
+msgstr ""
+
+#: fields/typography/typography.php:107
+msgid "Error! Can not load json file."
+msgstr "Hata! json dosyası yüklenemiyor."
+
+#: functions/actions.php:48
+msgid "Search a Icon..."
+msgstr "İkon ara..."
+
+#: functions/actions.php:49
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: functions/helpers.php:48
+msgid "This field class is not available!"
+msgstr "Bu ayar kullanılabilir değil!"
+
+#: functions/validate.php:14
+msgid "Please write a valid email address!"
+msgstr "Lütfen doğru bir e-posta adresi yazınız!"
+
+#: functions/validate.php:33
+msgid "Please write a numeric data!"
+msgstr "Lütfen doğru bir numara yazınız!"
+
+#: functions/validate.php:51
+msgid "Fatal Error! This field is required!"
+msgstr "Hata! Bu alan gereklidir!"

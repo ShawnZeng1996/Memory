@@ -1,0 +1,194 @@
+# Copyright (C) 2015 Codestar
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Codestar Framework 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/cs-framework\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Santiago Interactive <desk@santiagointeractive.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Language: ro\n"
+
+#: classes/framework.class.php:179
+msgid "Success. Imported backup options."
+msgstr "Opțiuni backup importate cu succes."
+
+#: classes/framework.class.php:184
+msgid "Default options restored."
+msgstr "Opțiunile inițiale au fost restaurate."
+
+#: classes/framework.class.php:203
+msgid "Default options restored for only this section."
+msgstr "Opțiuni inițiale restaurate doar pentru această secțiune."
+
+#: classes/framework.class.php:359
+msgid "Settings saved."
+msgstr "Setări salvate."
+
+#: classes/framework.class.php:360
+msgid "Save"
+msgstr "Salvează"
+
+#: classes/framework.class.php:360
+msgid "Saving..."
+msgstr "Se salvează..."
+
+#: classes/framework.class.php:361
+msgid "Restore"
+msgstr "Restaurare"
+
+#: classes/framework.class.php:363
+msgid "show all options"
+msgstr "arată toate opțiunile"
+
+#: classes/options.class.php:126
+msgid "CONFIG"
+msgstr "CONFIGURARE"
+
+#: classes/options.class.php:132
+msgid "USAGE"
+msgstr "UTILIZARE"
+
+#: classes/options.class.php:138
+msgid "VALUE"
+msgstr "VALOARE"
+
+#: classes/options.class.php:211
+msgid "You are editing language: ( %s )"
+msgstr "Editați limba: ( %s )"
+
+#: classes/shortcode.class.php:82 classes/shortcode.class.php:90
+#: fields/textarea/textarea.php:27
+msgid "Add Shortcode"
+msgstr "Adaugă shortcode"
+
+#: classes/shortcode.class.php:92
+msgid "Select a shortcode"
+msgstr "Selectați un shortcode"
+
+#: classes/shortcode.class.php:108
+msgid "Insert Shortcode"
+msgstr "Inserare shortcode"
+
+#: fields/background/background.php:31 fields/background/background.php:32
+#: fields/upload/upload.php:23 fields/upload/upload.php:24
+msgid "Upload"
+msgstr "Încarcă"
+
+#: fields/background/background.php:33 fields/upload/upload.php:25
+msgid "Use Image"
+msgstr "Utilizează imagine"
+
+#: fields/backup/backup.php:21
+msgid "Import a Backup"
+msgstr "Importă un backup"
+
+#: fields/backup/backup.php:22
+msgid "copy-paste your backup string here"
+msgstr "copiază și lipește șirul de backup aici"
+
+#: fields/backup/backup.php:27
+msgid "Export and Download Backup"
+msgstr "Exportă și descarcă backup"
+
+#: fields/backup/backup.php:28
+msgid "or"
+msgstr "sau"
+
+#: fields/backup/backup.php:29
+msgid "Reset All Options"
+msgstr "Resetează toate opțiunile"
+
+#: fields/backup/backup.php:30
+msgid "Please be sure for reset all of framework options."
+msgstr "Vă rugăm asigurați-va pentru resetarea tuturor opțiunilor."
+
+#: fields/gallery/gallery.php:21
+msgid "Add Gallery"
+msgstr "Adaugă galerie"
+
+#: fields/gallery/gallery.php:22
+msgid "Edit Gallery"
+msgstr "Editează galerie"
+
+#: fields/gallery/gallery.php:23
+msgid "Clear"
+msgstr "Golește"
+
+#: fields/group/group.php:21
+msgid "Adding"
+msgstr "Se adaugă"
+
+#: fields/group/group.php:43 fields/group/group.php:75
+msgid "Remove"
+msgstr "Șterge"
+
+#: fields/icon/icon.php:25 functions/actions.php:47
+msgid "Add Icon"
+msgstr "Adaugă iconiță"
+
+#: fields/icon/icon.php:26
+msgid "Remove Icon"
+msgstr "Șterge iconiță"
+
+#: fields/image/image.php:22
+msgid "Add Image"
+msgstr "Adaugă imagine"
+
+#: fields/sorter/sorter.php:24
+msgid "Enabled Modules"
+msgstr "Module activate"
+
+#: fields/sorter/sorter.php:25
+msgid "Disabled Modules"
+msgstr "Module dezactivate"
+
+#: fields/switcher/switcher.php:20
+msgid "on"
+msgstr "da"
+
+#: fields/switcher/switcher.php:20
+msgid "off"
+msgstr "nu"
+
+#: fields/typography/typography.php:73
+msgid "Web Safe Fonts"
+msgstr "Fonturi web"
+
+#: fields/typography/typography.php:79
+msgid "Google Fonts"
+msgstr "Fonturi Google"
+
+#: fields/typography/typography.php:107
+msgid "Error! Can not load json file."
+msgstr "Eroare! Nu se poate încărca fișierul json."
+
+#: functions/actions.php:48
+msgid "Search a Icon..."
+msgstr "Caută o iconiță..."
+
+#: functions/actions.php:49
+msgid "Loading..."
+msgstr "Se încarcă..."
+
+#: functions/helpers.php:48
+msgid "This field class is not available!"
+msgstr "Clasa acestui câmp nu este disponibilă!"
+
+#: functions/validate.php:14
+msgid "Please write a valid email address!"
+msgstr "Introduceți o adresă email validă!"
+
+#: functions/validate.php:33
+msgid "Please write a numeric data!"
+msgstr "Introduceți o valoare numerică!"
+
+#: functions/validate.php:51
+msgid "Fatal Error! This field is required!"
+msgstr "Eroare! Acest câmp este obligatoriu!"

@@ -1,0 +1,186 @@
+# Copyright (C) 2015 Codestar
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Codestar Framework 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/cs-framework\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Mahmoud Sami <kadoo.bido@gmail.com>\n"
+"Language-Team: mahmoud samo <kadoo.bido@gmail.com>\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language: arabic\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: classes/framework.class.php:345
+msgid "Settings saved."
+msgstr "تم حفظ الأعدادات"
+
+#: classes/framework.class.php:346
+msgid "Save"
+msgstr "حفظ"
+
+#: classes/framework.class.php:346
+msgid "Saving..."
+msgstr "جارى الحفظ .."
+
+#: classes/framework.class.php:347
+msgid "Restore"
+msgstr "استعاده"
+
+#: classes/framework.class.php:349
+msgid "show all options"
+msgstr "أظهر كل الخيارات"
+
+#: classes/options.class.php:125
+msgid "CONFIG"
+msgstr "ضبط"
+
+#: classes/options.class.php:131
+msgid "USAGE"
+msgstr "الاستخدام"
+
+#: classes/options.class.php:137
+msgid "VALUE"
+msgstr "القيمه"
+
+#: classes/options.class.php:210
+msgid "You are editing language: ( %s )"
+msgstr "انت تقوم بتحرير اللغه : ( %s )"
+
+#: classes/shortcode.class.php:82 classes/shortcode.class.php:90
+#: fields/textarea/textarea.php:27
+msgid "Add Shortcode"
+msgstr "اضف كود مختصر"
+
+#: classes/shortcode.class.php:92
+msgid "Select a shortcode"
+msgstr "اختيار كود مختصر"
+
+#: classes/shortcode.class.php:108
+msgid "Insert Shortcode"
+msgstr "ادراج كود مختصر"
+
+#: fields/background/background.php:31 fields/background/background.php:32
+#: fields/upload/upload.php:23 fields/upload/upload.php:24
+msgid "Upload"
+msgstr "رفع"
+
+#: fields/background/background.php:33 fields/upload/upload.php:25
+msgid "Use Image"
+msgstr "استخدم صوره"
+
+#: fields/backup/backup.php:21
+msgid "Import a Backup"
+msgstr "استيراد النسخه الاحتياطيه"
+
+#: fields/backup/backup.php:22
+msgid "copy-paste your backup string here"
+msgstr "انسخ-الصق محتوى ملف الاعدادات"
+
+#: fields/backup/backup.php:27
+msgid "Export and Download Backup"
+msgstr "تحميل وتصدير ملف الاعدادات"
+
+#: fields/backup/backup.php:28
+msgid "or"
+msgstr "أو"
+
+#: fields/backup/backup.php:29
+msgid "Reset All Options"
+msgstr "استعاده كل الاعدادات الافتراضيه"
+
+#: fields/backup/backup.php:30
+msgid "Please be sure for reset all of framework options."
+msgstr "من فضلك كن متأكد من استعاده كل الاعدادات الافتراضيه"
+
+#: fields/gallery/gallery.php:21
+msgid "Add Gallery"
+msgstr "أضف معرض صور"
+
+#: fields/gallery/gallery.php:22
+msgid "Edit Gallery"
+msgstr "تعديل معرض صور"
+
+#: fields/gallery/gallery.php:23
+msgid "Clear"
+msgstr "مسح"
+
+#: fields/group/group.php:21
+msgid "Adding"
+msgstr "اضافه"
+
+#: fields/group/group.php:33 fields/group/group.php:64
+msgid "Remove"
+msgstr "حذف"
+
+#: fields/icon/icon.php:25 functions/actions.php:47
+msgid "Add Icon"
+msgstr "اضف ايقونه"
+
+#: fields/icon/icon.php:26
+msgid "Remove Icon"
+msgstr "حذف ايقونه"
+
+#: fields/image/image.php:22
+msgid "Add Image"
+msgstr "اضف صوره"
+
+#: fields/sorter/sorter.php:24
+msgid "Enabled Modules"
+msgstr "الموديولات المفعله"
+
+#: fields/sorter/sorter.php:25
+msgid "Disabled Modules"
+msgstr "الموديولات المعطله"
+
+#: fields/switcher/switcher.php:20
+msgid "on"
+msgstr "on"
+
+#: fields/switcher/switcher.php:20
+msgid "off"
+msgstr "off"
+
+#: fields/typography/typography.php:72
+msgid "Web Safe Fonts"
+msgstr "خطوط الويب"
+
+#: fields/typography/typography.php:78
+msgid "Google Fonts"
+msgstr "خطوط جوجل"
+
+#: fields/typography/typography.php:106
+msgid "Error! Can not load json file."
+msgstr "خطأ:لا يمكن تحميل ملف josn"
+
+#: functions/actions.php:48
+msgid "Search a Icon..."
+msgstr "بحث عن ايقونه"
+
+#: functions/actions.php:49
+msgid "Loading..."
+msgstr "جارى التحميل..."
+
+#: functions/helpers.php:48
+msgid "This field class is not available!"
+msgstr "تصنيف هذا الحقل غير متاح"
+
+#: functions/validate.php:14
+msgid "Please write a valid email address!"
+msgstr "من فضلك ادخل بريد الكترونى سليم!"
+
+#: functions/validate.php:33
+msgid "Please write a numeric data!"
+msgstr "من فضلك ادخل قيمه رقميه!"
+
+#: functions/validate.php:51
+msgid "Fatal Error! This field is required!"
+msgstr "خطأ: هذا الحقل ضرورى!"

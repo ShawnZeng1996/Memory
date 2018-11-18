@@ -1,0 +1,194 @@
+# Copyright (C) 2015 Codestar
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Codestar Framework 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/cs-framework\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Santiago Interactive <desk@santiagointeractive.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Language: ro\n"
+
+#: classes/framework.class.php:179
+msgid "Success. Imported backup options."
+msgstr "تنظیمات با موفقیت وارد شد."
+
+#: classes/framework.class.php:184
+msgid "Default options restored."
+msgstr "تنظیمات به حالت پیش فرض باز گشت."
+
+#: classes/framework.class.php:203
+msgid "Default options restored for only this section."
+msgstr "تنظیمات این قسمت به حالت پیش فرض باز گشت."
+
+#: classes/framework.class.php:359
+msgid "Settings saved."
+msgstr "تنظیمات ذخیره شد."
+
+#: classes/framework.class.php:360
+msgid "Save"
+msgstr "ذخیره"
+
+#: classes/framework.class.php:360
+msgid "Saving..."
+msgstr "در حال ذخیره کردن"
+
+#: classes/framework.class.php:361
+msgid "Restore"
+msgstr "بازگرداندن"
+
+#: classes/framework.class.php:363
+msgid "show all options"
+msgstr "نمایش همه گزینه ها"
+
+#: classes/options.class.php:126
+msgid "CONFIG"
+msgstr "پیکربندی"
+
+#: classes/options.class.php:132
+msgid "USAGE"
+msgstr "شکل استفاده"
+
+#: classes/options.class.php:138
+msgid "VALUE"
+msgstr "ارزش"
+
+#: classes/options.class.php:211
+msgid "You are editing language: ( %s )"
+msgstr "شما در حال ویرایش زبان:  ( %s )"
+
+#: classes/shortcode.class.php:82 classes/shortcode.class.php:90
+#: fields/textarea/textarea.php:27
+msgid "Add Shortcode"
+msgstr "اضافه کردن کد کوتاه"
+
+#: classes/shortcode.class.php:92
+msgid "Select a shortcode"
+msgstr "انتخاب یک کد کوتاه"
+
+#: classes/shortcode.class.php:108
+msgid "Insert Shortcode"
+msgstr "قرار دادن کد کوتاه"
+
+#: fields/background/background.php:31 fields/background/background.php:32
+#: fields/upload/upload.php:23 fields/upload/upload.php:24
+msgid "Upload"
+msgstr "بارگذاری"
+
+#: fields/background/background.php:33 fields/upload/upload.php:25
+msgid "Use Image"
+msgstr "استفاده از تصویر"
+
+#: fields/backup/backup.php:21
+msgid "Import a Backup"
+msgstr "وارد کردن پشتیبان"
+
+#: fields/backup/backup.php:22
+msgid "copy-paste your backup string here"
+msgstr "رشته پشتیبان گیری"
+
+#: fields/backup/backup.php:27
+msgid "Export and Download Backup"
+msgstr "صدور و دانلود پشتیبان"
+
+#: fields/backup/backup.php:28
+msgid "or"
+msgstr "یا"
+
+#: fields/backup/backup.php:29
+msgid "Reset All Options"
+msgstr "تنظیم مجدد همه گزینه"
+
+#: fields/backup/backup.php:30
+msgid "Please be sure for reset all of framework options."
+msgstr "لطفا مطمئن شوید برای تنظیم مجدد همه گزینه ها"
+
+#: fields/gallery/gallery.php:21
+msgid "Add Gallery"
+msgstr "اضافه کردن گالری"
+
+#: fields/gallery/gallery.php:22
+msgid "Edit Gallery"
+msgstr "ویرایش گالری"
+
+#: fields/gallery/gallery.php:23
+msgid "Clear"
+msgstr "پاک کردن"
+
+#: fields/group/group.php:21
+msgid "Adding"
+msgstr "اضافه کردن"
+
+#: fields/group/group.php:43 fields/group/group.php:75
+msgid "Remove"
+msgstr "حذف"
+
+#: fields/icon/icon.php:25 functions/actions.php:47
+msgid "Add Icon"
+msgstr "اضافه کردن آیکون"
+
+#: fields/icon/icon.php:26
+msgid "Remove Icon"
+msgstr "حذف آیکون"
+
+#: fields/image/image.php:22
+msgid "Add Image"
+msgstr "اضافه کردن تصویر"
+
+#: fields/sorter/sorter.php:24
+msgid "Enabled Modules"
+msgstr "ماژولهای فعال"
+
+#: fields/sorter/sorter.php:25
+msgid "Disabled Modules"
+msgstr "ماژول های غیر فعال"
+
+#: fields/switcher/switcher.php:20
+msgid "on"
+msgstr "روشن"
+
+#: fields/switcher/switcher.php:20
+msgid "off"
+msgstr "خاموش"
+
+#: fields/typography/typography.php:73
+msgid "Web Safe Fonts"
+msgstr "فونت های وب"
+
+#: fields/typography/typography.php:79
+msgid "Google Fonts"
+msgstr "فونت های گوگل"
+
+#: fields/typography/typography.php:107
+msgid "Error! Can not load json file."
+msgstr "خطا! نمیتوان پروندهای JSON را بارگیری کرد."
+
+#: functions/actions.php:48
+msgid "Search a Icon..."
+msgstr "جستجوی یک آیکون ..."
+
+#: functions/actions.php:49
+msgid "Loading..."
+msgstr "در حال بارگذاری ..."
+
+#: functions/helpers.php:48
+msgid "This field class is not available!"
+msgstr "این کلاس در دسترس نیست!"
+
+#: functions/validate.php:14
+msgid "Please write a valid email address!"
+msgstr "لطفا یک آدرس ایمیل معتبر بنویسید !"
+
+#: functions/validate.php:33
+msgid "Please write a numeric data!"
+msgstr "لطفا یک داده ی عددی بنویسید !"
+
+#: functions/validate.php:51
+msgid "Fatal Error! This field is required!"
+msgstr "خطای جدی! این فیلد الزامی است!"
