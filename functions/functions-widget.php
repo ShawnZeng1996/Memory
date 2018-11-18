@@ -46,9 +46,9 @@ function Memory_most_active_friends($friends_num = 10) {
     foreach ($counts as $count) {
     $c_url = $count->comment_author_url;
     if ($c_url != '') {
-	  $mostactive .= '<li class="widget-visitor">' . '<a href="'. $c_url . '" target="_blank" data-content-pos="up" data-content="' . $count->comment_author . '">' . get_avatar($count, 40) . '</a></li>';
+    $mostactive .= '<li class="widget-visitor">' . '<a href="'. $c_url . '" target="_blank" data-content-pos="up" data-content="' . $count->comment_author . '">' . get_avatar($count, 40) . '</a></li>';
     } else {
-      $mostactive .= '<li class="widget-visitor">' . '<a class="nopointer" >' . get_avatar($count, 40) . '<p>' . $count->comment_author . '</p></a></li>';
+      $mostactive .= '<li class="widget-visitor">' . '<a class="nopointer" data-content-pos="up" data-content="' . $count->comment_author . '">' . get_avatar($count, 40) . '</a></li>';
     }
     }
     return $mostactive;

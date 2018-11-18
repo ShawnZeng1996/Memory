@@ -63,7 +63,7 @@ get_header(); ?>
 						<?php } else if( $post->post_type== 'shuoshuo' ) { ?>
 			                <li class="memory-item">
 			                    <article class="shuoshuo post-type">
-									<?php if( is_sticky() ) _e('<div class="set-top">置顶</div>','Memory'); ?>
+									<?php if( is_sticky() ) _e('<div class="set-top"><div>置顶</div></div>','Memory'); ?>
 									<header class="post-type-header">
 										<div class="post-relative">
 											<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>

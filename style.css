@@ -344,6 +344,12 @@ div.lazy {
     display: none;
 }
 
+#mobile-menu {
+    position: initial;
+    height: 0;
+    overflow: hidden;
+}
+
 @font-face {
   font-family: 'theme';
   src: url('fonts/logo.ttf');
@@ -970,7 +976,8 @@ div.lazy {
     clear: both;
 }
 
-.memory-item.comment-part .comment-respond .comment-form {
+.memory-item.comment-part .comment-respond .comment-form,
+.memory-item.comment-part .comment-respond .login-must {
     margin: 15px;
 }
 
