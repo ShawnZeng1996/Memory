@@ -14,6 +14,10 @@
 
 ---
 
+### View
+
+![screenshot](https://github.com/ShawnZeng1996/Memory/blob/master/view.png)
+
 ---
 
 ### Version
