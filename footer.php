@@ -25,7 +25,6 @@
 			'siteStartTime' => cs_get_option( 'memory_start_time' ),
 			'ajaxUrl' => admin_url('admin-ajax.php'),
 			'commentEditAgain' => cs_get_option( 'memory_comment_edit' ),
-			'loadPjax' => cs_get_option( 'memory_pjax' ),
 		)); ?>
 	<?php wp_footer(); if ( cs_get_option( 'memory_user_js' )!=null ) echo '<script>' . cs_get_option( 'memory_user_js' ) . '</script>';?>
 </body>
