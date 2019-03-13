@@ -65,3 +65,13 @@ function SelectContent (element) {
     selection.removeAllRanges ();
     selection.addRange (rangeToSelect);
 }
+
+
+function getVersion(version) {
+	version = version.toString().split('.').join('');
+	if (version.length == 3)
+		version = parseInt(version);
+	else if (version.length == 2)
+		version = parseInt(version)*10;
+	return version;
+}

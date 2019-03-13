@@ -5,7 +5,7 @@
  * Theme Name: Memory
  * Theme URI: https://shawnzeng.com/wordpress-theme-memory.html
  * Description: Theme Memory by Shawn
- * Version: 3.0.0
+ * Version: 3.0.1
  * Author: Shawn
  * Author URI: https://shawnzeng.com
  * Tags: Memory, Shawn, Wordpress
@@ -64,6 +64,38 @@ input:-webkit-autofill {
     background: #0bf;
     color: #fff;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f3f3f3;
+}
+
+
+/* 滚动条的滑轨背景颜色 */
+
+::-webkit-scrollbar-thumb {
+    background-color: #ea9595;
+}
+
+
+/* 滑块颜色 */
+
+::-webkit-scrollbar-button {
+    background-color: #f3f3f3;
+}
+
+
+/* 滑轨两头的监听按钮颜色 */
+
+::-webkit-scrollbar-corner {
+    background-color: #f3f3f3;
+}
+
+
+/* 横向滚动条和纵向滚动条相交处尖角的颜色 */
 
 button,
 input,
@@ -148,7 +180,6 @@ div.lazy {
     position: relative;
     padding: 0 35px;
     z-index: 1000;
-    background-color: #fff;
 }
 
 #pc-menu #menu-title {
@@ -736,6 +767,39 @@ div.lazy {
     border: 1px solid #e3e8e8;
 }
 
+.post-type .post-content #article-index {
+	background-color: #fbf9f9;
+    margin: 0 0 5px 5px;
+    border-radius: 3px;
+    border: 1px solid #e3e8e8;
+	padding: 12px;
+    line-height: 160%;
+    max-width: 40%;
+    font-size: 12px;
+    position: relative;
+    float: right;
+}
+
+.post-type .post-content #article-index #show-index {
+	cursor: pointer;
+}
+
+.post-type .post-content #article-index #index-ul li a:before {
+	content: none;
+}
+
+.post-type .post-content #article-index #index-ul li a {
+	color: #428bca;
+}
+
+.post-type .post-content #article-index #index-ul li.title-3 {
+	margin-left: 10px;
+}
+
+.post-type .post-content #article-index #index-ul li.title-4 {
+	margin-left: 20px;
+}
+
 .post-type .post-content blockquote:before {
     position: absolute;
     display: block;
@@ -744,6 +808,10 @@ div.lazy {
     right: 5px;
     top: 5px;
     color: #999;
+}
+
+.post-type .post-content pre.line-numbers {
+	border-radius: 3px;
 }
 
 .post-type .post-content ul,
@@ -818,8 +886,9 @@ div.lazy {
     border-bottom: 1px solid #e7e7e7;
     text-align: center;
     background: #fff;
+	color: #000;
+	z-index: 10000;
     cursor: default;
-    z-index: 10000;
     position: fixed;
     width: 300px;
     left: 50%;
@@ -859,7 +928,7 @@ div.lazy {
 	display: inline-block;
 }	
 
-.pay-box .pay-chose a {
+.pay-box .pay-chose span {
     width: 138px !important;
 	padding: 10px 0;
     height: 45px;
@@ -871,11 +940,11 @@ div.lazy {
     cursor: pointer;
 }
 
-.pay-box .pay-chose a.chosen {
+.pay-box .pay-chose span.chosen {
 	border-color: #0092ee;
 }
 
-.pay-box .pay-chose a img {
+.pay-box .pay-chose span img {
     height: 25px;
     vertical-align: middle;
 }
@@ -1275,12 +1344,17 @@ div.lazy {
 
 #comments .commentator-comment {
     margin-left: 56px;
+    margin-bottom: 10px;
 }
 
 #comments .commentator-comment .userlevel {
     font-size: 14px;
     font-weight: 400;
     color: #999;
+}
+
+#comments .children li {
+    list-style: none;
 }
 
 #comments .comment-comment {
@@ -1291,6 +1365,7 @@ div.lazy {
     border-radius: 0 15px 15px;
     border: 1px solid #e3e8e8;
     display: inline-block;
+	max-width: 100%;
 }
 
 #comments .comment-comment .comment-info .comment-time {
@@ -1321,10 +1396,6 @@ div.lazy {
 
 #comments .new-comment {
 	border-bottom: 1px solid #e3e8e8;
-}
-
-#comments .commentator-comment {
-    margin-bottom: 10px;
 }
 
 #comments > ol > li > .children {
@@ -1475,6 +1546,280 @@ div.lazy {
 .memory-item .catch-me i:hover {
 	background-color: #0bf;
     color: #fff
+}
+
+.post-preview {
+    max-width: 780px;
+    margin: 10px auto;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.post-preview .post-preview--meta {
+    width: 75%;
+    padding: 10px;
+}
+
+.post-preview .post-preview--meta .post-preview--middle {
+    line-height: 20px;
+}
+
+.post-preview .post-preview--meta .post-preview--title {
+    font-size: 18px;
+    font-size: 1.125rem;
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.post-preview .post-preview--meta .post-preview--title a {
+    text-decoration: none;
+    color: #000;
+}
+
+.post-preview .post-preview--meta .post-preview--title a:before {
+	content: none;
+}
+
+.post-preview .post-preview--meta .post-preview--date {
+    font-size: 12px;
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.post-preview .post-preview--excerpt {
+    font-size: 13px;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+}
+
+.post-preview .post-preview--excerpt p {
+    margin-bottom: 0;
+}
+
+.post-preview .post-preview--image {
+    width: 25%;
+    float: right;
+    background-size: cover;
+    background-position: center center;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.rating {
+    display: block;
+    line-height: 15px;
+    padding: 0 0 5px;
+    font-size: 14px;
+    font-size: 0.875rem;
+    text-align: left;
+}
+
+.rating-star {
+    display: inline-block;
+    width: 75px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-image: url(img/douban_star.png);
+    overflow: hidden;
+}
+
+.allstar10 {
+    background-position: 0px 0px;
+}
+
+.allstar9 {
+    background-position: 0px -15px;
+}
+
+.allstar8 {
+    background-position: 0px -30px;
+}
+
+.allstar7 {
+    background-position: 0px -45px;
+}
+
+.allstar6 {
+    background-position: 0px -60px;
+}
+
+.allstar5 {
+    background-position: 0px -75px;
+}
+
+.allstar4 {
+    background-position: 0px -90px;
+}
+
+.allstar3 {
+    background-position: 0px -105px;
+}
+
+.allstar2 {
+    background-position: 0px -120px;
+}
+
+.allstar1 {
+    background-position: 0px -135px;
+}
+
+.allstar0 {
+    background-position: 0px -150px;
+}
+
+.rating-average {
+    color: #777;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.post-type .post-content .all_douban {
+    overflow: hidden;
+	padding: 0;
+}
+
+.douban_sum_item {
+	margin: 10px 8px 10px 2px;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	min-width: 80px;
+}
+
+#main-part .memory-item .archive-douban .all_douban .douban_sum_item img {
+    margin: 10px 0 5px;
+	min-height: 152px;
+}
+
+.post .post-content .all_douban li {
+	display: inline-block;
+	width: 20%;
+	vertical-align: top;
+}
+
+.post .post-content .all_douban li::before {
+    content: none;
+}
+
+.post .post-content .all_douban li a::before {
+    content: none;
+}
+
+.douban_sum_item h4 a {
+    font-size: 13px;
+    color: #494949;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 100%;
+    line-height: 1.4;
+}
+
+#main-part .author {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 1);
+    position: relative;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+	overflow: hidden;
+}
+
+#main-part .author img {
+    width: 100%;
+    max-width: 100%;
+}
+
+#main-part .author .art-author {
+    margin: 0 0 0 20px;
+    position: relative;
+    padding: 5px 0 0 120px;
+}
+
+#main-part .author .art-author .avatar {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    float: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    margin: 0;
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    position: absolute;
+    top: -25px;
+    left: 0;
+    z-index: 1
+}
+
+#main-part .author .art-author .author-info {
+    position: relative;
+    min-height: 80px;
+}
+
+#main-part .author .art-author .author-info .memory-birthday {
+    color: #adad0f;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    left: unset;
+    bottom: unset;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods a {
+    text-decoration: none;
+    color: #1f1d1d;
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-twitter {
+    color: #55acee;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-facebook {
+    color: #44619d;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-weibo {
+    color: #ff763b;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-tencentweibo {
+    color: #56b6e7;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-bilibili {
+    color: #0bf;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-douban {
+    color: #33b045;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-qqzone {
+    color: #fdbe3d;
+}
+
+#main-part .author .art-author .author-info .author-contactmethods .memory-zhihu {
+	color: rgb(15, 136, 235);
 }
 
 #calendar_wrap {

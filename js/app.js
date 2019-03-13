@@ -198,6 +198,20 @@ App = {
             }); // end Ajax
           return false;
         }); // end submit
+      
+      
+      	if(getVersion(memoryConfig.version=="5.1")>=510) {
+		   	console.log("wp5.1+");
+			// 修复wp5.1评论回复bug
+			$(document).on('click', '.comment-reply-link', function(){
+				var postId = document.getElementById('comment_post_ID').value;
+				addComment.moveForm( "comment-"+$(this).attr('data-commentid'), $(this).attr('data-commentid'), "respond", postId );
+				return false;  // 阻止 a tag 跳转，这句千万别漏了
+			});
+		}else {
+			console.log("wp5.1-");
+		}
+      
         // comment-reply.dev.js
         addComment = {
             moveForm : function(commId, parentId, respondId, postId, num) {
