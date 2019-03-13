@@ -1,16 +1,16 @@
 ## Wordpress Theme Memory
 
-[![Version](https://img.shields.io/badge/version-1.1.1-green.svg?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-3.0.1-green.svg?style=flat-square)]()
 [![Author](https://img.shields.io/badge/author-Shawn-blue.svg?style=flat-square)](https://shawnzeng.com)
 
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
 - Description: Theme Memory by Shawn (the free version)
-- Version: 3.0.0
+- Version: 3.0.1
 - Author: Shawn
 - Author URI: [https://shawnzeng.com](https://shawnzeng.com)
 
-下载后请修改包名为Memory.zip再进行安装，欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的 Pull Request。
+下载后请解压，修改文件夹名为Memory再重新压缩进行安装，欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的 Pull Request。
 
 ---
 
