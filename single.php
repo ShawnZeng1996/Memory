@@ -59,7 +59,7 @@ setPostViews(get_the_ID()); ?>
 									$wechat_image_id = cs_get_option( 'memory_wechat_image' );
 									$wechat_attachment = wp_get_attachment_image_src( $wechat_image_id, 'full' );
 									if( cs_get_option( 'memory_alipay_image' ) && cs_get_option( 'memory_wechat_image' ) ){ ?>
-									<h4>扫一扫支付</h3>
+									<h4>扫一扫支付</h4>
 									<img class="alipay chosen" src="<?php echo $alipay_attachment[0]; ?>"/>
 									<img class="wechatpay" src="<?php echo $wechat_attachment[0]; ?>"/>
 									<div class="pay-chose">
@@ -67,10 +67,10 @@ setPostViews(get_the_ID()); ?>
 										<a class="wechatbutton"><img src="<?php bloginfo('template_url'); ?>/img/wechat.png"/></a>
 									</div>											
 									<?php } else if ( cs_get_option( 'memory_alipay_image' ) && !cs_get_option( 'memory_wechat_image' ) ) { ?>
-									<h4>扫一扫支付</h3>
+									<h4>扫一扫支付</h4>
 									<img class="alipay chosen" src="<?php echo $alipay_attachment[0]; ?>"/>											
 									<?php } else if ( !cs_get_option( 'memory_alipay_image' ) && cs_get_option( 'memory_wechat_image' ) ) { ?>
-									<h4>扫一扫支付</h3>
+									<h4>扫一扫支付</h4>
 									<img class="wechatpay chosen" src="<?php echo $wechat_attachment[0]; ?>"/>												
 									<?php } else { ?>
 									<h4>作者尚未添加打赏二维码！</h3>
