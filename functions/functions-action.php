@@ -584,8 +584,9 @@ function disable_emojis_tinymce( $plugins ) {
 // 去除头部版本号
 remove_action('wp_head', 'wp_generator'); 
 // 隐藏面板登陆错误信息
-add_filter('login_errors', create_function('$a', "return null;"));
-
+add_filter('login_errors', function ($a) {
+    return null;
+});
 // ajax头像更新
 add_action( 'init', 'ajax_avatar_url' );
 function ajax_avatar_url() {
