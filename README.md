@@ -2,6 +2,7 @@
 
 [![Version](https://img.shields.io/badge/version-3.0.1-green.svg?style=flat-square)]()
 [![Author](https://img.shields.io/badge/author-Shawn-blue.svg?style=flat-square)](https://shawnzeng.com)
+[![GitHub stars](https://img.shields.io/github/stars/ShawnZeng1996/Memory.svg?style=social)](https://github.com/ShawnZeng1996/Memory/stargazers)     [![GitHub forks](https://img.shields.io/github/forks/ShawnZeng1996/Memory.svg?style=social)](https://github.com/ShawnZeng1996/Memory/network/members)
 
 - Theme Name: Memory
 - Theme URI: [https://shawnzeng.com/wordpress-theme-memory.html](https://shawnzeng.com/wordpress-theme-memory.html)
