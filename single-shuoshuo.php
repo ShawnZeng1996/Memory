@@ -13,6 +13,36 @@
 get_header();
 setPostViews(get_the_ID()); ?>
    	<div id="main">
+		<div class="pay-box">
+			<div class="pay-header">
+				<span>请作者吃个鸡腿！</span>
+				<i class="memory memory-close"></i>
+			</div>
+			<div class="pay-body">
+				<?php 
+				$alipay_image_id = cs_get_option( 'memory_alipay_image' );
+				$alipay_attachment = wp_get_attachment_image_src( $alipay_image_id, 'full' );
+				$wechat_image_id = cs_get_option( 'memory_wechat_image' );
+				$wechat_attachment = wp_get_attachment_image_src( $wechat_image_id, 'full' );
+				if( cs_get_option( 'memory_alipay_image' ) && cs_get_option( 'memory_wechat_image' ) ){ ?>
+				<h4>扫一扫支付</h3>
+				<img class="alipay chosen" src="<?php echo $alipay_attachment[0]; ?>"/>
+				<img class="wechatpay" src="<?php echo $wechat_attachment[0]; ?>"/>
+				<div class="pay-chose">
+					<a class="alibutton chosen"><img src="<?php bloginfo('template_url'); ?>/img/alipay.png"/></a>
+					<a class="wechatbutton"><img src="<?php bloginfo('template_url'); ?>/img/wechat.png"/></a>
+				</div>											
+				<?php } else if ( cs_get_option( 'memory_alipay_image' ) && !cs_get_option( 'memory_wechat_image' ) ) { ?>
+				<h4>扫一扫支付</h3>
+				<img class="alipay chosen" src="<?php echo $alipay_attachment[0]; ?>"/>											
+				<?php } else if ( !cs_get_option( 'memory_alipay_image' ) && cs_get_option( 'memory_wechat_image' ) ) { ?>
+				<h4>扫一扫支付</h3>
+				<img class="wechatpay chosen" src="<?php echo $wechat_attachment[0]; ?>"/>												
+				<?php } else { ?>
+				<h4>作者尚未添加打赏二维码！</h3>
+				<?php } ?>
+			</div>
+		</div>
         <div id="main-part">
 			<?php if(function_exists('memory_breadcrumbs') and cs_get_option( 'memory_breadcrumbs' )==1) { ?>
 				<div class="memory-item breadcrumbs">当前位置：
@@ -46,36 +76,6 @@ setPostViews(get_the_ID()); ?>
 							<div class="like-pay">
 								<span class="post-like"><a href="javascript:;" data-action="memory_like" data-id="<?php the_ID(); ?>" class="like<?php if(isset($_COOKIE['memory_like_'.$post->ID])) echo ' have-like';?>"> <span class="like-count"><?php if( get_post_meta($post->ID,'memory_like',true) ){ echo get_post_meta($post->ID,'memory_like',true); } else { echo '0'; }?></span></a></span>
 								<span class="post-pay"><i class="memory memory-dashang"></i> 赏</span>
-							</div>
-							<div class="pay-box">
-								<div class="pay-header">
-									<span>请作者吃个鸡腿！</span>
-									<i class="memory memory-close"></i>
-								</div>
-								<div class="pay-body">
-									<?php 
-									$alipay_image_id = cs_get_option( 'memory_alipay_image' );
-									$alipay_attachment = wp_get_attachment_image_src( $alipay_image_id, 'full' );
-									$wechat_image_id = cs_get_option( 'memory_wechat_image' );
-									$wechat_attachment = wp_get_attachment_image_src( $wechat_image_id, 'full' );
-									if( cs_get_option( 'memory_alipay_image' ) && cs_get_option( 'memory_wechat_image' ) ){ ?>
-									<h4>扫一扫支付</h3>
-									<img class="alipay chosen" src="<?php echo $alipay_attachment[0]; ?>"/>
-									<img class="wechatpay" src="<?php echo $wechat_attachment[0]; ?>"/>
-									<div class="pay-chose">
-										<a class="alibutton chosen"><img src="<?php bloginfo('template_url'); ?>/img/alipay.png"/></a>
-										<a class="wechatbutton"><img src="<?php bloginfo('template_url'); ?>/img/wechat.png"/></a>
-									</div>											
-									<?php } else if ( cs_get_option( 'memory_alipay_image' ) && !cs_get_option( 'memory_wechat_image' ) ) { ?>
-									<h4>扫一扫支付</h3>
-									<img class="alipay chosen" src="<?php echo $alipay_attachment[0]; ?>"/>											
-									<?php } else if ( !cs_get_option( 'memory_alipay_image' ) && cs_get_option( 'memory_wechat_image' ) ) { ?>
-									<h4>扫一扫支付</h3>
-									<img class="wechatpay chosen" src="<?php echo $wechat_attachment[0]; ?>"/>												
-									<?php } else { ?>
-									<h4>作者尚未添加打赏二维码！</h3>
-									<?php } ?>
-								</div>
 							</div>
 						</div>                          
                     </article>
